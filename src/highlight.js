@@ -1,5 +1,3 @@
-loadSyntaxHighlightingByClass("syntax-color");
-
 // This function will load the language from the languages folder
 // the languages folder, if not specified, should be in the same folder as the script
 // The className is the class that will be added to all of the span tags, so that

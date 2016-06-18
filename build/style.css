@@ -3,11 +3,11 @@
 }
 
 .syntax-highlight.wrapping {
-    color: rgb(17, 190, 38);
+    color: green;
 }
 
 .syntax-highlight.number, .syntax-highlight.capital, .syntax-highlight.class-name {
-    color: rgb(232, 159, 74);
+    color: orange;
 }
 
 .syntax-highlight.function {

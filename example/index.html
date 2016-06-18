@@ -3,12 +3,12 @@
     <head>
         <meta charset="utf-8">
         <title></title>
-        <script src="highlight.js" charset="utf-8" defer></script>
-        <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+        <script  type="text/javascript" src="highlight.min.js"></script>
+        <link rel="stylesheet" href="style.css" charset="utf-8">
     </head>
     <body>
-
         <h1>Haskell:</h1>
+
 <pre><code class="syntax-color haskell">import Text.Printf
 
 criticalProbability :: (Integral a, Floating b) =&gt; a -&gt; a -&gt; b
@@ -20,31 +20,25 @@ main = let
     ds = [4,4,4,4,1,100,8]
     hs = [1,4,5,6,10,200,20]
     in sequence . map (putStrLn . printf "%f") $
-        zipWith (\d h -&gt; criticalProbability d h :: Double) ds hs
-
-primes = filterPrime [2..]
-    where filterPrime (p:xs) =
-        p : filterPrime [x | x &lt;- xs, x `mod` p /= 0]</code></pre>
+        zipWith (\d h -&gt; criticalProbability d h :: Double) ds hs</code></pre>
 
         <h1>Java:</h1>
+
 <pre><code class="syntax-color java">package info.markhillman.mwindow;
 
 import java.awt.*;
 
-public class Test extends MBasicWindow
-{
+public class Test extends MBasicWindow {
     MCheckBox check;
     MRadioButton radio;
     MButton button;
 
-    Test()
-    {
+    Test() {
         check = new MCheckBox("CheckBox");
         radio = new MRadioButton("RadioButton");
         button = new MButton("Button");
 
-        check.addMActionListener(new MActionListener()
-            {
+        check.addMActionListener(new MActionListener() {
                 @Override
                 public void mActionPerformed(MActionEvent e)
                 {
@@ -55,8 +49,7 @@ public class Test extends MBasicWindow
                 }
             });
 
-        radio.addMActionListener(new MActionListener()
-            {
+        radio.addMActionListener(new MActionListener() {
                 @Override
                 public void mActionPerformed(MActionEvent e)
                 {
@@ -67,8 +60,7 @@ public class Test extends MBasicWindow
                 }
             });
 
-        button.addMActionListener(new MActionListener()
-            {
+        button.addMActionListener(new MActionListener() {
                 @Override
                 public void mActionPerformed(MActionEvent e)
                 {
@@ -82,11 +74,12 @@ public class Test extends MBasicWindow
         add(button);
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Test test = new Test();
     }
 }</code></pre>
 
+        <script type="text/javascript">loadSyntaxHighlightingByClass("syntax-color");</script>
     </body>
+
 </html>
