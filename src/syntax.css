@@ -13,3 +13,7 @@
 .syntax-highlight.function {
     color: rgb(45, 151, 176)
 }
+
+.syntax-highlight.comment {
+    color: rgb(170, 170, 170);
+}

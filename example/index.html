@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title></title>
         <script  type="text/javascript" src="highlight.min.js"></script>
-        <link rel="stylesheet" href="style.css" charset="utf-8">
+        <link rel="stylesheet" href="syntax.css" charset="utf-8">
     </head>
     <body>
         <h1>Haskell:</h1>
@@ -16,6 +16,7 @@ criticalProbability d h
     | h &gt; d     = 1.0 / fromIntegral d * criticalProbability d (h - d)
     | otherwise = 1.0 - fromIntegral (h - 1) / fromIntegral d
 
+-- The main function
 main = let
     ds = [4,4,4,4,1,100,8]
     hs = [1,4,5,6,10,200,20]
@@ -28,6 +29,7 @@ main = let
 
 import java.awt.*;
 
+// This is the MBasicWindow class
 public class Test extends MBasicWindow {
     MCheckBox check;
     MRadioButton radio;

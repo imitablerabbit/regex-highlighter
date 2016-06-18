@@ -13,7 +13,7 @@ Adding the highlighter to a project is very simple! All you have to do is includ
 I have included a small example of how this works in the example folder. To sum it up, first include the highlight script and stylesheet. Then add the class name to the correct HTML elementsas well as the filename of the regexes. Then finally call the desired function, the simplest is to use `loadSyntaxHighlightingByClass()`.
 ```
 <script  type="text/javascript" src="build/highlight.min.js"></script>
-<link rel="stylesheet" href="build/style.css" charset="utf-8">
+<link rel="stylesheet" href="build/syntax.css" charset="utf-8">
 
     ...    
 
