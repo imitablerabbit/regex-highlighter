@@ -1,0 +1,15 @@
+.syntax-highlight.keyword {
+    color: rgb(158, 102, 201);
+}
+
+.syntax-highlight.wrapping {
+    color: green;
+}
+
+.syntax-highlight.number, .syntax-highlight.capital, .syntax-highlight.class-name {
+    color: orange;
+}
+
+.syntax-highlight.function {
+    color: rgb(45, 151, 176)
+}

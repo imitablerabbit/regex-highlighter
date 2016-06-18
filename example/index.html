@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="highlight.js" charset="utf-8" defer></script>
+        <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+    </head>
+    <body>
+
+        <h1>Haskell:</h1>
+<pre><code class="syntax-color haskell">import Text.Printf
+
+criticalProbability :: (Integral a, Floating b) =&gt; a -&gt; a -&gt; b
+criticalProbability d h
+    | h &gt; d     = 1.0 / fromIntegral d * criticalProbability d (h - d)
+    | otherwise = 1.0 - fromIntegral (h - 1) / fromIntegral d
+
+main = let
+    ds = [4,4,4,4,1,100,8]
+    hs = [1,4,5,6,10,200,20]
+    in sequence . map (putStrLn . printf "%f") $
+        zipWith (\d h -&gt; criticalProbability d h :: Double) ds hs
+
+primes = filterPrime [2..]
+    where filterPrime (p:xs) =
+        p : filterPrime [x | x &lt;- xs, x `mod` p /= 0]</code></pre>
+
+        <h1>Java:</h1>
+<pre><code class="syntax-color java">package info.markhillman.mwindow;
+
+import java.awt.*;
+
+public class Test extends MBasicWindow
+{
+    MCheckBox check;
+    MRadioButton radio;
+    MButton button;
+
+    Test()
+    {
+        check = new MCheckBox("CheckBox");
+        radio = new MRadioButton("RadioButton");
+        button = new MButton("Button");
+
+        check.addMActionListener(new MActionListener()
+            {
+                @Override
+                public void mActionPerformed(MActionEvent e)
+                {
+                    if(check.isSelected())
+                    {
+                        System.out.println("Checked");
+                    }
+                }
+            });
+
+        radio.addMActionListener(new MActionListener()
+            {
+                @Override
+                public void mActionPerformed(MActionEvent e)
+                {
+                    if(radio.isSelected())
+                    {
+                        System.out.println("Selected");
+                    }
+                }
+            });
+
+        button.addMActionListener(new MActionListener()
+            {
+                @Override
+                public void mActionPerformed(MActionEvent e)
+                {
+                    System.out.println("Clicked");
+                }
+            });
+
+        setLayout(new FlowLayout());
+        add(check);
+        add(radio);
+        add(button);
+    }
+
+    public static void main(String[] args)
+    {
+        Test test = new Test();
+    }
+}</code></pre>
+
+    </body>
+</html>
