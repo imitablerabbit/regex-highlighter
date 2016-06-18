@@ -47,6 +47,7 @@ main = let
 If you have made any changes, make sure to minify the javascript and json files using the follwing links:
 - Javascript: http://jscompress.com/
 - JSON: http://www.httputility.net/json-minifier.aspx
+
 Once minified, add the files to the build folder and the newly updated source files to the src folder. If a new language has been added, please add an example of the language highlighting in the example.
 
 ## To Do:
