@@ -1,5 +1,5 @@
 # regex-highlighter
-A javascript tool to highlight regex pattern matches using HTML and CSS.
+A javascript tool to highlight regex pattern matches using HTML and CSS. Whilst this tool is primarily aimed at programming languages syntax highlighting, it can be used with any regular expression.
 
 ## How to Use:
 ### Adding to project:

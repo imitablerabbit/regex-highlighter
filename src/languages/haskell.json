@@ -1,4 +1,7 @@
 {
+    "function": [
+        "^\\w+|\\n\\w+"
+    ],
     "keyword": [
         "::",
         "@",
@@ -37,9 +40,6 @@
         "\\btype family\\b",
         "\\btype instance\\b",
         "\\bwhere\\b"
-    ],
-    "function": [
-        "^\\w+|\\n\\w+"
     ],
     "capital": [
         "\\b[A-Z]+\\w+"

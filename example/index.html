@@ -25,61 +25,17 @@ main = let
 
         <h1>Java:</h1>
 
-<pre><code class="syntax-color java">package info.markhillman.mwindow;
+<pre><code class="syntax-color java">//Create the window and button
+MDragWindow window = new MDragWindow("New Window");
+MButton button = new MButton("Click me");
 
-import java.awt.*;
+//Add the event listener to the button
+button.addMActionListener((MActionEvent e) -> {System.out.print("Hello!");});
 
-// This is the MBasicWindow class
-public class Test extends MBasicWindow {
-    MCheckBox check;
-    MRadioButton radio;
-    MButton button;
-
-    Test() {
-        check = new MCheckBox("CheckBox");
-        radio = new MRadioButton("RadioButton");
-        button = new MButton("Button");
-
-        check.addMActionListener(new MActionListener() {
-                @Override
-                public void mActionPerformed(MActionEvent e)
-                {
-                    if(check.isSelected())
-                    {
-                        System.out.println("Checked");
-                    }
-                }
-            });
-
-        radio.addMActionListener(new MActionListener() {
-                @Override
-                public void mActionPerformed(MActionEvent e)
-                {
-                    if(radio.isSelected())
-                    {
-                        System.out.println("Selected");
-                    }
-                }
-            });
-
-        button.addMActionListener(new MActionListener() {
-                @Override
-                public void mActionPerformed(MActionEvent e)
-                {
-                    System.out.println("Clicked");
-                }
-            });
-
-        setLayout(new FlowLayout());
-        add(check);
-        add(radio);
-        add(button);
-    }
-
-    public static void main(String[] args) {
-        Test test = new Test();
-    }
-}</code></pre>
+//Add the button and revalidate
+window.add(button);
+window.revalidate();
+window.setVisible(true);</code></pre>
 
         <script type="text/javascript">loadSyntaxHighlightingByClass("syntax-color");</script>
     </body>
