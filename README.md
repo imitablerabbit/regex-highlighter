@@ -10,7 +10,7 @@ Adding the highlighter to a project is very simple! All you have to do is includ
 - Now you can run regex-highlighter with the `loadSyntaxHighlightingByClass()` function. The `loadSyntaxHighlightingByClass()` function takes in a class name which it will use to determine which elements in the HTML need to be highlighted. In order to tell the function which regexes you want to use, make sure to also have the name of the file  after the class name.
 
 ### Example:
-I have included a small example of how this works in the example folder. To sum it up, first include the highlight script and stylesheet. Then add the class name to the correct HTML elementsas well as the filename of the regexes. Then finally call the desired function, the simplest is to use `loadSyntaxHighlightingByClass()`.
+I have included a small example of how this works in the example folder. To sum it up, first include the highlight script and stylesheet. Then add the class name to the correct HTML element sas well as the filename of the regexes. Then finally call the desired function, the simplest is to use `loadSyntaxHighlightingByClass()`.
 ```
 <script  type="text/javascript" src="build/highlight.min.js"></script>
 <link rel="stylesheet" href="build/syntax.css" charset="utf-8">
