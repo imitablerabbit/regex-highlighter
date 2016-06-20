@@ -35,11 +35,11 @@ main = let
 <script type="text/javascript">loadSyntaxHighlightingByClass("syntax-color");</script>
 ```
 
-## Example Screenshots:
-### Haskell Example:
+## Screenshots:
+### Haskell:
 ![Haskell Syntax](screenshots/haskell.PNG)
 
-### Java Example:
+### Java:
 ![Java Syntax](screenshots/java.PNG)
 
 ## Helping with the project:
