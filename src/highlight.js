@@ -110,7 +110,6 @@ function getMatchesArrayFromRegex(string, regexObject, className) {
             while (match = reg.exec(string)) {
                 var index = match.index;
                 var matchText = match[0]; // Get the first captured group
-                console.log(match);
 
                 // Save the results into an object/array
                 object = {
@@ -193,18 +192,4 @@ function wrapTextWithSpan(text, start, end, classes) {
 
     // Wrap the match with a span
     return beginning + "<span class='" + classes + "'>" + middle + "</span>" + ending;
-}
-
-// This will make the AJAX call and make a call to callback. The bundle
-// object is a package of data that will be sent to every callback without losing
-// the meaning of what it contains due to async
-function ajaxGET(url, callback, bundle) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if(xhttp.readyState == 4 && xhttp.status == 200) {
-            callback(xhttp.responseText, bundle);
-        }
-    }
-    xhttp.open("GET", url, true);
-    xhttp.send();
 }
