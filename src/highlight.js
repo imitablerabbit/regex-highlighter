@@ -65,11 +65,8 @@ function insertSyntaxHighlighting(regexObject, code) {
     // Finds all of the matches and stores them into an array
     var matchesArray = getMatchesArrayFromRegex(code, regexObject, "syntax-highlight");
 
-    console.log(matchesArray);
-
     // Sort and remove latter matches so its top priority
     sortArrayByObjectsIndex(matchesArray);
-    console.log(matchesArray);
 
     // Remove objects which are direct matches and if they are inside a wrapping
     // pattern match
@@ -80,8 +77,9 @@ function insertSyntaxHighlighting(regexObject, code) {
         if (a.index == b.index) {
             return -1;
         }
-        else if (a.match.includes(b.match)) {
-            return 1;
+        else if (a.type == "wrapping" || a.type == "comment") {
+            if (a.match.includes(b.match))
+                return 1;
         }
         return 0;
     });
@@ -108,10 +106,10 @@ function getMatchesArrayFromRegex(string, regexObject, className) {
 
             // Match the syntax
             regex = regexes[i];
-            var reg = new RegExp(regex, "g");
+            var reg = new RegExp(regex, "gm");
             while (match = reg.exec(string)) {
                 var index = match.index;
-                var matchText = match[0]; // Get the last captured group
+                var matchText = match[0]; // Get the first captured group
                 console.log(match);
 
                 // Save the results into an object/array
