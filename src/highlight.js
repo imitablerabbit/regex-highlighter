@@ -70,16 +70,19 @@ function insertSyntaxHighlighting(regexObject, code) {
 
     // Remove objects which are direct matches and if they are inside a wrapping
     // pattern match
+    // -1 is remove left
+    // 1 is remove right
+    // 0 is dont remove
     removeDuplicateObjectsFromArray(matchesArray, function(a, b) {
         if (a.index == b.index) {
-            return true;
+            return -1;
         }
         else if (a.type == "wrapping" || a.type == "comment") {
             if (a.match.includes(b.match)) {
-                return true
+                return 1;
             }
         }
-        return false;
+        return 0;
     });
 
     // Return the new string with its matches wrapped in span tags
@@ -95,6 +98,7 @@ function getMatchesArrayFromRegex(string, regexObject, className) {
     var matchesArray = [];
 
     // Loop through the different regexes and store any matches into an array
+    var counter = 0;
     for (var key in regexObject) {
         regexes = regexObject[key];
 
@@ -114,11 +118,13 @@ function getMatchesArrayFromRegex(string, regexObject, className) {
                     "classes": className + " " + key,
                     "type": key,
                     "length": matchText.length,
-                    "match": matchText
+                    "match": matchText,
+                    "precidence": counter
                 }
                 matchesArray.push(object);
             }
         }
+        counter++;
     }
 
     return matchesArray;
@@ -127,7 +133,17 @@ function getMatchesArrayFromRegex(string, regexObject, className) {
 // Order the array passed by the index of the contained objects
 function sortArrayByObjectsIndex(array) {
     array.sort(function compareObj(a, b) {
-        return a.index - b.index;
+        if (a.index == b.index) {
+            if (a.precidence == b.precidence) {
+                return 0;
+            }
+            else {
+                return a.precidence - b.precidence;
+            }
+        }
+        else {
+            return a.index - b.index;
+        }
     });
 }
 
@@ -135,9 +151,16 @@ function sortArrayByObjectsIndex(array) {
 // It will always remove from the right.
 function removeDuplicateObjectsFromArray(array, shouldRemove) {
     for (var i = 1; i < array.length; i++) {
-        if (shouldRemove(array[i-1], array[i])) {
-            array.splice(i, 1);
-            i--;
+        var side = shouldRemove(array[i-1], array[i]);
+        if (side != 0) {
+            if (side < 0) {
+                array.splice(i-1, 1);
+                i--;
+            }
+            else {
+                array.splice(i, 1);
+                i--;
+            }
         }
     }
 }
