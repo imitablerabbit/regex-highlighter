@@ -60,8 +60,8 @@
         "\\bvar\\b",
         "\\bvoid\\b",
         "\\bvolatile\\b",
-        "\\bwhile\\b"
-        "\\bwith\\b"
+        "\\bwhile\\b",
+        "\\bwith\\b",
         "\\byield\\b"
     ],
     "literal-values": [
