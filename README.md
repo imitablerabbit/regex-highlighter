@@ -2,6 +2,8 @@
 A javascript tool to highlight regex pattern matches using HTML and CSS. Whilst this tool is primarily aimed at programming languages syntax highlighting, it can be used with any regular expression.
 
 ## How to Use:
+Note: If you don't need to dynamically covert text to its highlighted format, you can use the online converter [here](http://markhillman.info/#regex-highlighter) and copy the output into the HTML. Then all that is needed is to either include the CSS file, or to style the matches yourself.
+
 ### Adding to project:
 Adding the highlighter to a project is very simple! All you have to do is include the javascript file in your HTML and run the script. This can be done in 3 simple steps:
 - Download the zip files from github, then move the build folder to somewhere on the server (**Note: the script has to run on a server as it uses AJAX**)
@@ -43,26 +45,41 @@ main = let
 ![Java Syntax](screenshots/java.PNG)
 
 ## Helping with the project:
+### Creating custom JSON files:
+When creating the custom JSON files, make sure that they are in the following formats:
+```
+{
+    class-name1: [
+        regex1,
+        regex2
+    ],
+    class-name2: [
+        regex1
+    ]
+}
+```
+Where class-name is class that will attached to the span when the script is run and regex is any regex in a string format. Unfortunately due to JSON not supporting regex notation or raw string, any backslashes in the regex have to be escape e.g \\\\bhello\\\\b.
+
 ### Building:
-If you have made any changes, make sure to minify the javascript and json files using the follwing links:
+If you have made any changes, make sure to minify the javascript and json files using the following links:
 - Javascript: http://jscompress.com/
 - JSON: http://www.httputility.net/json-minifier.aspx
 
 Once minified, add the files to the build folder and the newly updated source files to the src folder. If a new language has been added, please add an example of the language highlighting in the example.
 
 ## To Do:
-- Have a look into the haskell function errors
 - Add some more error checking to the javascript file
 - Add more robust commenting to the javascript file
-- Create a guide on how to add more languages
 - Add more syntax recognition
-  - Javascript
   - PHP
   - JSON
   - basic C++
 
 ## Change Log:
+- Fixed the haskell function errors
+- Created a guide on how to add more languages
 - Added Languages:
+  - Javascript
   - Java
   - Haskell
 - Added main javascript file
