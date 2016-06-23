@@ -78,7 +78,7 @@ function insertSyntaxHighlighting(regexObject, code) {
             return -1;
         }
         else if (a.type == "wrapping" || a.type == "comment") {
-            if (a.match.includes(b.match))
+            if (a.match.includes(b.match) && a.match != b.match)
                 return 1;
         }
         return 0;
