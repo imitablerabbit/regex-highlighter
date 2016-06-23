@@ -8,7 +8,7 @@ function loadSyntaxHighlightingByClass(className, languagesFolderPath) {
         languagesFolderPath = "languages/";
     }
     if (typeof className === "undefined") {
-        className = "syntax-color";
+        className = "regex-color";
     }
     var elements = document.getElementsByClassName(className);
 
@@ -36,7 +36,7 @@ function loadSyntaxHighlightingByClass(className, languagesFolderPath) {
 //This function is a helper function for the insertSyntaxHighlighting function.
 function insertSyntaxHighlightingByClass(regexObject, className) {
     if (typeof className === "undefined") {
-        className = "syntax-highlight";
+        className = "regex-highlight";
     }
     if (typeof regexObject === "undefined") {
         return false;
@@ -63,7 +63,7 @@ function insertSyntaxHighlightingByClass(regexObject, className) {
 function insertSyntaxHighlighting(regexObject, code) {
 
     // Finds all of the matches and stores them into an array
-    var matchesArray = getMatchesArrayFromRegex(code, regexObject, "syntax-highlight");
+    var matchesArray = getMatchesArrayFromRegex(code, regexObject, "regex-highlight");
 
     // Sort and remove latter matches so its top priority
     sortArrayByObjectsIndex(matchesArray);
