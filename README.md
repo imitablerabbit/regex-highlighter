@@ -71,16 +71,18 @@ Once minified, add the files to the build folder and the newly updated source fi
 - Add some more error checking to the javascript file
 - Add more robust commenting to the javascript file
 - Add more syntax recognition
-  - PHP
-  - JSON
-  - basic C++
+    - PHP
+    - basic C++
 
 ## Change Log:
+- Fixed java character matching
+- Changed to last group pattern matching
 - Fixed the haskell function errors
 - Created a guide on how to add more languages
 - Added Languages:
-  - Javascript
-  - Java
-  - Haskell
+    - JSON
+    - Javascript
+    - Java
+    - Haskell
 - Added main javascript file
 - Added support for multiple languages

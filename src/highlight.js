@@ -109,7 +109,12 @@ function getMatchesArrayFromRegex(string, regexObject, className) {
             var reg = new RegExp(regex, "gm");
             while (match = reg.exec(string)) {
                 var index = match.index;
-                var matchText = match[0]; // Get the first captured group
+                // for (var j = 0; j < match.length; j++) {
+                //     console.log("Match " + index + ": " + match[j]);
+                // }
+                var matchText = match[match.length-1]; // Get the last captured group
+                if (typeof matchText == "undefined")
+                    continue;
 
                 // Save the results into an object/array
                 object = {
