@@ -75,11 +75,30 @@ function insertSyntaxHighlighting(regexObject, code) {
     // 0 is dont remove
     removeDuplicateObjectsFromArray(matchesArray, function(a, b) {
         if (a.index == b.index) {
-            return -1;
+            if (a.precidence != b.precidence) {
+                return a.precidence - b.precidence;
+            }
+            else if (a.length != b.length) {
+                return a.length - b.length
+            }
+            else {
+                return -1;
+            }
         }
-        else if (a.type == "wrapping" || a.type == "comment") {
-            if (a.match.includes(b.match) && a.match != b.match)
-                return 1;
+        else if (b.index > a.index && (b.index + b.length) < (a.index + a.length)) {
+            return 1;
+        }
+        else if (b.index > a.index && b.index < a.index + a.length &&
+                (b.index + b.length) >= (a.index + a.length)) {
+            if (a.precidence != b.precidence) {
+                return a.precidence - b.precidence;
+            }
+            else if (a.length != b.length) {
+                return a.length - b.length
+            }
+            else {
+                return -1;
+            }
         }
         return 0;
     });
@@ -109,9 +128,6 @@ function getMatchesArrayFromRegex(string, regexObject, className) {
             var reg = new RegExp(regex, "gm");
             while (match = reg.exec(string)) {
                 var index = match.index;
-                // for (var j = 0; j < match.length; j++) {
-                //     console.log("Match " + index + ": " + match[j]);
-                // }
                 var matchText = match[match.length-1]; // Get the last captured group
                 if (typeof matchText == "undefined")
                     continue;

@@ -75,6 +75,7 @@ Once minified, add the files to the build folder and the newly updated source fi
     - basic C++
 
 ## Change Log:
+- Added a more complex regex dulpication detection system
 - Fixed java character matching
 - Changed to last group pattern matching
 - Fixed the haskell function errors
