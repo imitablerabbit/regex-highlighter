@@ -64,6 +64,8 @@ When creating the custom JSON files, make sure that they are in the following fo
 ```
 Where class-name is class that will attached to the span when the script is run and regex is any regex in a string format. Unfortunately due to JSON not supporting regex notation or raw string, any backslashes in the regex have to be escape e.g \\\\bhello\\\\b.
 
+You can use the testing folder for trying out any new builds and generally editing the source files. This folder also has a way of testing and previewing the regex highlighting that is currently supported, via the [index](testing/index.html) webpage.
+
 ### Building:
 If you have made any changes, make sure to minify the javascript and json files using the following links:
 - Javascript: http://jscompress.com/
