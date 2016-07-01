@@ -65,6 +65,6 @@
         "regexes" : [
             "\".*\""
         ],
-        "precedence" : "comment"
+        "precedence" : 5
     }
 }
