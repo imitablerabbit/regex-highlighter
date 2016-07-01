@@ -1,13 +1,12 @@
-// This function will load the language from the languages folder
-// the languages folder, if not specified, should be in the same folder as the script
-// The className is the class that will be added to all of the span tags, so that
-// they can be found at a later date. The span tags will also have an extra class
-// which is the label used in the language rules.
-//   Vars:
-//   [className] = This is the className that will be used to identify which page
-//                 elements need to be highlighted.
-//   [languagesFolderPath] = This is the path to the languages folder, so that any
-//                           languages that can be used, will be found
+/** This function will load the language from the languages folder
+* the languages folder, if not specified, should be in the same folder as the script
+* The className is the class that will be added to all of the span tags, so that
+* they can be found at a later date. The span tags will also have an extra class
+* which is the label used in the language rules.
+* @param {string} className - The className that will be used to identify which
+* page elements need to be highlighted.
+* @param {string} languagesFolderPath - This is the path to the languages folder, so that any
+* languages that can be used, will be found*/
 function loadSyntaxHighlightingByClass(className, languagesFolderPath) {
     if (typeof languagesFolderPath === "undefined") {
         languagesFolderPath = "languages/";

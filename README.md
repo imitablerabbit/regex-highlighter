@@ -73,6 +73,8 @@ If you have made any changes, make sure to minify the javascript and json files 
 
 Once minified, add the files to the build folder and the newly updated source files to the src folder. If a new language has been added, please add an example of the language highlighting in the example.
 
+If any new functions have been added or an important change has been made to the structure of the code, please make sure to build the documentation again. This can be done by running JSDoc on the src folder. More specifically run this from cmd (Change to a linux version if needed) `"node_modules/.bin/jsdoc" --readme DOCS.md src -r -d docs`
+
 ## To Do:
 - Add in depth documentation to this project
 - Add some more error checking to the javascript file
