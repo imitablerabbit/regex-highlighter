@@ -96,6 +96,6 @@
             "\".*\"",
             "'.*'"
         ],
-        "precedence": 6
+        "precedence": "comment"
     }
 }

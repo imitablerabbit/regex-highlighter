@@ -1,11 +1,11 @@
 {
     "function": {
-        "regexes" : [
+        "regexes": [
             "\\b[a-z_][a-zA-Z0-9_-]+?(?=\\()"
         ]
     },
     "keyword": {
-        "regexes" : [
+        "regexes": [
             "\\bassert\\b",
             "\\babstract\\b",
             "\\bboolean\\b",
@@ -59,33 +59,33 @@
         ]
     },
     "literal-values": {
-        "regexes" : [
+        "regexes": [
             "\\btrue\\b",
             "\\bfalse\\b",
             "\\bnull\\b"
         ]
     },
     "class-name": {
-        "regexes" : [
+        "regexes": [
             "\\b[A-Z]+\\w+"
         ]
     },
     "number": {
-        "regexes" : [
+        "regexes": [
             "[0-9]+"
         ]
     },
     "comment": {
-        "regexes" : [
+        "regexes": [
             "\\/\\/.+",
             "\\/\\*[^\\*\\/]+\\*\\/"
         ]
     },
     "wrapping": {
-        "regexes" : [
+        "regexes": [
             "\".*\"",
             "'.'"
         ],
-        "precedence": 6
+        "precedence": "comment"
     }
 }
