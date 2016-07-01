@@ -12,29 +12,67 @@
         <link rel="stylesheet" type="text/css" href="syntax.css">
         <link rel="shortcut icon" href="http://markhillman.info/favicon.ico">
 
+        <style media="screen">
+            body {
+                font-size: 0px;
+                margin: 20px;
+            }
+            pre {
+                display: inline-block;
+                width: 100%;
+                white-space: pre-wrap;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            #title {
+                text-align: center;
+            }
+            section {
+                font-size: 0.9rem;
+                display: inline-block;
+                vertical-align: top;
+                width: 48%;
+                padding: 5px;
+                box-sizing: border-box;
+                margin: 0.5% 1%;
+                border: thin dashed lightblue;
+                padding: 2%;
+                height: 100%;
+            }
+        </style>
+
         <!-- SCRIPTS -->
         <script type="text/javascript" src="highlight.js"></script>
         <script type="text/javascript" src="ajax.js"></script>
     </head>
     <body>
-        <h1>Code highlighting tests:</h1>
+        <h1 id="title">Code highlighting tests:</h1>
 
-        <h2 id="haskell">Haskell</h2>
-        <pre><code class="regex-color haskell" include="test-scripts/haskell.hs"></code></pre>
+        <section>
+            <h2 id="haskell">Haskell</h2>
+            <pre><code class="regex-color haskell" include="test-scripts/haskell.hs"></code></pre>
+        </section>
 
-        <h2 id="java">Java</h2>
-        <pre><code class="regex-color java" include="test-scripts/java.java"></code></pre>
+        <section>
+            <h2 id="java">Java</h2>
+            <pre><code class="regex-color java" include="test-scripts/java.java"></code></pre>
+        </section>
 
-        <h2 id="javascript">Javascript</h2>
-        <pre><code class="regex-color javascript" include="test-scripts/javascript.js"></code></pre>
+        <section>
+            <h2 id="javascript">Javascript</h2>
+            <pre><code class="regex-color javascript" include="test-scripts/javascript.js"></code></pre>
+        </section>
 
-        <h2 id="json">JSON</h2>
-        <pre><code class="regex-color json" include="test-scripts/json.json"></code></pre>
+        <section>
+            <h2 id="json">JSON</h2>
+            <pre><code class="regex-color json" include="test-scripts/json.json"></code></pre>
+        </section>
 
         <!-- This will run as soon as all of the includes are loaded -->
         <script type="text/javascript">
         loadIncludes(function() {
-            loadSyntaxHighlightingByClass("regex-color", "languages/");
+            new RegexHighlighter().loadSyntaxHighlightingByClass("regex-color", "languages/");
         })
         </script>
     </body>
