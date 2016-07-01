@@ -1,3 +1,4 @@
+// GENERAL TESTING
 public class Factorial {
     public int factorial(int num) {
         if (num < 2)
@@ -7,6 +8,7 @@ public class Factorial {
     }
 }
 
+// COMMENTS AND STRINGS TESTING
 "Wrapping"
 "Multi-line
 wrapping wrong"

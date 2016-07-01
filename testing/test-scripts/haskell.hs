@@ -1,3 +1,4 @@
+-- GENERAL TESTING
 import Text.Printf
 
 criticalProbability :: (Integral a, Floating b) => a -> a -> b
@@ -12,6 +13,7 @@ main = let
         zipWith (\d h -> criticalProbability d h :: Double) ds hs
 
 
+-- COMMENTS AND STRINGS TESTING
 "Wrapping"
 "Multi-line
 wrapping wrong"

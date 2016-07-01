@@ -1,3 +1,4 @@
+// GENERAL TESTING
 // This will make the AJAX call and make a call to callback. The bundle
 // object is a package of data that will be sent to every callback without losing
 // the meaning of what it contains due to async
@@ -12,6 +13,7 @@ function ajaxGET(url, callback, bundle) {
     xhttp.send();
 }
 
+// COMMENTS AND STRINGS TESTING
 "Wrapping"
 "Multi-line
 wrapping wrong"
