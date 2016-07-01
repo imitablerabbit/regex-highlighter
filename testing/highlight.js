@@ -121,7 +121,7 @@ function getMatchesArrayFromRegex(string, regexObject, className) {
     var matchesArray = [];
 
     // Loop through the different regexes and store any matches into an array
-    var counter = 0;
+    var counter = 1;
     for (var key in regexObject) {
         matchObject = regexObject[key];
         regexes = matchObject.regexes;
@@ -144,8 +144,14 @@ function getMatchesArrayFromRegex(string, regexObject, className) {
                     "classes": className + " " + key,
                     "type": key,
                     "length": matchText.length,
-                    "match": matchText,
-                    "precedence": counter
+                    "match": matchText
+                }
+                if (matchObject.precedence) {
+                    object.precedence = matchObject.precedence;
+                    counter--; // Stop incrementing if a precedence has been given
+                }
+                else {
+                    object.precedence = counter;
                 }
                 matchesArray.push(object);
             }
