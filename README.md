@@ -37,6 +37,9 @@ main = let
 <script type="text/javascript">loadSyntaxHighlightingByClass("syntax-color");</script>
 ```
 
+### Documentation:
+If you want to become an expert quick, you can use the docs either in the downloaded project directory, or online [here](http://localhost/projects/regex-highlighter/docs)
+
 ## Screenshots:
 ### Haskell:
 ![Haskell Syntax](screenshots/haskell.PNG)
