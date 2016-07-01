@@ -72,8 +72,6 @@ If you have made any changes, make sure to minify the javascript and json files 
 Once minified, add the files to the build folder and the newly updated source files to the src folder. If a new language has been added, please add an example of the language highlighting in the example.
 
 ## To Do:
-- Add a way to add options to the regexes, for example to set the precedent. This was I can get regex matches with the same precedent, so the longer of the 2 matches will be chosen.
-- Update the duplicate removal for new precedent matching.
 - Add some more error checking to the javascript file
 - Add more robust commenting to the javascript file
 - Add more syntax recognition
@@ -81,6 +79,8 @@ Once minified, add the files to the build folder and the newly updated source fi
     - basic C++
 
 ## Change Log:
+- Added a way to add options to the regexes, for example to set the precedent. This was I can get regex matches with the same precedent, so the longer of the 2 matches will be chosen.
+- Updated the duplicate removal for new precedent matching.
 - Added a more complex regex dulpication detection system
 - Fixed java character matching
 - Changed to last group pattern matching
