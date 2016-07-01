@@ -3,6 +3,11 @@
 // The className is the class that will be added to all of the span tags, so that
 // they can be found at a later date. The span tags will also have an extra class
 // which is the label used in the language rules.
+//   Vars:
+//   [className] = This is the className that will be used to identify which page
+//                 elements need to be highlighted.
+//   [languagesFolderPath] = This is the path to the languages folder, so that any
+//                           languages that can be used, will be found
 function loadSyntaxHighlightingByClass(className, languagesFolderPath) {
     if (typeof languagesFolderPath === "undefined") {
         languagesFolderPath = "languages/";
@@ -33,13 +38,17 @@ function loadSyntaxHighlightingByClass(className, languagesFolderPath) {
 
 // This function will highlight any elements innerHTML using the regex
 // objects elements given.
-//This function is a helper function for the insertSyntaxHighlighting function.
+// This function is a helper function for the insertSyntaxHighlighting function.
+//   Vars:
+//   regexObject = This is the object that will be used to highlight the text
+//   [className] = This is the className that will be used to identify what elements
+//               on the page need to be highlighted
 function insertSyntaxHighlightingByClass(regexObject, className) {
-    if (typeof className === "undefined") {
-        className = "regex-highlight";
-    }
     if (typeof regexObject === "undefined") {
         return false;
+    }
+    if (typeof className === "undefined") {
+        className = "regex-highlight";
     }
 
     // Get the blocks with the correct class
@@ -58,21 +67,35 @@ function insertSyntaxHighlightingByClass(regexObject, className) {
     return true;
 }
 
-// This function scans the page for a code block, parses the code block
-// with all the different regexes that has been supplied to the function
-function insertSyntaxHighlighting(regexObject, code, duplicateFunction) {
-    if (!duplicateFunction) {
+// This function inserts the span tags into the string and returns a new string
+// which can be added to the page or printed to console. This is the main function
+// for where all of the sub functions are called. As well as where the main duplicateFunction
+// is defined if one is not passed in
+//   Variables:
+//   regexObject = This is the object which contains all of the regex information.
+//                 It can be loaded from a file, see JSON examples for how to
+//                 create these.
+//   string = This is the text that needs to be converted to its highlighted
+//            form.
+//   [returnClassName] = This is the class name that will be given to span tags in
+//                       order to identify the output matches
+//   [duplicateFunction] = This is the function which will be used to remove any duplicate
+//                       matches from the highlighting.
+function insertSyntaxHighlighting(regexObject, string, returnClassName, duplicateFunction) {
+    if (typeof returnClassName === "undefined") {
+        returnClassName = "regex-highlight";
+    }
+    if (typeof duplicateFunction === "undefined") {
         duplicateFunction = function(a, b) {
             if (a.index == b.index) {
-                if (a.precidence != b.precidence) {
+                if (a.precidence == b.precidence) {
+                    if (a.length == b.length)
+                        return -1;
+                    else
+                        return a.length - b.length;
+                }
+                else
                     return a.precidence - b.precidence;
-                }
-                else if (a.length != b.length) {
-                    return a.length - b.length
-                }
-                else {
-                    return -1;
-                }
             }
             // If b completely contained within a, remove b
             else if (b.index > a.index && (b.index + b.length) < (a.index + a.length)) {
@@ -92,11 +115,11 @@ function insertSyntaxHighlighting(regexObject, code, duplicateFunction) {
                 }
             }
             return 0;
-        }
+        };
     }
 
     // Finds all of the matches and stores them into an array
-    var matchesArray = getMatchesArrayFromRegex(code, regexObject, "regex-highlight");
+    var matchesArray = getMatchesArrayFromRegex(regexObject, string, returnClassName);
 
     // Sort and remove latter matches so its top priority
     sortArrayByObjectsIndex(matchesArray);
@@ -109,7 +132,7 @@ function insertSyntaxHighlighting(regexObject, code, duplicateFunction) {
     removeDuplicateObjectsFromArray(matchesArray, duplicateFunction);
 
     // Return the new string with its matches wrapped in span tags
-    return assembleNewStringFromMatchArray(code, matchesArray);
+    return assembleNewStringFromMatchArray(string, matchesArray);
 }
 
 //
@@ -117,19 +140,25 @@ function insertSyntaxHighlighting(regexObject, code, duplicateFunction) {
 //
 // This function will return all of the matches that an object which contains
 // different regex patterns will match with a string
-function getMatchesArrayFromRegex(string, regexObject, className) {
+//   Vars:
+//   regexObject = This is the object which contains all of the regex information.
+//                 It can be loaded from a file, see JSON examples for how to
+//                 create these.
+//   string = This is the text that needs to be converted to its highlighted
+//            form.
+//   [returnClassName] = This is the class name that will be given to span tags in
+//                       order to identify the output matches
+function getMatchesArrayFromRegex(regexObject, string, returnClassName) {
     var matchesArray = [];
 
     // Loop through the different regexes and store any matches into an array
     var counter = 1;
-    for (var key in regexObject) {
-        matchObject = regexObject[key];
-        regexes = matchObject.regexes;
+    for (var type in regexObject) {
+        var matchObject = regexObject[type];
+        var regexes = matchObject.regexes;
 
         // loop the individual regex
         for (var i = 0; i < regexes.length; i++) {
-
-            // Match the syntax
             regex = regexes[i];
             var reg = new RegExp(regex, "gm");
             while (match = reg.exec(string)) {
@@ -138,31 +167,50 @@ function getMatchesArrayFromRegex(string, regexObject, className) {
                 if (typeof matchText == "undefined")
                     continue;
 
-                // Save the results into an object/array
+                // Check if the precedence option has been set in the syntax
+                var precidence;
+                if (matchObject.precedence) {
+                    if (isNaN(matchObject.precedence)) {
+                        var found = false;
+                        for (var i = 0; i < matchesArray.length; i++) {
+                            if (matchObject.precedence ==  matchesArray[i].type) {
+                                precedence = matchesArray[i].precedence;
+                                counter--; // Cancel increment this turn
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found)
+                            precedence = counter;
+                    }
+                    else {
+                        precedence = parseInt(matchObject.precedence);
+                        counter--;
+                    }
+                }
+                else
+                    precedence = counter;
+
+                // Save the results into an object array
                 object = {
                     "index": index,
-                    "classes": className + " " + key,
-                    "type": key,
+                    "classes": returnClassName + " " + type,
+                    "type": type,
                     "length": matchText.length,
-                    "match": matchText
-                }
-                if (matchObject.precedence) {
-                    object.precedence = matchObject.precedence;
-                    counter--; // Stop incrementing if a precedence has been given
-                }
-                else {
-                    object.precedence = counter;
+                    "match": matchText,
+                    "precedence": precedence
                 }
                 matchesArray.push(object);
             }
         }
         counter++;
     }
-
     return matchesArray;
 }
 
 // Order the array passed by the index of the contained objects
+//   Vars:
+//   array = This is the array that should be sorted into index then precedence
 function sortArrayByObjectsIndex(array) {
     array.sort(function compareObj(a, b) {
         if (a.index == b.index) {
@@ -181,6 +229,10 @@ function sortArrayByObjectsIndex(array) {
 
 // This function removes any duplicate items from an already sorted array
 // It will always remove from the right.
+//   Vars:
+//   array = This is the array that should have ites items removed
+//   shouldRemove = This is a function which indicates which items should
+//                  be removed from the array
 function removeDuplicateObjectsFromArray(array, shouldRemove) {
     for (var i = 1; i < array.length; i++) {
         var side = shouldRemove(array[i-1], array[i]);

@@ -200,7 +200,6 @@ function getMatchesArrayFromRegex(regexObject, string, returnClassName) {
                     "match": matchText,
                     "precedence": precedence
                 }
-                console.log(object);
                 matchesArray.push(object);
             }
         }

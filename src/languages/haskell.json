@@ -1,11 +1,11 @@
 {
     "function": {
-        "regexes" : [
+        "regexes": [
             "^\\w+"
         ]
     },
     "keyword": {
-        "regexes" : [
+        "regexes": [
             "::",
             "@",
             "\\`.+\\`",
@@ -46,25 +46,25 @@
         ]
     },
     "capital": {
-        "regexes" : [
+        "regexes": [
             "\\b[A-Z]+\\w+"
         ]
     },
     "number": {
-        "regexes" : [
+        "regexes": [
             "[0-9]+"
         ]
     },
     "comment":  {
-        "regexes" : [
+        "regexes": [
             "--.+",
             "\\{-[^-\\{\\}]+-\\}"
         ]
     },
     "wrapping":  {
-        "regexes" : [
+        "regexes": [
             "\".*\""
         ],
-        "precedence" : 5
+        "precedence" : "comment"
     }
 }
