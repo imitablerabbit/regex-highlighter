@@ -49,13 +49,17 @@ main = let
 When creating the custom JSON files, make sure that they are in the following formats:
 ```
 {
-    class-name1: [
-        regex1,
-        regex2
-    ],
-    class-name2: [
-        regex1
-    ]
+    class-name1: {
+        "regexes": [
+            regex1,
+            regex2
+        ]
+    },
+    class-name2: {
+        "regexes": [
+            regex1
+        ]
+    }
 }
 ```
 Where class-name is class that will attached to the span when the script is run and regex is any regex in a string format. Unfortunately due to JSON not supporting regex notation or raw string, any backslashes in the regex have to be escape e.g \\\\bhello\\\\b.
