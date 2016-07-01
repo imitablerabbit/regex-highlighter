@@ -1,8 +1,0 @@
-public class Factorial {
-    public int factorial(int num) {
-        if (num < 2)
-            return 1;
-        else
-            return factorial(num - 1);
-    }
-}

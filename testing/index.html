@@ -14,80 +14,28 @@
 
         <!-- SCRIPTS -->
         <script type="text/javascript" src="highlight.js"></script>
+        <script type="text/javascript" src="ajax.js"></script>
     </head>
     <body>
         <h1>Code highlighting tests:</h1>
 
         <h2>Haskell</h2>
-<pre><code class="regex-color haskell">import Text.Printf
-
-criticalProbability :: (Integral a, Floating b) => a -> a -> b
-criticalProbability d h
-    | h > d     = 1.0 / fromIntegral d * criticalProbability d (h - d)
-    | otherwise = 1.0 - fromIntegral (h - 1) / fromIntegral d
-
-main = let
-    ds = [4,4,4,4,1,100,8]
-    hs = [1,4,5,6,10,200,20]
-    in sequence . map (putStrLn . printf "%f") $
-        zipWith (\d h -> criticalProbability d h :: Double) ds hs
-
-
-"Wrapping"
-"Multi-line
-wrapping wrong"
-{-multi
-line comment correct-}
-{-multi
-line comment with wrapping "hello" correct-}
-"Wrapping with --comment inside"
-"Wrapping which has been\" escaped "
-"Number 1 inside wrapping"
--- comment which "has a wrapping"</code></pre>
-
+        <pre><code class="regex-color haskell" include="test-scripts/haskell.hs"></code></pre>
 
         <h2>Java</h2>
-<pre><code class="regex-color java">public class Factorial {
-    public int factorial(int num) {
-        if (num < 2)
-            return 1;
-        else
-            return factorial(num - 1);
-    }
-}</code></pre>
+        <pre><code class="regex-color java" include="test-scripts/java.java"></code></pre>
 
         <h2>Javascript</h2>
-<pre><code class="regex-color javascript">// This will make the AJAX call and make a call to callback. The bundle
-// object is a package of data that will be sent to every callback without losing
-// the meaning of what it contains due to async
-function ajaxGET(url, callback, bundle) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if(xhttp.readyState == 4 && xhttp.status == 200) {
-            callback(xhttp.responseText, bundle);
-        }
-    }
-    xhttp.open("GET", url, true);
-    xhttp.send();
-}</code></pre>
+        <pre><code class="regex-color javascript" include="test-scripts/javascript.js"></code></pre>
 
         <h2>JSON</h2>
-<pre><code class="regex-color json">{
-    "value": [
-        "[0-9\\.]+"
-    ],
-    "wrapping": [
-        "\"[^\"]*\""
-    ],
-    "key": [
-        "[a-zA-Z0-9\"_-]+?(?=:)",
-        0.1232
-    ]
-}</code></pre>
+        <pre><code class="regex-color json" include="test-scripts/json.json"></code></pre>
 
         <!-- This will run as soon as all of the includes are loaded -->
         <script type="text/javascript">
+        loadIncludes(function() {
             loadSyntaxHighlightingByClass("regex-color", "languages/");
+        })
         </script>
     </body>
 </html>

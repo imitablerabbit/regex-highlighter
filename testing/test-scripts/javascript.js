@@ -11,3 +11,15 @@ function ajaxGET(url, callback, bundle) {
     xhttp.open("GET", url, true);
     xhttp.send();
 }
+
+"Wrapping"
+"Multi-line
+wrapping wrong"
+/*multi
+line comment correct*/
+/*multi
+line comment with wrapping "hello" correct*/
+"Wrapping with --comment inside"
+"Wrapping which has been\" escaped "
+"Number 1 inside wrapping"
+// comment which "has a wrapping"
