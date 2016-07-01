@@ -72,6 +72,7 @@ If you have made any changes, make sure to minify the javascript and json files 
 Once minified, add the files to the build folder and the newly updated source files to the src folder. If a new language has been added, please add an example of the language highlighting in the example.
 
 ## To Do:
+- Add in depth documentation to this project
 - Add some more error checking to the javascript file
 - Add more robust commenting to the javascript file
 - Add more syntax recognition
