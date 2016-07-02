@@ -15,10 +15,8 @@ main = let
 
 -- COMMENTS AND STRINGS TESTING
 "Wrapping"
-"Multi-line
-wrapping wrong"
 {-multi
-line comment correct-}
+line comment-}
 {-multi
 line comment with wrapping "hello" correct-}
 "Wrapping with --comment inside"

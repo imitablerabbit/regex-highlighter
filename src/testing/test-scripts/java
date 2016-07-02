@@ -10,8 +10,6 @@ public class Factorial {
 
 // COMMENTS AND STRINGS TESTING
 "Wrapping"
-"Multi-line
-wrapping wrong"
 /*multi
 line comment correct*/
 /*multi
