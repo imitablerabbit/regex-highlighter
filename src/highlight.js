@@ -7,6 +7,7 @@ var RegexHighlighter = function() {
     /**
     * Inner class for the matches that have been made
     *
+    *   @class
     *   @param {number} index - The position that this match was found at in the
     *       main text
     *   @param {string} classes - A string which will be added to the class variable
