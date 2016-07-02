@@ -79,14 +79,14 @@ Once minified, add the files to the build folder and the newly updated source fi
 If any new functions have been added or an important change has been made to the structure of the code, please make sure to build the documentation again. This can be done by running JSDoc on the src folder. More specifically run this from cmd (Change to a linux version if needed) `"node_modules/.bin/jsdoc" --readme DOCS.md src -r -d docs`
 
 ## To Do:
-- Add in depth documentation to this project
-- Add some more error checking to the javascript file
-- Add more robust commenting to the javascript file
 - Add more syntax recognition
     - PHP
     - basic C++
 
 ## Change Log:
+- Added more robust commenting to the javascript file (came with JSDoc)
+- Added some more error checking to the javascript file, mostly for optional arguments
+- Added in depth documentation to this project, using JSDoc
 - Added a way to add options to the regexes, for example to set the precedent. This was I can get regex matches with the same precedent, so the longer of the 2 matches will be chosen.
 - Updated the duplicate removal for new precedent matching.
 - Added a more complex regex dulpication detection system
