@@ -23,3 +23,4 @@ line comment with wrapping "hello" correct*/</span>
 <span class="regex-highlight wrapping">"Wrapping which has been\" escaped "</span>
 <span class="regex-highlight wrapping">"Number 1 inside wrapping"</span>
 <span class="regex-highlight comment">// comment which "has a wrapping"</span>
+<span class="regex-highlight wrapping">"String1"</span> + <span class="regex-highlight wrapping">"String2"</span>

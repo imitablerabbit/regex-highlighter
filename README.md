@@ -5,7 +5,7 @@ A javascript tool to highlight regex pattern matches using HTML and CSS. Whilst 
 ### Online Converter:
 If you don't need to dynamically covert text to its highlighted format, you can use the online converter [here](http://markhillman.info/#regex-highlighter) and copy the output into the HTML. Then all that is needed is to either include the CSS file, or to style the span tags yourself. The online converter allows for all currently supported languages, custom JSON files and single regex lines.
 
-### Dynamic Conversion:
+### Adding to a website:
 Adding the highlighter to a project is very simple! All you have to do is to include the javascript file in your HTML and run a function from the RegexHighlighter object. To see which functions will best suit your use case, check out the documentation [here](http://markhillman.info/projects/regex-highlighter/docs).
 Simply put, you can just follow these few steps:
 - Download the zip file from github, then move the files to relevant folders somewhere on the server (**Note: the script has to run on a server as it uses AJAX**)

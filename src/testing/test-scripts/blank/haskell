@@ -23,3 +23,4 @@ line comment with wrapping "hello" correct-}
 "Wrapping which has been\" escaped "
 "Number 1 inside wrapping"
 -- comment which "has a wrapping"
+"String1" ++ "String2"

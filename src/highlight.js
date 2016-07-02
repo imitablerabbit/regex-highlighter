@@ -178,7 +178,8 @@ var RegexHighlighter = function() {
                 var reg = new RegExp(regex, "gm");
                 while (match = reg.exec(string)) {
                     var index = match.index;
-                    var matchText = match[match.length-1]; // Get the last captured group
+                    var matchText = match[0]; // Get the last captured group
+                    console.log(matchText);
                     if (typeof matchText == "undefined")
                         continue;
 
@@ -208,7 +209,7 @@ var RegexHighlighter = function() {
 
                     // Save the results into an object array
                     matchObject = new Match(index, returnClassName + " " + type,
-                        type,  matchText.length, matchText, precedence);
+                        type, matchText.length, matchText, precedence);
                     matchesArray.push(matchObject);
                 }
             }
