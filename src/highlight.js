@@ -5,6 +5,27 @@
 var RegexHighlighter = function() {
 
     /**
+    * Inner class for the matches that have been made
+    *
+    *   @param {number} index - The position that this match was found at in the
+    *       main text
+    *   @param {string} classes - A string which will be added to the class variable
+    *       in the span tag, this should also include the type
+    *   @param {string} type - This is the match type, e.g keyword, wrapping
+    *   @param {number} length - This is the length of the match
+    *   @param {string} match - This is the actual contents of the match
+    *   @param {number} precedence - This is the precedence level of the match type
+    */
+    var Match = function(index, classes, type, length, match, precedence) {
+        this.index = index;
+        this.classes = classes;
+        this.type = type;
+        this.length = length;
+        this.match = match;
+        this.precedence = precedence;
+    }
+
+    /**
     * Retrieves files and data via a HTTP GET call using the XMLHttpRequest
     * class. This function has support for a callback function when it is finished
     * as well as passing a bundle object back to the callback function when
@@ -30,7 +51,7 @@ var RegexHighlighter = function() {
     * A function to sort the values of the passed in array, first by their indicies
     * then by their precedence.
     *
-    *   @param {Object[]} array - Array of regex match objects
+    *   @param {Match[]} array - Array of regex match objects
     */
     function sortArrayByObjectsIndex(array) {
         array.sort(function compareObj(a, b) {
@@ -55,7 +76,7 @@ var RegexHighlighter = function() {
     * imperative languages. This means that <0 will remove the item on the left,
     * >0 will remove the item on the right. 0 will not remove anything
     *
-    *   @param {Object[]} array - The array which will have its duplicate items
+    *   @param {Match[]} array - The array which will have its duplicate items
     *       removed from
     *   @param {function} shouldRemove - A callback function to decide what will be removed
     */
@@ -84,7 +105,7 @@ var RegexHighlighter = function() {
     *
     *   @param {string} string - The string which will be highlighted via the
     *       match array
-    *   @param {Object[]} array - The array which contains all the match information
+    *   @param {Match[]} array - The array which contains all the match information
     */
     function assembleNewStringFromMatchArray(string, array) {
         var offset = 0;
@@ -185,15 +206,9 @@ var RegexHighlighter = function() {
                         precedence = counter;
 
                     // Save the results into an object array
-                    object = {
-                        "index": index,
-                        "classes": returnClassName + " " + type,
-                        "type": type,
-                        "length": matchText.length,
-                        "match": matchText,
-                        "precedence": precedence
-                    }
-                    matchesArray.push(object);
+                    matchObject = new Match(index, returnClassName + " " + type,
+                        type,  matchText.length, matchText, precedence);
+                    matchesArray.push(matchObject);
                 }
             }
             counter++;
@@ -204,8 +219,8 @@ var RegexHighlighter = function() {
     /**
     * Default duplicate function for the {@link insertSyntaxHighlighting} function
     *
-    *   @param {Object} a - This is the left regex match
-    *   @param {Object} b - This is the right regex match
+    *   @param {Match} a - This is the left regex match
+    *   @param {Match} b - This is the right regex match
     */
     function defaultDuplicateFunction(a, b) {
         if (a.index == b.index) {
