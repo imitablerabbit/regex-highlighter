@@ -38,7 +38,7 @@ main = let
 ```
 
 ### Documentation:
-If you want to become an expert quick, you can use the docs either in the downloaded project directory, or online [here](http://localhost/projects/regex-highlighter/docs)
+If you want to become an expert quick, you can use the docs either in the downloaded project directory, or online [here](http://markhillman/projects/regex-highlighter/docs)
 
 ## Screenshots:
 ### Haskell:
