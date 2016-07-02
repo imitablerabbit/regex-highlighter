@@ -1,0 +1,20 @@
+<span class="regex-highlight comment">// GENERAL TESTING</span>
+<span class="regex-highlight keyword">public</span> <span class="regex-highlight keyword">class</span> <span class="regex-highlight class-name">Factorial</span> {
+    <span class="regex-highlight keyword">public</span> <span class="regex-highlight keyword">int</span> <span class="regex-highlight function">factorial</span>(<span class="regex-highlight keyword">int</span> num) {
+        <span class="regex-highlight keyword">if</span> (num &lt; <span class="regex-highlight number">2</span>)
+            <span class="regex-highlight keyword">return</span> <span class="regex-highlight number">1</span>;
+        <span class="regex-highlight keyword">else</span>
+            <span class="regex-highlight keyword">return</span> <span class="regex-highlight function">factorial</span>(num - <span class="regex-highlight number">1</span>);
+    }
+}
+
+<span class="regex-highlight comment">// COMMENTS AND STRINGS TESTING</span>
+<span class="regex-highlight wrapping">"Wrapping"</span>
+<span class="regex-highlight comment">/*multi
+line comment correct*/</span>
+<span class="regex-highlight comment">/*multi
+line comment with wrapping "hello" correct*/</span>
+<span class="regex-highlight wrapping">"Wrapping with --comment inside"</span>
+<span class="regex-highlight wrapping">"Wrapping which has been\" escaped "</span>
+<span class="regex-highlight wrapping">"Number 1 inside wrapping"</span>
+<span class="regex-highlight comment">// comment which "has a wrapping"</span>

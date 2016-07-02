@@ -1,0 +1,25 @@
+<span class="regex-highlight comment">-- GENERAL TESTING</span>
+<span class="regex-highlight function">import</span> <span class="regex-highlight capital">Text</span>.<span class="regex-highlight capital">Printf</span>
+
+<span class="regex-highlight function">criticalProbability</span> <span class="regex-highlight keyword">::</span> (<span class="regex-highlight capital">Integral</span> a, <span class="regex-highlight capital">Floating</span> b) =&gt; a -&gt; a -&gt; b
+<span class="regex-highlight function">criticalProbability</span> d h
+    | h &gt; d     = <span class="regex-highlight number">1</span>.<span class="regex-highlight number">0</span> / fromIntegral d * criticalProbability d (h - d)
+    | otherwise = <span class="regex-highlight number">1</span>.<span class="regex-highlight number">0</span> - fromIntegral (h - <span class="regex-highlight number">1</span>) / fromIntegral d
+
+<span class="regex-highlight function">main</span> = <span class="regex-highlight keyword">let</span>
+    ds = [<span class="regex-highlight number">4</span>,<span class="regex-highlight number">4</span>,<span class="regex-highlight number">4</span>,<span class="regex-highlight number">4</span>,<span class="regex-highlight number">1</span>,<span class="regex-highlight number">100</span>,<span class="regex-highlight number">8</span>]
+    hs = [<span class="regex-highlight number">1</span>,<span class="regex-highlight number">4</span>,<span class="regex-highlight number">5</span>,<span class="regex-highlight number">6</span>,<span class="regex-highlight number">10</span>,<span class="regex-highlight number">200</span>,<span class="regex-highlight number">20</span>]
+    <span class="regex-highlight keyword">in</span> sequence . map (putStrLn . printf <span class="regex-highlight wrapping">"%f"</span>) $
+        zipWith (\d h -&gt; criticalProbability d h <span class="regex-highlight keyword">::</span> <span class="regex-highlight capital">Double</span>) ds hs
+
+
+<span class="regex-highlight comment">-- COMMENTS AND STRINGS TESTING</span>
+<span class="regex-highlight wrapping">"Wrapping"</span>
+<span class="regex-highlight comment">{-multi
+line comment-}</span>
+<span class="regex-highlight comment">{-multi
+line comment with wrapping "hello" correct-}</span>
+<span class="regex-highlight wrapping">"Wrapping with --comment inside"</span>
+<span class="regex-highlight wrapping">"Wrapping which has been\" escaped "</span>
+<span class="regex-highlight wrapping">"Number 1 inside wrapping"</span>
+<span class="regex-highlight comment">-- comment which "has a wrapping"</span>
