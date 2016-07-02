@@ -1,18 +1,20 @@
 # regex-highlighter
-A javascript tool to highlight regex pattern matches using HTML and CSS. Whilst this tool is primarily aimed at programming languages syntax highlighting, it can be used with any regular expression.
+A javascript tool to highlight regex pattern matches using HTML and CSS. Whilst this tool is primarily aimed at programming languages syntax highlighting, it can be used with any regular expression. Highlighted matches from a given regex file will be wrapped in a span tag and then given a class which can be used to style that particular match. The are several supported languages which can be used, or you can create custom rules.
 
 ## How to Use:
-Note: If you don't need to dynamically covert text to its highlighted format, you can use the online converter [here](http://markhillman.info/#regex-highlighter) and copy the output into the HTML. Then all that is needed is to either include the CSS file, or to style the matches yourself.
+### Online Converter:
+If you don't need to dynamically covert text to its highlighted format, you can use the online converter [here](http://markhillman.info/#regex-highlighter) and copy the output into the HTML. Then all that is needed is to either include the CSS file, or to style the span tags yourself. The online converter allows for all currently supported languages, custom JSON files and single regex lines.
 
-### Adding to project:
-Adding the highlighter to a project is very simple! All you have to do is include the javascript file in your HTML and run the script. This can be done in 3 simple steps:
-- Download the zip files from github, then move the build folder to somewhere on the server (**Note: the script has to run on a server as it uses AJAX**)
-- Add the script to the html file that you want it to run on using `<script  type="text/javascript" src="build/highlight.min.js"></script>`.
-- Add the stylesheet for what to highlight using `<link rel="stylesheet" href="build/style.css" charset="utf-8">`
-- Now you can run regex-highlighter with the `loadSyntaxHighlightingByClass()` function. The `loadSyntaxHighlightingByClass()` function takes in a class name which it will use to determine which elements in the HTML need to be highlighted. In order to tell the function which regexes you want to use, make sure to also have the name of the file  after the class name.
+### Dynamic Conversion:
+Adding the highlighter to a project is very simple! All you have to do is to include the javascript file in your HTML and run a function from the RegexHighlighter object. To see which functions will best suit your use case, check out the documentation [here](http://markhillman.info/projects/regex-highlighter/docs).
+Simply put, you can just follow these few steps:
+- Download the zip file from github, then move the files to relevant folders somewhere on the server (**Note: the script has to run on a server as it uses AJAX**)
+- Add the highlight.min.js script to the html file that you want it to run on using `<script  type="text/javascript" src="scripts/highlight.min.js"></script>`.
+- Add the syntax.css stylesheet to highlight the matched text using `<link rel="stylesheet" href="styles/syntax.css">`
+- Now you can run regex-highlighter with the `loadSyntaxHighlightingByClass()` function. This function is inside the RegexHighlighter class, so first create an instance then call the function `new RegexHighlighter().loadSyntaxHighlightingByClass()`. The `loadSyntaxHighlightingByClass()` function takes 2 optional parameters in order to determine which parts of the html need to be checked, as well as the folder for where the default language support is. The default options for these are 'regex-color' and './languages/'. This means that only elements which have a class of regex-color will be coloured and only the 'languages/' folder in the same directory as the script will be searched for the regex support. These can be changed by supplying arguments to the function.
+- To tell the regex-highlighter what language it should use, add a class to the same element, which is the language name.
 
 ### Example:
-I have included a small example of how this works in the example folder. To sum it up, first include the highlight script and stylesheet. Then add the class name to the correct HTML element sas well as the filename of the regexes. Then finally call the desired function, the simplest is to use `loadSyntaxHighlightingByClass()`.
 ```
 <script  type="text/javascript" src="build/highlight.min.js"></script>
 <link rel="stylesheet" href="build/syntax.css" charset="utf-8">
@@ -38,7 +40,7 @@ main = let
 ```
 
 ### Documentation:
-If you want to become an expert quick, you can use the docs either in the downloaded project directory, or online [here](http://markhillman.info/projects/regex-highlighter/docs)
+There are a few other public functions which allow for finer control of highlighting text, the documentation for these can be found  [here](http://markhillman.info/projects/regex-highlighter/docs).
 
 ## Screenshots:
 ### Haskell:
@@ -47,8 +49,7 @@ If you want to become an expert quick, you can use the docs either in the downlo
 ### Java:
 ![Java Syntax](screenshots/java.PNG)
 
-## Helping with the project:
-### Creating custom JSON files:
+## Creating custom JSON files:
 When creating the custom JSON files, make sure that they are in the following formats:
 ```
 {
@@ -69,18 +70,18 @@ Where class-name is class that will attached to the span when the script is run 
 
 You can use the testing folder for trying out any new builds and generally editing the source files. This folder also has a way of testing and previewing the regex highlighting that is currently supported, via the [index](testing/index.html) webpage.
 
-### Building:
+## Building:
 If you have made any changes, make sure to minify the javascript and json files using the following links:
 - Javascript: http://jscompress.com/
 - JSON: http://www.httputility.net/json-minifier.aspx
 
 Once minified, add the files to the build folder and the newly updated source files to the src folder. If a new language has been added, please add an example of the language highlighting in the example.
 
-If any new functions have been added or an important change has been made to the structure of the code, please make sure to build the documentation again. This can be done by running JSDoc on the src folder. More specifically run this from cmd (Change to a linux version if needed) `"node_modules/.bin/jsdoc" --readme DOCS.md src -r -d docs`
+If any new functions have been added or an important change has been made to the structure of the code, please make sure to build the documentation again. This can be done by running JSDoc on the src folder. More specifically run this from a terminal `"node_modules/.bin/jsdoc" --readme DOCS.md src -r -d docs`
 
 ## To Do:
 - Add a better way to handle the arguments that are needed when calling a public function, could be class variables?
-- Add more syntax recognition
+- Add more syntax support
     - PHP
     - basic C++
 
