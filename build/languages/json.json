@@ -1,1 +1,1 @@
-{"value":{"regexes":["[0-9\\.]+"]},"wrapping":{"regexes":["\".*\""]},"key":{"regexes":["[a-zA-Z0-9\"_-]+?(?=:)"]}}
+{"value":{"regexes":["[0-9\\.]+"]},"wrapping":{"regexes":["\"(\\\\.|[^\"])*\""]},"key":{"regexes":["[a-zA-Z0-9\"_-]+?(?=:)"]}}
