@@ -79,6 +79,7 @@ Once minified, add the files to the build folder and the newly updated source fi
 If any new functions have been added or an important change has been made to the structure of the code, please make sure to build the documentation again. This can be done by running JSDoc on the src folder. More specifically run this from cmd (Change to a linux version if needed) `"node_modules/.bin/jsdoc" --readme DOCS.md src -r -d docs`
 
 ## To Do:
+- Add a better way to handle the arguments that are needed when calling a public function, could be class variables?
 - Add more syntax recognition
     - PHP
     - basic C++
