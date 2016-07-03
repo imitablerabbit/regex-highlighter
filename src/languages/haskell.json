@@ -1,4 +1,9 @@
-{
+{    
+    "number": {
+        "regexes": [
+            "[0-9]+"
+        ]
+    },
     "function": {
         "regexes": [
             "^\\w+"
@@ -48,11 +53,6 @@
     "capital": {
         "regexes": [
             "\\b[A-Z]+\\w+"
-        ]
-    },
-    "number": {
-        "regexes": [
-            "[0-9]+"
         ]
     },
     "comment":  {
