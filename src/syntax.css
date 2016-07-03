@@ -13,7 +13,7 @@
 
 .regex-highlight.number,
 .regex-highlight.capital,
-.regex-highlight.class-name,
+.regex-highlight.class,
 .regex-highlight.value,
 .regex-highlight.special {
     color: rgb(232, 159, 74);
