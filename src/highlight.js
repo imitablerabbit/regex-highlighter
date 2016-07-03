@@ -172,40 +172,39 @@ var RegexHighlighter = function() {
             var matchObject = regexObject[type];
             var regexes = matchObject.regexes;
 
+            // Check if the precedence option has been set in the syntax
+            var precedence;
+            if (matchObject.precedence) {
+                if (isNaN(matchObject.precedence)) {
+                    var found = false;
+                    for (var i = 0; i < matchesArray.length; i++) {
+                        if (matchObject.precedence ==  matchesArray[i].type) {
+                            precedence = matchesArray[i].precedence;
+                            counter--; // Cancel increment this turn
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found)
+                        precedence = counter;
+                }
+                else {
+                    precedence = parseInt(matchObject.precedence);
+                    counter--;
+                }
+            }
+            else
+                precedence = counter;
+
             // loop the individual regex
             for (var i = 0; i < regexes.length; i++) {
                 regex = regexes[i];
                 var reg = new RegExp(regex, "gm");
                 while (match = reg.exec(string)) {
                     var index = match.index;
-                    var matchText = match[0]; // Get the last captured group
-                    console.log(matchText);
+                    var matchText = match[0]; // Get the first captured group
                     if (typeof matchText == "undefined")
                         continue;
-
-                    // Check if the precedence option has been set in the syntax
-                    var precidence;
-                    if (matchObject.precedence) {
-                        if (isNaN(matchObject.precedence)) {
-                            var found = false;
-                            for (var i = 0; i < matchesArray.length; i++) {
-                                if (matchObject.precedence ==  matchesArray[i].type) {
-                                    precedence = matchesArray[i].precedence;
-                                    counter--; // Cancel increment this turn
-                                    found = true;
-                                    break;
-                                }
-                            }
-                            if (!found)
-                                precedence = counter;
-                        }
-                        else {
-                            precedence = parseInt(matchObject.precedence);
-                            counter--;
-                        }
-                    }
-                    else
-                        precedence = counter;
 
                     // Save the results into an object array
                     matchObject = new Match(index, returnClassName + " " + type,
@@ -226,14 +225,17 @@ var RegexHighlighter = function() {
     */
     function defaultDuplicateFunction(a, b) {
         if (a.index == b.index) {
-            if (a.precidence == b.precidence) {
-                if (a.length == b.length)
+            if (a.precedence == b.precedence) {
+                if (a.length == b.length) {
                     return -1;
-                else
-                    return a.length - b.length;
+                }
+                else {
+                    return a.length - b.length;                    
+                }
             }
-            else
-                return a.precidence - b.precidence;
+            else {
+                return a.precedence - b.precedence;
+            }
         }
         // If b completely contained within a, remove b
         else if (b.index > a.index && (b.index + b.length) < (a.index + a.length)) {
@@ -242,8 +244,8 @@ var RegexHighlighter = function() {
         // If b starts inside a, but continues past the end of a
         else if (b.index > a.index && b.index < a.index + a.length &&
                 (b.index + b.length) >= (a.index + a.length)) {
-            if (a.precidence != b.precidence) {
-                return a.precidence - b.precidence;
+            if (a.precedence != b.precedence) {
+                return a.precedence - b.precedence;
             }
             else if (a.length != b.length) {
                 return a.length - b.length
