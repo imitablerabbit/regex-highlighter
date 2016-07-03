@@ -14,32 +14,30 @@
 
         <style media="screen">
             body {
-                font-size: 0px;
-                margin: 20px;
+                margin: 1%;
                 font-family: sans-serif;
             }
-            pre {
+            div {
+                font-size: 1rem;
+                width: 50%;
                 display: inline-block;
-                width: 100%;
+            }
+            pre {
                 white-space: pre-wrap;
             }
             h1 {
                 font-size: 2rem;
-            }
-            #title {
                 text-align: center;
+                text-decoration: underline;
+            }
+            h2 {
+                font-size: 1.8rem;
             }
             section {
-                font-size: 0.9rem;
-                display: inline-block;
-                vertical-align: top;
-                width: 48%;
-                padding: 5px;
-                box-sizing: border-box;
-                margin: 0.5% 1%;
-                border: thin dashed lightblue;
+                font-size: 0;
+                border: thin dashed black;
                 padding: 2%;
-                height: 100%;
+                margin-bottom: 1%;
             }
         </style>
 
@@ -48,51 +46,75 @@
         <script type="text/javascript" src="ajax.js"></script>
     </head>
     <body>
-        <h1 id="title">Code highlighting tests:</h1>
+        <h1>Code highlighting tests:</h1>
 
         <section id="haskell">
             <h2>Haskell</h2>
-            <h3>Expected:</h3>
-            <pre><code include="test-scripts/expected/haskell"></code></pre>
+            <div>
+                <h3>Expected:</h3>
+                <pre><code include="test-scripts/expected/haskell"></code></pre>
+            </div>
 
-            <h3>Actual:</h3>
-            <pre><code class="regex-color haskell" include="test-scripts/blank/haskell"></code></pre>
+            <div>
+                <h3>Actual:</h3>
+                <pre><code class="regex-color haskell" include="test-scripts/blank/haskell"></code></pre>
+            </div>
         </section>
 
         <section id="java">
             <h2>Java</h2>
-            <h3>Expected:</h3>
-            <pre><code include="test-scripts/expected/java"></code></pre>
 
-            <h3>Actual:</h3>
-            <pre><code class="regex-color java" include="test-scripts/blank/java"></code></pre>
+            <div>
+                <h3>Expected:</h3>
+                <pre><code include="test-scripts/expected/java"></code></pre>
+            </div>
+
+            <div>
+                <h3>Actual:</h3>
+                <pre><code class="regex-color java" include="test-scripts/blank/java"></code></pre>
+            </div>
         </section>
 
         <section id="javascript">
             <h2>Javascript</h2>
-            <h3>Expected:</h3>
-            <pre><code include="test-scripts/expected/javascript"></code></pre>
 
-            <h3>Actual:</h3>
-            <pre><code class="regex-color javascript" include="test-scripts/blank/javascript"></code></pre>
+            <div>
+                <h3>Expected:</h3>
+                <pre><code include="test-scripts/expected/javascript"></code></pre>
+            </div>
+
+            <div>
+                <h3>Actual:</h3>
+                <pre><code class="regex-color javascript" include="test-scripts/blank/javascript"></code></pre>
+            </div>
         </section>
 
         <section id="json">
             <h2>JSON</h2>
-            <h3>Expected:</h3>
-            <pre><code include="test-scripts/expected/json"></code></pre>
 
-            <h3>Actual:</h3>
-            <pre><code class="regex-color json" include="test-scripts/blank/json"></code></pre>
+            <div>
+                <h3>Expected:</h3>
+                <pre><code include="test-scripts/expected/json"></code></pre>
+            </div>
+
+            <div>
+                <h3>Actual:</h3>
+                <pre><code class="regex-color json" include="test-scripts/blank/json"></code></pre>
+            </div>
         </section>
 
         <section id="php">
             <h2>PHP</h2>
-            <h3>Expected:</h3>
-            <pre><code include="test-scripts/expected/php"></code></pre>
 
-            <h3>Actual:</h3>
-            <pre><code class="regex-color php" include="test-scripts/blank/php"></code></pre>
+            <div>
+                <h3>Expected:</h3>
+                <pre><code include="test-scripts/expected/php"></code></pre>
+            </div>
+
+            <div>
+                <h3>Actual:</h3>
+                <pre><code class="regex-color php" include="test-scripts/blank/php"></code></pre>
+            </div>
         </section>
 
         <!-- This will run as soon as all of the includes are loaded -->
