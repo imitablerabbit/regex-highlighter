@@ -3,14 +3,18 @@
 <span class="regex-highlight comment">// object is a package of data that will be sent to every callback without losing</span>
 <span class="regex-highlight comment">// the meaning of what it contains due to async</span>
 <span class="regex-highlight keyword">function</span> <span class="regex-highlight function">ajaxGET</span>(url, callback, bundle) {
-    <span class="regex-highlight keyword">var</span> xhttp = <span class="regex-highlight keyword">new</span> <span class="regex-highlight class-name">XMLHttpRequest</span>();
-    xhttp.onreadystatechange = <span class="regex-highlight function">function</span>() {
-        <span class="regex-highlight function">if</span>(xhttp.readyState == <span class="regex-highlight number">4</span> &amp;&amp; xhttp.status == <span class="regex-highlight number">200</span>) {
+    <span class="regex-highlight keyword">var</span> xhttp = <span class="regex-highlight keyword">new</span> <span class="regex-highlight class">XMLHttpRequest</span>();
+    xhttp.onreadystatechange = <span class="regex-highlight keyword">function</span>() {
+        <span class="regex-highlight keyword">if</span>(xhttp.readyState == <span class="regex-highlight number">4</span> &amp;&amp; xhttp.status == <span class="regex-highlight number">200</span>) {
             <span class="regex-highlight function">callback</span>(xhttp.responseText, bundle);
         }
     }
     xhttp.<span class="regex-highlight function">open</span>(<span class="regex-highlight wrapping">"GET"</span>, url, <span class="regex-highlight literal-values">true</span>);
     xhttp.<span class="regex-highlight function">send</span>();
+}
+
+<span class="regex-highlight keyword">function</span> <span class="regex-highlight function">withNumbers99</span>() {
+    <span class="regex-highlight keyword">return</span> <span class="regex-highlight number">0</span>;
 }
 
 <span class="regex-highlight comment">// COMMENTS AND STRINGS TESTING</span>

@@ -1,12 +1,12 @@
 /* GENERAL TESTING */
 {
-    <span class="regex-highlight wrapping">"value"</span>: [
+    <span class="regex-highlight key">"value"</span>: [
         <span class="regex-highlight wrapping">"[0-9\\.]+"</span>
     ],
-    <span class="regex-highlight wrapping">"wrapping"</span>: [
+    <span class="regex-highlight key">"wrapping"</span>: [
         <span class="regex-highlight wrapping">"\"[^\"]*\""</span>
     ],
-    <span class="regex-highlight wrapping">"key"</span>: [
+    <span class="regex-highlight key">"key"</span>: [
         <span class="regex-highlight wrapping">"[a-zA-Z0-9\"_-]+?(?=:)"</span>,
         <span class="regex-highlight value">0.1232</span>
     ]

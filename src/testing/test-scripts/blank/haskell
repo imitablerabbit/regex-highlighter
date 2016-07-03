@@ -12,6 +12,8 @@ main = let
     in sequence . map (putStrLn . printf "%f") $
         zipWith (\d h -> criticalProbability d h :: Double) ds hs
 
+functionWithNumber99 x = x + 1  
+
 
 -- COMMENTS AND STRINGS TESTING
 "Wrapping"

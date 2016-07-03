@@ -6,6 +6,10 @@ function mailTo($to, $from, $subject, $message) {
     return $result;
 }
 
+function withNumbers99() {
+    return 0;
+}
+
 // VARIABLE TESTING
 $hello
 $a

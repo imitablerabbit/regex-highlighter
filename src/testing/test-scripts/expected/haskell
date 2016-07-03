@@ -1,5 +1,5 @@
 <span class="regex-highlight comment">-- GENERAL TESTING</span>
-<span class="regex-highlight function">import</span> <span class="regex-highlight capital">Text</span>.<span class="regex-highlight capital">Printf</span>
+<span class="regex-highlight keyword">import</span> <span class="regex-highlight capital">Text</span>.<span class="regex-highlight capital">Printf</span>
 
 <span class="regex-highlight function">criticalProbability</span> <span class="regex-highlight keyword">::</span> (<span class="regex-highlight capital">Integral</span> a, <span class="regex-highlight capital">Floating</span> b) =&gt; a -&gt; a -&gt; b
 <span class="regex-highlight function">criticalProbability</span> d h
@@ -11,6 +11,8 @@
     hs = [<span class="regex-highlight number">1</span>,<span class="regex-highlight number">4</span>,<span class="regex-highlight number">5</span>,<span class="regex-highlight number">6</span>,<span class="regex-highlight number">10</span>,<span class="regex-highlight number">200</span>,<span class="regex-highlight number">20</span>]
     <span class="regex-highlight keyword">in</span> sequence . map (putStrLn . printf <span class="regex-highlight wrapping">"%f"</span>) $
         zipWith (\d h -&gt; criticalProbability d h <span class="regex-highlight keyword">::</span> <span class="regex-highlight capital">Double</span>) ds hs
+
+<span class="regex-highlight function">functionWithNumber99</span> x = x + <span class="regex-highlight number">1</span>
 
 
 <span class="regex-highlight comment">-- COMMENTS AND STRINGS TESTING</span>

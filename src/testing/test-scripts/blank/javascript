@@ -13,6 +13,10 @@ function ajaxGET(url, callback, bundle) {
     xhttp.send();
 }
 
+function withNumbers99() {
+    return 0;
+}
+
 // COMMENTS AND STRINGS TESTING
 "Wrapping"
 /*multi

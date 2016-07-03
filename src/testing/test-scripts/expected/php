@@ -6,6 +6,10 @@
     <span class="regex-highlight keyword">return</span> <span class="regex-highlight variable">$result</span>;
 }
 
+<span class="regex-highlight keyword">function</span> <span class="regex-highlight function">withNumbers99</span>() {
+    <span class="regex-highlight keyword">return</span> <span class="regex-highlight number">0</span>;
+}
+
 <span class="regex-highlight comment">// VARIABLE TESTING</span>
 <span class="regex-highlight variable">$hello</span>
 <span class="regex-highlight variable">$a</span>
