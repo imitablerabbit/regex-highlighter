@@ -27,12 +27,14 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
+* @author Mark Hillman &lt;mark@markhillman.info>
 * A class for the Regex Highlighter
 * @class
 */
 var RegexHighlighter = function() {
 
     /**
+    * @author Mark Hillman &lt;mark@markhillman.info>
     * Inner class for the matches that have been made
     *
     *   @class
@@ -55,6 +57,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman &lt;mark@markhillman.info>
     * Retrieves files and data via a HTTP GET call using the XMLHttpRequest
     * class. This function has support for a callback function when it is finished
     * as well as passing a bundle object back to the callback function when
@@ -77,6 +80,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman &lt;mark@markhillman.info>
     * A function to sort the values of the passed in array, first by their indicies
     * then by their precedence.
     *
@@ -99,6 +103,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman &lt;mark@markhillman.info>
     * Remove duplicate objects from the array using a function passed into this
     * function. The array should contain Regex match objects and the shouldRemove
     * function should work in a similar way to a compare function in most
@@ -126,6 +131,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman &lt;mark@markhillman.info>
     * Produces a string which contains the new highlighting, by wrapping matches
     * in the passed array in a span tag with the corresponding class. In order
     * to make sure this functions correctly, it uses an offset and a pre-built
@@ -152,6 +158,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman &lt;mark@markhillman.info>
     * Wraps a given piece of text with a span tag that has a class.
     *
     *   @param {string} text - The text as a whole
@@ -180,6 +187,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman &lt;mark@markhillman.info>
     * This function will return all of the matches that an object which contains
     * different regex patterns will match with a string
     *
@@ -198,45 +206,61 @@ var RegexHighlighter = function() {
         var counter = 1;
         for (var type in regexObject) {
             var matchObject = regexObject[type];
-            var regexes = matchObject.regexes;
+            var regexes = matchObject["regexes"];
+            var precedence;
+
+            // Check if the precedence option has been set in the syntax
+            if (matchObject.precedence) {
+                if (isNaN(matchObject.precedence)) {
+                    var found = false;
+                    for (var i = 0; i &lt; matchesArray.length; i++) {
+                        if (matchObject.precedence ==  matchesArray[i].type) {
+                            precedence = matchesArray[i].precedence;
+                            counter--; // Cancel increment this turn
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found)
+                        precedence = counter;
+                }
+                else {
+                    precedence = parseInt(matchObject.precedence);
+                    counter--;
+                }
+            }
+            else
+                precedence = counter;
 
             // loop the individual regex
             for (var i = 0; i &lt; regexes.length; i++) {
-                regex = regexes[i];
-                var reg = new RegExp(regex, "gm");
+                var regex = regexes[i];
+                var regexString, captureGroup;
+                if (typeof regex === "string") { // Just a single regex
+                    regexString = regex;
+                    captureGroup = 0;
+                }
+                else { // Regex object provided
+                    regexString = regex["regexString"];
+                    captureGroup = regex["captureGroup"];
+                }
+
+                var reg = new RegExp(regexString, "gm");
                 while (match = reg.exec(string)) {
                     var index = match.index;
-                    var matchText = match[match.length-1]; // Get the last captured group
+                    if (captureGroup >= match.length) {
+                        captureGroup = 0;
+                    }
+
+                    // Compensate for captureGroup moving the start of match
+                    var matchText = match[captureGroup];
                     if (typeof matchText == "undefined")
                         continue;
-
-                    // Check if the precedence option has been set in the syntax
-                    var precidence;
-                    if (matchObject.precedence) {
-                        if (isNaN(matchObject.precedence)) {
-                            var found = false;
-                            for (var i = 0; i &lt; matchesArray.length; i++) {
-                                if (matchObject.precedence ==  matchesArray[i].type) {
-                                    precedence = matchesArray[i].precedence;
-                                    counter--; // Cancel increment this turn
-                                    found = true;
-                                    break;
-                                }
-                            }
-                            if (!found)
-                                precedence = counter;
-                        }
-                        else {
-                            precedence = parseInt(matchObject.precedence);
-                            counter--;
-                        }
-                    }
-                    else
-                        precedence = counter;
+                    var offset = match[0].indexOf(matchText);
 
                     // Save the results into an object array
-                    matchObject = new Match(index, returnClassName + " " + type,
-                        type,  matchText.length, matchText, precedence);
+                    matchObject = new Match(index + offset, returnClassName + " " + type,
+                    type, matchText.length, matchText, precedence);
                     matchesArray.push(matchObject);
                 }
             }
@@ -246,6 +270,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman &lt;mark@markhillman.info>
     * Default duplicate function for the {@link insertSyntaxHighlighting} function
     *
     *   @param {Match} a - This is the left regex match
@@ -253,14 +278,17 @@ var RegexHighlighter = function() {
     */
     function defaultDuplicateFunction(a, b) {
         if (a.index == b.index) {
-            if (a.precidence == b.precidence) {
-                if (a.length == b.length)
+            if (a.precedence == b.precedence) {
+                if (a.length == b.length) {
                     return -1;
-                else
+                }
+                else {
                     return a.length - b.length;
+                }
             }
-            else
-                return a.precidence - b.precidence;
+            else {
+                return a.precedence - b.precedence;
+            }
         }
         // If b completely contained within a, remove b
         else if (b.index > a.index &amp;&amp; (b.index + b.length) &lt; (a.index + a.length)) {
@@ -269,8 +297,8 @@ var RegexHighlighter = function() {
         // If b starts inside a, but continues past the end of a
         else if (b.index > a.index &amp;&amp; b.index &lt; a.index + a.length &amp;&amp;
                 (b.index + b.length) >= (a.index + a.length)) {
-            if (a.precidence != b.precidence) {
-                return a.precidence - b.precidence;
+            if (a.precedence != b.precedence) {
+                return a.precedence - b.precedence;
             }
             else if (a.length != b.length) {
                 return a.length - b.length
@@ -283,6 +311,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman &lt;mark@markhillman.info>
     * This function inserts the span tags into the string and returns a new string
     * which can be added to the page or printed to console. This is the main function
     * for where all of the sub functions are called. As well as where the main duplicateFunction
@@ -324,6 +353,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman &lt;mark@markhillman.info>
     * Loads elements from the document via a className like the
     * {@link loadSyntaxHighlightingByClass} but this function will use a
     * regexObject directly from code, instead of loading one from a directory.
@@ -360,6 +390,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman &lt;mark@markhillman.info>
     * The main function to add regex-highlighting to any element on the page. The
     * elements will be loaded by a class supplied to the function, then they will
     * have their innerHTML highlighted by inserting span tags with the the default
@@ -416,7 +447,7 @@ var RegexHighlighter = function() {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat Jul 02 2016 11:58:13 GMT+0100 (GMT Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Jul 05 2016 23:32:33 GMT+0100 (GMT Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>
