@@ -1,5 +1,5 @@
 # regex-highlighter
-A javascript tool to highlight regex pattern matches using HTML and CSS. Whilst this tool is primarily aimed at programming languages syntax highlighting, it can be used with any regular expression. Highlighted matches from a given regex file will be wrapped in a span tag and then given a class which can be used to style that particular match. The are several supported languages which can be used, or you can create custom rules.
+A javascript tool to highlight regex pattern matches in a HTML document and CSS. Whilst this tool is primarily aimed at programming languages syntax highlighting, it can be used with any regular expression. Highlighted matches from a given regex file will be wrapped in a span tag and then given a class which can be used to style that particular match. The are several supported languages which can be used, or you can create custom rules.
 
 ## How to Use:
 ### Online Converter:
@@ -68,7 +68,7 @@ When creating the custom JSON files, make sure that they are in the following fo
 ```
 Where class-name is class that will attached to the span when the script is run and regex is any regex in a string format. Unfortunately due to JSON not supporting regex notation or raw string, any backslashes in the regex have to be escape e.g \\\\bhello\\\\b.
 
-You can use the testing folder for trying out any new builds and generally editing the source files. This folder also has a way of testing and previewing the regex highlighting that is currently supported, via the [index](testing/index.html) webpage.
+You can use the testing folder for trying out any new builds and generally editing the source files. This folder also has a way of testing and previewing the regex highlighting that is currently supported, via the [index](src/testing/index.html) webpage.
 
 ## Building:
 If you have made any changes, make sure to minify the javascript and json files using the following links:
@@ -80,12 +80,11 @@ Once minified, add the files to the build folder and the newly updated source fi
 If any new functions have been added or an important change has been made to the structure of the code, please make sure to build the documentation again. This can be done by running JSDoc on the src folder. More specifically run this from a terminal `"node_modules/.bin/jsdoc" --readme DOCS.md src -r -d docs`
 
 ## To Do:
+- Document new regex object
 - Add a better way to handle the arguments that are needed when calling a public function, could be class variables?
-- Add more syntax support
-    - PHP
-    - basic C++
 
 ## Change Log:
+- Add some way to express which capture group is needed in the language data
 - Added more robust commenting to the javascript file (came with JSDoc)
 - Added some more error checking to the javascript file, mostly for optional arguments
 - Added in depth documentation to this project, using JSDoc
@@ -97,6 +96,8 @@ If any new functions have been added or an important change has been made to the
 - Fixed the haskell function errors
 - Created a guide on how to add more languages
 - Added Languages:
+    - PHP
+    - basic C++
     - JSON
     - Javascript
     - Java
