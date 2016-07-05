@@ -1,42 +1,24 @@
-<span class="regex-highlight keyword">int</span> <span class="regex-highlight function">main</span>(<span class="regex-highlight keyword">int</span> argc, <span class="regex-highlight keyword">char</span>** args)
-{
-	<span class="regex-highlight function">SDL_Init</span>(SDL_INIT_VIDEO); <span class="regex-highlight comment">//Initializing SDL2</span>
-
-	window = <span class="regex-highlight function">SDL_CreateWindow</span>(<span class="regex-highlight wrapping">"Koch Fractal"</span>, SDL_WINDOWPOS_UNDEFINED,
-		SDL_WINDOWPOS_UNDEFINED, SCR_W, SCR_H, SDL_WINDOW_SHOWN); <span class="regex-highlight comment">//Creating window</span>
-	renderer = <span class="regex-highlight function">SDL_CreateRenderer</span>(window, -<span class="regex-highlight number">1</span>, SDL_RENDERER_ACCELERATED); <span class="regex-highlight comment">//Creating renderer</span>
-
-	<span class="regex-highlight function">SDL_SetRenderDrawColor</span>(renderer, <span class="regex-highlight number">0</span>, <span class="regex-highlight number">0</span>, <span class="regex-highlight number">0</span>, <span class="regex-highlight number">255</span>); <span class="regex-highlight comment">//Setting default screen color</span>
-
-	generator = <span class="regex-highlight keyword">new</span> <span class="regex-highlight function">SierpinskiTile</span>(SCR_W, SCR_H, TILE_W, TILE_H); <span class="regex-highlight comment">//Creating fractal generator</span>
-	generator-&gt;<span class="regex-highlight function">setTile</span>((SCR_W / TILE_W) / <span class="regex-highlight number">2</span>, <span class="regex-highlight number">0</span>); <span class="regex-highlight comment">//Setting a tile at the top middle of the screen</span>
-
-	<span class="regex-highlight keyword">int</span> row = <span class="regex-highlight number">0</span>;
-	<span class="regex-highlight keyword">while</span> (!quit)
-	{
-		<span class="regex-highlight keyword">while</span> (<span class="regex-highlight function">SDL_PollEvent</span>(&amp;event) &gt; <span class="regex-highlight number">0</span>) <span class="regex-highlight comment">//Minimal event polling for proper quitting</span>
-			<span class="regex-highlight keyword">if</span> (event.<span class="regex-highlight variable">type</span> == SDL_QUIT)
-				quit = <span class="regex-highlight literal-values">true</span>;
-
-		<span class="regex-highlight comment">//***NOTE: Screen must not be cleaned as the draw() method draws a row only</span>
-		<span class="regex-highlight comment">//and deletes all tiles of the previous rows***</span>
-		<span class="regex-highlight comment">//SDL_RenderClear(renderer);</span>
-
-		<span class="regex-highlight keyword">if</span> (row &lt; SCR_H / TILE_H) <span class="regex-highlight comment">//Draw and calculate until the last row</span>
-		{
-			generator-&gt;<span class="regex-highlight function">draw</span>(renderer, <span class="regex-highlight number">0</span>, <span class="regex-highlight number">255</span>, <span class="regex-highlight number">0</span>, row-<span class="regex-highlight number">1</span>); <span class="regex-highlight comment">//Drawing the row in green color</span>
-
-			<span class="regex-highlight function">SDL_RenderPresent</span>(renderer); <span class="regex-highlight comment">//Updating screen</span>
-
-			generator-&gt;<span class="regex-highlight function">calculate</span>(row++); <span class="regex-highlight comment">//Calculating the next row</span>
-		}
-	}
-
-	<span class="regex-highlight keyword">delete</span> generator; <span class="regex-highlight comment">//Deallocating fractal generator</span>
-
-	<span class="regex-highlight function">SDL_DestroyRenderer</span>(renderer);
-	<span class="regex-highlight function">SDL_DestroyWindow</span>(window);
-	<span class="regex-highlight function">SDL_Quit</span>(); <span class="regex-highlight comment">//Clearing all SDL resources</span>
-
-	<span class="regex-highlight keyword">return</span> <span class="regex-highlight number">0</span>;
+<span class="regex-highlight comment">// FUNCTION TESTING</span>
+<span class="regex-highlight keyword">int</span> <span class="regex-highlight function">factorial</span>(<span class="regex-highlight keyword">int</span> number) {
+	<span class="regex-highlight keyword">if</span> (number &lt;= <span class="regex-highlight number">1</span>)
+		<span class="regex-highlight keyword">return</span> <span class="regex-highlight number">1</span>;
+	<span class="regex-highlight keyword">return</span> number * <span class="regex-highlight function">factorial</span>(number-<span class="regex-highlight number">1</span>);
 }
+
+<span class="regex-highlight comment">//OBJECT TESTING</span>
+hello.<span class="regex-highlight variable">property</span> = <span class="regex-highlight number">3</span>;
+Hello-&gt;<span class="regex-highlight variable">property</span> = <span class="regex-highlight number">3</span>;
+Hello-&gt;<span class="regex-highlight variable">newHello</span>-&gt;<span class="regex-highlight variable">property</span> = <span class="regex-highlight number">3</span>;
+Hello.<span class="regex-highlight function">init</span>();
+hello-&gt;<span class="regex-highlight function">init</span>();
+
+<span class="regex-highlight comment">// COMMENTS AND STRINGS TESTING</span>
+<span class="regex-highlight wrapping">"Wrapping"</span>
+<span class="regex-highlight comment">/*multi
+line comment correct*/</span>
+<span class="regex-highlight comment">/*multi
+line comment with wrapping "hello" correct*/</span>
+<span class="regex-highlight wrapping">"Wrapping with --comment inside"</span>
+<span class="regex-highlight wrapping">"Wrapping which has been\" escaped "</span>
+<span class="regex-highlight comment">// comment which "has a wrapping"</span>
+<span class="regex-highlight wrapping">"String1"</span> + <span class="regex-highlight wrapping">"String2"</span>

@@ -7,9 +7,9 @@
     "variable": {
         "regexes": [
             {
-                "regexString": "\\.(\\w+)\\b",
+                "regexString": "(?:\\.|-&gt;)(\\w+)\\b",
                 "captureGroup": 1
-            }            
+            }
         ]
     },
     "function": {

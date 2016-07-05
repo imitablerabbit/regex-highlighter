@@ -8,11 +8,10 @@ public class Factorial {
     }
 }
 
-public int functionWithNumber99() {
-    return null;
-}
-
-Factorial object = new Factorial(); 
+// OBJECT TESTING
+Factorial object = new Factorial();
+object.factorial(2);
+object.variable = 3;
 
 // COMMENTS AND STRINGS TESTING
 "Wrapping"
@@ -22,6 +21,5 @@ line comment correct*/
 line comment with wrapping "hello" correct*/
 "Wrapping with --comment inside"
 "Wrapping which has been\" escaped "
-"Number 1 inside wrapping"
 // comment which "has a wrapping"
 "String1" + "String2"
