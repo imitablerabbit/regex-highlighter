@@ -1,8 +1,8 @@
 <span class="regex-highlight comment">// FUNCTION TESTING</span>
 <span class="regex-highlight keyword">int</span> <span class="regex-highlight function">factorial</span>(<span class="regex-highlight keyword">int</span> number) {
-	<span class="regex-highlight keyword">if</span> (number &lt;= <span class="regex-highlight number">1</span>)
-		<span class="regex-highlight keyword">return</span> <span class="regex-highlight number">1</span>;
-	<span class="regex-highlight keyword">return</span> number * <span class="regex-highlight function">factorial</span>(number-<span class="regex-highlight number">1</span>);
+    <span class="regex-highlight keyword">if</span> (number &lt;= <span class="regex-highlight number">1</span>)
+	    <span class="regex-highlight keyword">return</span> <span class="regex-highlight number">1</span>;
+    <span class="regex-highlight keyword">return</span> number * <span class="regex-highlight function">factorial</span>(number-<span class="regex-highlight number">1</span>);
 }
 
 <span class="regex-highlight comment">//OBJECT TESTING</span>
