@@ -61,7 +61,10 @@ When creating the custom JSON files, make sure that they are in the following fo
     },
     class-name2: {
         "regexes": [
-            regex1
+            {
+                "regexString": regex1,
+                "captureGroup": 1
+            }
         ]
     }
 }
@@ -80,6 +83,8 @@ Once minified, add the files to the build folder and the newly updated source fi
 If any new functions have been added or an important change has been made to the structure of the code, please make sure to build the documentation again. This can be done by running JSDoc on the src folder. More specifically run this from a terminal `"node_modules/.bin/jsdoc" --readme DOCS.md src -r -d docs`
 
 ## To Do:
+- Write DOCS.md to fully document this project
+- Fix the highlighting within the imports and variables
 - Document new regex object
 - Add a better way to handle the arguments that are needed when calling a public function, could be class variables?
 
@@ -96,6 +101,7 @@ If any new functions have been added or an important change has been made to the
 - Fixed the haskell function errors
 - Created a guide on how to add more languages
 - Added Languages:
+    - Python
     - PHP
     - basic C++
     - JSON
