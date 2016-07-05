@@ -36,7 +36,7 @@ main = let
 
     ...
 
-<script type="text/javascript">loadSyntaxHighlightingByClass("syntax-color");</script>
+<script type="text/javascript">new RegexHighlighter().loadSyntaxHighlightingByClass("syntax-color");</script>
 ```
 
 ### Documentation:

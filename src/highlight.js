@@ -1,10 +1,12 @@
 /**
+* @author Mark Hillman <mark@markhillman.info>
 * A class for the Regex Highlighter
 * @class
 */
 var RegexHighlighter = function() {
 
     /**
+    * @author Mark Hillman <mark@markhillman.info>
     * Inner class for the matches that have been made
     *
     *   @class
@@ -27,6 +29,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman <mark@markhillman.info>
     * Retrieves files and data via a HTTP GET call using the XMLHttpRequest
     * class. This function has support for a callback function when it is finished
     * as well as passing a bundle object back to the callback function when
@@ -49,6 +52,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman <mark@markhillman.info>
     * A function to sort the values of the passed in array, first by their indicies
     * then by their precedence.
     *
@@ -71,6 +75,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman <mark@markhillman.info>
     * Remove duplicate objects from the array using a function passed into this
     * function. The array should contain Regex match objects and the shouldRemove
     * function should work in a similar way to a compare function in most
@@ -98,6 +103,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman <mark@markhillman.info>
     * Produces a string which contains the new highlighting, by wrapping matches
     * in the passed array in a span tag with the corresponding class. In order
     * to make sure this functions correctly, it uses an offset and a pre-built
@@ -124,6 +130,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman <mark@markhillman.info>
     * Wraps a given piece of text with a span tag that has a class.
     *
     *   @param {string} text - The text as a whole
@@ -152,6 +159,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman <mark@markhillman.info>
     * This function will return all of the matches that an object which contains
     * different regex patterns will match with a string
     *
@@ -234,6 +242,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman <mark@markhillman.info>
     * Default duplicate function for the {@link insertSyntaxHighlighting} function
     *
     *   @param {Match} a - This is the left regex match
@@ -274,6 +283,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman <mark@markhillman.info>
     * This function inserts the span tags into the string and returns a new string
     * which can be added to the page or printed to console. This is the main function
     * for where all of the sub functions are called. As well as where the main duplicateFunction
@@ -315,6 +325,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman <mark@markhillman.info>
     * Loads elements from the document via a className like the
     * {@link loadSyntaxHighlightingByClass} but this function will use a
     * regexObject directly from code, instead of loading one from a directory.
@@ -351,6 +362,7 @@ var RegexHighlighter = function() {
     }
 
     /**
+    * @author Mark Hillman <mark@markhillman.info>
     * The main function to add regex-highlighting to any element on the page. The
     * elements will be loaded by a class supplied to the function, then they will
     * have their innerHTML highlighted by inserting span tags with the the default
