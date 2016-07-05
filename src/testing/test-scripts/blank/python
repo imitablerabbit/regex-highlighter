@@ -1,0 +1,71 @@
+import bpy
+import bpy.ops
+import copy
+import mathutils
+import bmesh
+import bmesh.ops
+import os
+from time import time
+from math import radians, pi, ceil
+from random import seed, random, randint, uniform
+from mathutils import Vector, Quaternion
+from bpy.props import FloatProperty, BoolProperty, IntProperty, StringProperty
+
+create_cylinder = bpy.ops.mesh.primitive_cylinder_add
+create_plane = bpy.ops.mesh.primitive_plane_add
+scale = bmesh.ops.scale
+
+bl_info = {
+    "name": "Tree Creator",
+    "author": "Student 14027009",
+    "version": (1, 0, 0),
+    "location": "View 3D > Object Mode > Tool Shelf",
+    "description": "Generate a tree mesh from information supplied in the properties pane",
+    "category": "Add Mesh"
+}
+
+
+# ------------------------------------------------------------ #
+#                           UTILS                              #
+# ------------------------------------------------------------ #
+def load_texture(filepath):
+    """Loads the texture at filepath then returns the loaded image"""
+    try:
+        img = bpy.data.images.load(filepath)
+        return img
+    except:
+        raise NameError("No image was found at this location: {}".format(filepath))
+
+
+def find_upper_face(bm, lowest=True):
+    """
+    This function will return the face which is at the
+    lowest location in the mesh by default, otherwise it will
+    return the highest face in the z axis
+
+    Variables:
+    :param bm: BMesh for the object
+    :param lowest: A boolean whether or not it should return the lower face or the higher face
+
+    :return a BMFace object
+    """
+    lowest_face = None
+    lowest_face_location = None
+    for face in bm.faces:
+        location = face.calc_center_median()
+        if lowest_face:
+            # Search for lowest face in z
+            if lowest:
+                if lowest_face_location.z > location.z:
+                    lowest_face = face
+                    lowest_face_location = location
+            # Search for highest face in z
+            else:
+                if lowest_face_location.z < location.z:
+                    lowest_face = face
+                    lowest_face_location = location
+        # Set the first lowestFace
+        else:
+            lowest_face = face
+            lowest_face_location = location
+    return lowest_face

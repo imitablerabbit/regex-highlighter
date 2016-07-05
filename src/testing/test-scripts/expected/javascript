@@ -4,9 +4,9 @@
 <span class="regex-highlight comment">// the meaning of what it contains due to async</span>
 <span class="regex-highlight keyword">function</span> <span class="regex-highlight function">ajaxGET</span>(url, callback, bundle) {
     <span class="regex-highlight keyword">var</span> xhttp = <span class="regex-highlight keyword">new</span> <span class="regex-highlight class">XMLHttpRequest</span>();
-    xhttp.onreadystatechange = <span class="regex-highlight keyword">function</span>() {
-        <span class="regex-highlight keyword">if</span>(xhttp.readyState == <span class="regex-highlight number">4</span> &amp;&amp; xhttp.status == <span class="regex-highlight number">200</span>) {
-            <span class="regex-highlight function">callback</span>(xhttp.responseText, bundle);
+    xhttp.<span class="regex-highlight variable">onreadystatechange</span> = <span class="regex-highlight keyword">function</span>() {
+        <span class="regex-highlight keyword">if</span>(xhttp.<span class="regex-highlight variable">readyState</span> == <span class="regex-highlight number">4</span> &amp;&amp; xhttp.<span class="regex-highlight variable">status</span> == <span class="regex-highlight number">200</span>) {
+            <span class="regex-highlight function">callback</span>(xhttp.<span class="regex-highlight variable">responseText</span>, bundle);
         }
     }
     xhttp.<span class="regex-highlight function">open</span>(<span class="regex-highlight wrapping">"GET"</span>, url, <span class="regex-highlight literal-values">true</span>);

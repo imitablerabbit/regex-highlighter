@@ -15,7 +15,7 @@
 	<span class="regex-highlight keyword">while</span> (!quit)
 	{
 		<span class="regex-highlight keyword">while</span> (<span class="regex-highlight function">SDL_PollEvent</span>(&amp;event) &gt; <span class="regex-highlight number">0</span>) <span class="regex-highlight comment">//Minimal event polling for proper quitting</span>
-			<span class="regex-highlight keyword">if</span> (event.type == SDL_QUIT)
+			<span class="regex-highlight keyword">if</span> (event.<span class="regex-highlight variable">type</span> == SDL_QUIT)
 				quit = <span class="regex-highlight literal-values">true</span>;
 
 		<span class="regex-highlight comment">//***NOTE: Screen must not be cleaned as the draw() method draws a row only</span>
