@@ -170,10 +170,10 @@ var RegexHighlighter = function() {
         var counter = 1;
         for (var type in regexObject) {
             var matchObject = regexObject[type];
-            var regexes = matchObject.regexes;
+            var regexes = matchObject["regexes"];
+            var precedence;
 
             // Check if the precedence option has been set in the syntax
-            var precedence;
             if (matchObject.precedence) {
                 if (isNaN(matchObject.precedence)) {
                     var found = false;
@@ -198,17 +198,33 @@ var RegexHighlighter = function() {
 
             // loop the individual regex
             for (var i = 0; i < regexes.length; i++) {
-                regex = regexes[i];
-                var reg = new RegExp(regex, "gm");
+                var regex = regexes[i];
+                var regexString, captureGroup;
+                if (typeof regex === "string") { // Just a single regex
+                    regexString = regex;
+                    captureGroup = 0;
+                }
+                else { // Regex object provided
+                    regexString = regex["regexString"];
+                    captureGroup = regex["captureGroup"];
+                }
+
+                var reg = new RegExp(regexString, "gm");
                 while (match = reg.exec(string)) {
                     var index = match.index;
-                    var matchText = match[0]; // Get the first captured group
+                    if (captureGroup >= match.length) {
+                        captureGroup = 0;
+                    }
+
+                    // Compensate for captureGroup moving the start of match
+                    var matchText = match[captureGroup];
                     if (typeof matchText == "undefined")
                         continue;
+                    var offset = match[0].indexOf(matchText);
 
                     // Save the results into an object array
-                    matchObject = new Match(index, returnClassName + " " + type,
-                        type, matchText.length, matchText, precedence);
+                    matchObject = new Match(index + offset, returnClassName + " " + type,
+                    type, matchText.length, matchText, precedence);
                     matchesArray.push(matchObject);
                 }
             }
@@ -230,7 +246,7 @@ var RegexHighlighter = function() {
                     return -1;
                 }
                 else {
-                    return a.length - b.length;                    
+                    return a.length - b.length;
                 }
             }
             else {
