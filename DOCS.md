@@ -12,6 +12,7 @@ Simply put, you can just follow these few steps:
 - Add the syntax.css stylesheet to highlight the matched text using `<link rel="stylesheet" href="styles/syntax.css">`
 - Now you can run regex-highlighter with the `loadSyntaxHighlightingByClass()` function. This function is inside the RegexHighlighter class, so first create an instance then call the function `new RegexHighlighter().loadSyntaxHighlightingByClass()`. The `loadSyntaxHighlightingByClass()` function takes 2 optional parameters in order to determine which parts of the html need to be checked, as well as the folder for where the default language support is. The default options for these are 'regex-color' and './languages/'. This means that only elements which have a class of regex-color will be coloured and only the 'languages/' folder in the same directory as the script will be searched for the regex support. These can be changed by supplying arguments to the function.
 - To tell the regex-highlighter what language it should use, add a class to the same element, which is the language name.
+For more information on what the individual methods do, you can check out the documentation for each individual method.
 
 ### Example:
 ```
@@ -42,31 +43,51 @@ main = let
 When creating the custom JSON files, make sure that they are in the following format:
 ```
 {
-    class-name1: {
+    className1: {
         "regexes": [
             regex1,
             regex2
         ]
     },
-    class-name2: {
+    className2: {
         "regexes": [
             {
                 "regexString": regex1,
                 "captureGroup": 1
             }
-        ]
+        ],
+        "precedence": 1
     }
 }
 ```
-Where class-name is class value that will attached to the span tag when the script is run and regex is any regex in a string format. Unfortunately due to JSON not supporting regex notation or raw string, any backslashes in the regex have to be escape e.g \\\\bhello\\\\b.
+The general form of the JSON regex files, are that inner objects denote a new type of match (e.g variable, function, keyword). The key for these objects will be used as the class that is given to the span tags when the matching takes place. The class can then be used to style the type of matches that the object will contain. In general, regexes which match the same section of the text will be decided by the precedence of the type object. By default the precedence is the cascading nature of the JSON file, however this can be changed.
 
-You can use the testing folder for trying out any new builds and generally editing the source files. This folder also has a way of testing and previewing the regex highlighting that is currently supported, via the [index](src/testing/index.html) webpage.
+Inside the objects are the regexes inside an array which will be used, as well as any other options that might be needed. In the example above there is also a use of the precedence option. This is used to force a precedent value on a type object so that different matches can be treated as though they are in the same type block whilst having different styling. There are 2 ways of using the precedence option, you can give it a number which will be used as the precedence value, or you can give it a string value which is the name of a type used earlier in the JSON (This will only work is the type used in the precedence option is before current type object, otherwise default cascading precedence is used). An example of this can be seen in the python.json where the wrapping type is given the same precedent as the comment type:
+```
+"comment": {
+    "regexes": [
+        "#.+",
+        "\\/\\*[^\\*\\/]+\\*\\/"
+    ]
+},
+"wrapping": {
+    "regexes": [
+        "\"(\\\\.|[^\"])*\"",
+        "'.?'"
+    ],
+    "precedence": "comment"
+}
+```
 
-## Building:
-If you have made any changes, make sure to minify the javascript and json files using the following links:
-- Javascript: http://jscompress.com/
-- JSON: http://www.httputility.net/json-minifier.aspx
-
-Once minified, add the files to the build folder and the newly updated source files to the src folder. If a new language has been added, please add an example of the language highlighting in the example.
-
-If any new functions have been added or an important change has been made to the structure of the code, please make sure to build the documentation again. This can be done by running JSDoc on the src folder. More specifically run this from a terminal `"node_modules/.bin/jsdoc" --readme DOCS.md src -r -d docs`
+Inside the regexes array, there can be 2 different types of regex given, the first is a simple regex string. This is just plugged into the regex engine as the pattern and only the whole match will be caught. Another way of provided a regex, is with a regex object. This is just a new object created in the array which contains more information for the capturing of the regex match. With this you can supply a regex string, as well as the capture group that should be used for the regex match. If the captureGroup value is not valid according to the regex provided (i.e if there is not a capture at the group specified) then the whole match will be used instead. An example of this in use can be found in the python.json file:
+```
+"variable": {
+    "regexes": [
+        {
+            "regexString": "\\.(\\w+)\\b",
+            "captureGroup": 1
+        }
+    ]
+}
+```
+This means that any word characters after a . (dot) character, and before a word break (\\b), will be captured and highlighted with the class of variable. **Note:** Unfortunately due to JSON not supporting literal regex notation or raw strings, any backslashes in the regex have to be escaped e.g \\\\bhello\\\\b

@@ -84,11 +84,11 @@ If any new functions have been added or an important change has been made to the
 
 ## To Do:
 - Write DOCS.md to fully document this project
-- Fix the highlighting within the imports and variables
-- Document new regex object
-- Add a better way to handle the arguments that are needed when calling a public function, could be class variables?
 
 ## Change Log:
+- Moved to prototype class structure 
+- Fix the highlighting within the imports and variables
+- Document new regex object
 - Add some way to express which capture group is needed in the language data
 - Added more robust commenting to the javascript file (came with JSDoc)
 - Added some more error checking to the javascript file, mostly for optional arguments
