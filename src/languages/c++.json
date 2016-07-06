@@ -1,10 +1,12 @@
-{
-    "number": {
+[
+    {
+        "type": "number",
         "regexes": [
             "[0-9]+"
         ]
     },
-    "variable": {
+    {
+        "type": "variable",
         "regexes": [
             {
                 "regexString": "(?:\\.|-&gt;)(\\w+)\\b",
@@ -12,12 +14,14 @@
             }
         ]
     },
-    "function": {
+    {
+        "type": "function",
         "regexes": [
             "\\b[a-zA-Z_][a-zA-Z0-9_-]+?(?=\\()"
         ]
     },
-    "keyword": {
+    {
+        "type": "keyword",
         "regexes": [
             "\\balignas\\b",
             "\\balignof\\b",
@@ -116,23 +120,26 @@
             "\\bfinal\\b"
         ]
     },
-    "literal-values": {
+    {
+        "type": "literal-value",
         "regexes": [
             "\\btrue\\b",
             "\\bfalse\\b"
         ]
     },
-    "comment": {
+    {
+        "type": "comment",
         "regexes": [
             "\\/\\/.+",
             "\\/\\*[^\\*\\/]+\\*\\/"
         ]
     },
-    "wrapping": {
+    {
+        "type": "wrapping",
         "regexes": [
             "\"(\\\\.|[^\"])*\"",
             "'(\\\\.|[^'])*'"
         ],
         "precedence": "comment"
     }
-}
+]

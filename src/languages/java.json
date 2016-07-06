@@ -1,16 +1,19 @@
-{
-    "number": {
+[
+    {
+        "type": "number",
         "regexes": [
             "[0-9]+"
         ]
     },
-    "class": {
+    {
+        "type": "class",
         "regexes": [
             "\\b[A-Z][a-zA-Z0-9_]+(?=\\s{)",
             "^[A-Z][a-zA-Z0-9_]+"
         ]
     },
-    "variable": {
+    {
+        "type": "variable",
         "regexes": [
             {
                 "regexString": "\\.(\\w+)\\b",
@@ -18,12 +21,14 @@
             }
         ]
     },
-    "function": {
+    {
+        "type": "function",
         "regexes": [
             "\\b[a-zA-Z_][a-zA-Z0-9_-]+?(?=\\()"
         ]
     },
-    "keyword": {
+    {
+        "type": "keyword",
         "regexes": [
             "\\bassert\\b",
             "\\babstract\\b",
@@ -77,24 +82,27 @@
             "\\bwhile\\b"
         ]
     },
-    "literal-values": {
+    {
+        "type": "literal-value",
         "regexes": [
             "\\btrue\\b",
             "\\bfalse\\b",
             "\\bnull\\b"
         ]
     },
-    "comment": {
+    {
+        "type": "comment",
         "regexes": [
             "\\/\\/.+",
             "\\/\\*[^\\*\\/]+\\*\\/"
         ]
     },
-    "wrapping": {
+    {
+        "type": "wrapping",
         "regexes": [
             "\"(\\\\.|[^\"])*\"",
             "'.?'"
         ],
         "precedence": "comment"
     }
-}
+]

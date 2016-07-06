@@ -1,15 +1,18 @@
-{    
-    "number": {
+[
+    {
+        "type": "number",
         "regexes": [
             "[0-9]+"
         ]
     },
-    "function": {
+    {
+        "type": "function",
         "regexes": [
             "^\\w+"
         ]
     },
-    "keyword": {
+    {
+        "type": "keyword",
         "regexes": [
             "::",
             "@",
@@ -50,22 +53,25 @@
             "\\bwhere\\b"
         ]
     },
-    "capital": {
+    {
+        "type": "capital",
         "regexes": [
             "\\b[A-Z]+\\w+"
         ]
     },
-    "comment":  {
+    {
+        "type": "comment",
         "regexes": [
             "--.+",
             "\\{-[^-\\{\\}]+-\\}"
         ]
     },
-    "wrapping":  {
+    {
+        "type": "wrapping",
         "regexes": [
             "\"(\\\\.|[^\"])*\"",
             "'(\\\\.|[^'])*'"
         ],
         "precedence" : "comment"
     }
-}
+]

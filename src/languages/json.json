@@ -1,17 +1,20 @@
-{
-    "value": {
+[
+    {
+        "type": "value",
         "regexes": [
             "[0-9\\.]+"
         ]
     },
-    "wrapping": {
+    {
+        "type": "wrapping",
         "regexes": [
-            "\"(\\\\.|[^\"])*\""          
+            "\"(\\\\.|[^\"])*\""
         ]
     },
-    "key": {
+    {
+        "type": "key",
         "regexes": [
             "[a-zA-Z0-9\"_-]+?(?=:)"
         ]
     }
-}
+]
