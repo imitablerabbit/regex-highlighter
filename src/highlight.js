@@ -117,8 +117,9 @@ RegexHighlighter.prototype.wrapTextWithSpan = function(text, classes, start, end
 RegexHighlighter.prototype.getMatchesArrayFromRegex = function(regexObject, string) {
     var matchesArray = [];
     var precedenceCounter = 1;
-    for (var type in regexObject) {
-        var matchObject = regexObject[type];
+    for (var index = 0; index < regexObject.length; index++) {
+        var matchObject = regexObject[index];
+        var type = matchObject["type"];
         var regexes = matchObject["regexes"];
         var precedence;
 
