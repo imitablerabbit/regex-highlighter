@@ -40,18 +40,83 @@
 
     
 
-    <h4 class="name" id="RegexHighlighter"><span class="type-signature"></span>new RegexHighlighter<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="RegexHighlighter"><span class="type-signature"></span>new RegexHighlighter<span class="signature">(returnClassName<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
 
 
+<div class="description">
+    A class for the Regex Highlighter
+</div>
 
 
 
 
 
 
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>returnClassName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The class name to add to the span tags      once a pattern has been matched</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -80,7 +145,7 @@
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">
         <ul>
-            <li>Mark Hillman &lt;mark@markhillman.info>A class for the Regex Highlighter</li>
+            <li><a href="mailto:mark@markhillman.info">Mark Hillman</a></li>
         </ul>
     </dd>
     
@@ -94,7 +159,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line6">line 6</a>
+        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line32">line 32</a>
     </li></ul></dd>
     
 
@@ -128,13 +193,6 @@
     
 
     
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="RegexHighlighter-Match.html">Match</a></dt>
-            <dd></dd>
-        </dl>
-    
 
      
 
@@ -150,11 +208,728 @@
 
     
 
-    <h4 class="name" id="insertSyntaxHighlighting"><span class="type-signature"></span>insertSyntaxHighlighting<span class="signature">(regexObject, string, returnClassName<span class="signature-attributes">opt</span>, duplicateFunction<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="assembleNewStringFromMatchArray"><span class="type-signature"></span>assembleNewStringFromMatchArray<span class="signature">(string, array)</span><span class="type-signature"></span></h4>
 
     
 
 
+
+<div class="description">
+    Produces a string which contains the new highlighting, by wrapping matchesin the passed array in a span tag with the corresponding class. In orderto make sure this functions correctly, it uses an offset and a pre-builtmatch array. When actually wrapping a match with a span, the methodwrapTextWithSpan is used.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>string</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The string which will be highlighted via the      match array</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>array</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="Match.html">Match</a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The array which contains all the match information</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:mark@markhillman.info">Mark Hillman</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line361">line 361</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="defaultDuplicateFunction"><span class="type-signature"></span>defaultDuplicateFunction<span class="signature">(a, b)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Default duplicate function for the insertSyntaxHighlighting function
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Match.html">Match</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the left regex match</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Match.html">Match</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the right regex match</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:mark@markhillman.info">Mark Hillman</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line205">line 205</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="findRegexMatches"><span class="type-signature"></span>findRegexMatches<span class="signature">(string, regexString, captureGroup, type, precedence)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    This function finds all of the regex matches in a string from a regex string,it will collect only the elements in the specified capture group. An arraycontaining Match Objects will be returned.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>string</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The string to search</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>regexString</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The regex string to use</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>captureGroup</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The capture group to collect</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The type class that will given to the Match object      so that it can be individually styled</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>precedence</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The precedence to be given to the Match Object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:mark@markhillman.info">Mark Hillman</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line178">line 178</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getMatchesArrayFromRegex"><span class="type-signature"></span>getMatchesArrayFromRegex<span class="signature">(regexObject, string)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    This function will return all of the matches that an object which containsdifferent regex patterns will match with a string
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>regexObject</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the object which contains all of      the regex information. It can be loaded from a file, see JSON      examples for how to create these.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>string</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This is the text that needs to be converted to      its highlighted form</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:mark@markhillman.info">Mark Hillman</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line117">line 117</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="insertSyntaxHighlighting"><span class="type-signature"></span>insertSyntaxHighlighting<span class="signature">(regexObject, string, duplicateFunction<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    This function inserts the span tags into the string and returns a new stringwhich can be added to the page or printed to console. This is the main functionfor where all of the sub functions are called. As well as where the main duplicateFunctionis defined if one is not passed in.
+</div>
 
 
 
@@ -253,39 +1028,6 @@
 
         <tr>
             
-                <td class="name"><code>returnClassName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">This is the class name that will be      given to span tags in order to identify the output matches.</td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>duplicateFunction</code></td>
             
 
@@ -346,7 +1088,7 @@
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">
         <ul>
-            <li>Mark Hillman &lt;mark@markhillman.info>This function inserts the span tags into the string and returns a new stringwhich can be added to the page or printed to console. This is the main functionfor where all of the sub functions are called. As well as where the main duplicateFunctionis defined if one is not passed in.</li>
+            <li><a href="mailto:mark@markhillman.info">Mark Hillman</a></li>
         </ul>
     </dd>
     
@@ -360,7 +1102,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line302">line 302</a>
+        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line249">line 249</a>
     </li></ul></dd>
     
 
@@ -396,6 +1138,10 @@
     
 
 
+
+<div class="description">
+    Loads elements from the document via a className like theloadSyntaxHighlightingByClass but this function will use aregexObject directly from code, instead of loading one from a directory.If no className is given to load the elements, then it will use thedefault of 'regex-color'.
+</div>
 
 
 
@@ -523,7 +1269,7 @@
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">
         <ul>
-            <li>Mark Hillman &lt;mark@markhillman.info>Loads elements from the document via a className like theloadSyntaxHighlightingByClass but this function will use aregexObject directly from code, instead of loading one from a directory.If no className is given to load the elements, then it will use thedefault of 'regex-color'.</li>
+            <li><a href="mailto:mark@markhillman.info">Mark Hillman</a></li>
         </ul>
     </dd>
     
@@ -537,7 +1283,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line340">line 340</a>
+        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line284">line 284</a>
     </li></ul></dd>
     
 
@@ -573,6 +1319,10 @@
     
 
 
+
+<div class="description">
+    The main function to add regex-highlighting to any element on the page. Theelements will be loaded by a class supplied to the function, then they willhave their innerHTML highlighted by inserting span tags with the the defaultclass of 'regex-color'. The regex languages will be searched for in the specifiedlanguagesFolderPath variable, if no path is given, then the default path will be'./languages/'.
+</div>
 
 
 
@@ -702,7 +1452,7 @@
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">
         <ul>
-            <li>Mark Hillman &lt;mark@markhillman.info>The main function to add regex-highlighting to any element on the page. Theelements will be loaded by a class supplied to the function, then they willhave their innerHTML highlighted by inserting span tags with the the defaultclass of 'regex-color'. The regex languages will be searched for in the specifiedlanguagesFolderPath variable, if no path is given, then the default path will be'./languages/'.</li>
+            <li><a href="mailto:mark@markhillman.info">Mark Hillman</a></li>
         </ul>
     </dd>
     
@@ -716,7 +1466,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line378">line 378</a>
+        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line322">line 322</a>
     </li></ul></dd>
     
 
@@ -747,743 +1497,15 @@
 
     
 
-    <h4 class="name" id="~ajaxGET"><span class="type-signature">(inner) </span>ajaxGET<span class="signature">(url, callback<span class="signature-attributes">opt</span>, bundle<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="removeDuplicateObjectsFromArray"><span class="type-signature"></span>removeDuplicateObjectsFromArray<span class="signature">(array, shouldRemove)</span><span class="type-signature"></span></h4>
 
     
 
 
 
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>url</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">the url of the resource</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">A callback to be made when the resource has      been retrieved.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>bundle</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">A bundle object to be passed to the callback</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>Mark Hillman &lt;mark@markhillman.info>Retrieves files and data via a HTTP GET call using the XMLHttpRequestclass. This function has support for a callback function when it is finishedas well as passing a bundle object back to the callback function wheneverything is complete. This function is asynchronous!</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line43">line 43</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~assembleNewStringFromMatchArray"><span class="type-signature">(inner) </span>assembleNewStringFromMatchArray<span class="signature">(string, array)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>string</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The string which will be highlighted via the      match array</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>array</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Match></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The array which contains all the match information</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>Mark Hillman &lt;mark@markhillman.info>Produces a string which contains the new highlighting, by wrapping matchesin the passed array in a span tag with the corresponding class. In orderto make sure this functions correctly, it uses an offset and a pre-builtmatch array. When actually wrapping a match with a span, the methodwrapTextWithSpan is used.</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line117">line 117</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~defaultDuplicateFunction"><span class="type-signature">(inner) </span>defaultDuplicateFunction<span class="signature">(a, b)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>a</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Match</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">This is the left regex match</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>b</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Match</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">This is the right regex match</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>Mark Hillman &lt;mark@markhillman.info>Default duplicate function for the insertSyntaxHighlighting function</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line251">line 251</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~getMatchesArrayFromRegex"><span class="type-signature">(inner) </span>getMatchesArrayFromRegex<span class="signature">(regexObject, string, returnClassName<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>regexObject</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">This is the object which contains all of      the regex information. It can be loaded from a file, see JSON      examples for how to create these.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>string</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">This is the text that needs to be converted to      its highlighted form</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>returnClassName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">This is the class name that will be      given to the span tags in order to identify the output matches.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>Mark Hillman &lt;mark@markhillman.info>This function will return all of the matches that an object which containsdifferent regex patterns will match with a string</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line174">line 174</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~removeDuplicateObjectsFromArray"><span class="type-signature">(inner) </span>removeDuplicateObjectsFromArray<span class="signature">(array, shouldRemove)</span><span class="type-signature"></span></h4>
-
-    
-
-
+<div class="description">
+    Remove duplicate objects from the array using a function passed into thisfunction. The array should contain Regex match objects and the shouldRemovefunction should work in a similar way to a compare function in mostimperative languages. This means that <0 will remove the item on the left,>0 will remove the item on the right. 0 will not remove anything
+</div>
 
 
 
@@ -1524,7 +1546,7 @@
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;Match></span>
+<span class="param-type">Array.&lt;<a href="Match.html">Match</a>></span>
 
 
             
@@ -1591,7 +1613,7 @@
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">
         <ul>
-            <li>Mark Hillman &lt;mark@markhillman.info>Remove duplicate objects from the array using a function passed into thisfunction. The array should contain Regex match objects and the shouldRemovefunction should work in a similar way to a compare function in mostimperative languages. This means that &lt;0 will remove the item on the left,>0 will remove the item on the right. 0 will not remove anything</li>
+            <li><a href="mailto:mark@markhillman.info">Mark Hillman</a></li>
         </ul>
     </dd>
     
@@ -1605,7 +1627,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line89">line 89</a>
+        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line66">line 66</a>
     </li></ul></dd>
     
 
@@ -1636,11 +1658,15 @@
 
     
 
-    <h4 class="name" id="~sortArrayByObjectsIndex"><span class="type-signature">(inner) </span>sortArrayByObjectsIndex<span class="signature">(array)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="sortArrayByObjectsIndex"><span class="type-signature"></span>sortArrayByObjectsIndex<span class="signature">(array)</span><span class="type-signature"></span></h4>
 
     
 
 
+
+<div class="description">
+    A function to sort the values of the passed in array, first by their indiciesthen by their precedence.
+</div>
 
 
 
@@ -1681,7 +1707,7 @@
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;Match></span>
+<span class="param-type">Array.&lt;<a href="Match.html">Match</a>></span>
 
 
             
@@ -1725,7 +1751,7 @@
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">
         <ul>
-            <li>Mark Hillman &lt;mark@markhillman.info>A function to sort the values of the passed in array, first by their indiciesthen by their precedence.</li>
+            <li><a href="mailto:mark@markhillman.info">Mark Hillman</a></li>
         </ul>
     </dd>
     
@@ -1739,7 +1765,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line61">line 61</a>
+        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line45">line 45</a>
     </li></ul></dd>
     
 
@@ -1770,11 +1796,15 @@
 
     
 
-    <h4 class="name" id="~wrapTextWithSpan"><span class="type-signature">(inner) </span>wrapTextWithSpan<span class="signature">(text, classes<span class="signature-attributes">opt</span>, start<span class="signature-attributes">opt</span>, end<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="wrapTextWithSpan"><span class="type-signature"></span>wrapTextWithSpan<span class="signature">(text, classes<span class="signature-attributes">opt</span>, start<span class="signature-attributes">opt</span>, end<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
 
+
+<div class="description">
+    Wraps a given piece of text with a span tag that has a class.
+</div>
 
 
 
@@ -1968,7 +1998,7 @@
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">
         <ul>
-            <li>Mark Hillman &lt;mark@markhillman.info>Wraps a given piece of text with a span tag that has a class.</li>
+            <li><a href="mailto:mark@markhillman.info">Mark Hillman</a></li>
         </ul>
     </dd>
     
@@ -1982,7 +2012,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line141">line 141</a>
+        <a href="highlight.js.html">highlight.js</a>, <a href="highlight.js.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -2024,13 +2054,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="RegexHighlighter.html">RegexHighlighter</a></li><li><a href="RegexHighlighter-Match.html">Match</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Match.html">Match</a></li><li><a href="RegexHighlighter.html">RegexHighlighter</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ajaxGET">ajaxGET</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Jul 05 2016 23:32:34 GMT+0100 (GMT Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Jul 06 2016 18:21:33 GMT+0100 (GMT Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>
