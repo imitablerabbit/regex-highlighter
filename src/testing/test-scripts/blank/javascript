@@ -17,7 +17,55 @@ function withNumbers99() {
     return 0;
 }
 
-// COMMENTS AND STRINGS TESTING
+// NUMBER TESTING
+1
+12
+1.1212
+1.121.12
+.12
+..121
+01.
+
+// VARIABLE TESTING
+object.hello;
+h.x;
+h.x
+object.variable = 3;
+object.factorial(2);
+.variable
+x.1
+hello.1nf
+
+// FUNCTION TESTING
+this.functionName();
+functionName();
+functionName(args);
+functionName(functionName());
+functionName ();
+functionName
+();
+0functionName()
+
+// KEYWORDS
+do, if, in, for, let, new, try, var, case, else, enum, eval, this, void, with, await, break, catch, class, const, super, throw, while, yield, delete, export, import, public, return, static, switch, typeof, default, extends, finally, package, private, continue, debugger, function, arguments, interface, protected, implements, instanceof
+
+// LITERAL VALUES
+null, true, false
+
+// CLASS TESTING
+var hello = new Hell();
+var h = Hello();
+var h = Hello;
+Hello();
+Hello;
+class Hello {}
+var Hello = function Hello() {
+    constructor() {
+        console.log("Hello World!");
+    }
+}
+
+// COMMENTS AND WRAPPINGS TESTING
 "Wrapping"
 /*multi
 line comment correct*/

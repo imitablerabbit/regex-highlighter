@@ -2,14 +2,17 @@
     {
         "type": "number",
         "regexes": [
-            "[0-9]+"
+            {
+                "regexString": "\\b\\d*\\.?\\d+\\b",
+                "captureGroup": 1
+            }
         ]
     },
     {
         "type": "variable",
         "regexes": [
             {
-                "regexString": "\\.(\\w+)\\b",
+                "regexString": "[a-zA-Z_][\\w-]+\\.([a-zA-Z_][\\w-]+)\\b",
                 "captureGroup": 1
             }
         ]
@@ -17,72 +20,57 @@
     {
         "type": "function",
         "regexes": [
-            "\\b[a-zA-Z_][a-zA-Z0-9_-]+?(?=\\()"
+            "\\b[a-zA-Z_][\\w-]+?(?= *\\()"
         ]
     },
     {
         "type": "keyword",
         "regexes": [
-            "\\babstract\\b",
-            "\\barguments\\b",
-            "\\bboolean\\b",
-            "\\bbreak\\b",
-            "\\bbyte\\b",
-            "\\bcase\\b",
-            "\\bcatch\\b",
-            "\\bchar\\b",
-            "\\bclass\\b",
-            "\\bconst\\b",
-            "\\bcontinue\\b",
-            "\\bdebugger\\b",
-            "\\bdefault\\b",
-            "\\bdelete\\b",
             "\\bdo\\b",
-            "\\bdouble\\b",
+            "\\bif\\b",
+            "\\bin\\b",
+            "\\bfor\\b",
+            "\\blet\\b",
+            "\\bnew\\b",
+            "\\btry\\b",
+            "\\bvar\\b",
+            "\\bcase\\b",
             "\\belse\\b",
             "\\benum\\b",
             "\\beval\\b",
+            "\\bthis\\b",
+            "\\bvoid\\b",
+            "\\bwith\\b",
+            "\\bawait\\b",
+            "\\bbreak\\b",
+            "\\bcatch\\b",
+            "\\bclass\\b",
+            "\\bconst\\b",
+            "\\bsuper\\b",
+            "\\bthrow\\b",
+            "\\bwhile\\b",
+            "\\byield\\b",
+            "\\bdelete\\b",
             "\\bexport\\b",
-            "\\bextends\\b",
-            "\\bfinal\\b",
-            "\\bfinally\\b",
-            "\\bfloat\\b",
-            "\\bfor\\b",
-            "\\bfunction\\b",
-            "\\bgoto\\b",
-            "\\bif\\b",
-            "\\bimplements\\b",
             "\\bimport\\b",
-            "\\bin\\b",
-            "\\binstanceof\\b",
-            "\\bint\\b",
-            "\\binterface\\b",
-            "\\blet\\b",
-            "\\blong\\b",
-            "\\bnative\\b",
-            "\\bnew\\b",
-            "\\bpackage\\b",
-            "\\bprivate\\b",
-            "\\bprotected\\b",
             "\\bpublic\\b",
             "\\breturn\\b",
-            "\\bshort\\b",
             "\\bstatic\\b",
-            "\\bsuper\\b",
             "\\bswitch\\b",
-            "\\bsyncronized\\b",
-            "\\bthis\\b",
-            "\\bthrow\\b",
-            "\\bthrows\\b",
-            "\\btransient\\b",
-            "\\btry\\b",
             "\\btypeof\\b",
-            "\\bvar\\b",
-            "\\bvoid\\b",
-            "\\bvolatile\\b",
-            "\\bwhile\\b",
-            "\\bwith\\b",
-            "\\byield\\b"
+            "\\bdefault\\b",
+            "\\bextends\\b",
+            "\\bfinally\\b",
+            "\\bpackage\\b",
+            "\\bprivate\\b",
+            "\\bcontinue\\b",
+            "\\bdebugger\\b",
+            "\\bfunction\\b",
+            "\\barguments\\b",
+            "\\binterface\\b",
+            "\\bprotected\\b",
+            "\\bimplements\\b",
+            "\\binstanceof\\b",
         ]
     },
     {
@@ -96,7 +84,11 @@
     {
         "type": "class",
         "regexes": [
-            "\\b[A-Z]+\\w+"
+            "\\b[A-Z]+\\w+?(?= *\\()",
+            {
+                "regexString": "[A-Z]+\\w+?(?= *\\{)",
+                "captureGroup": 1
+            }
         ]
     },
     {
