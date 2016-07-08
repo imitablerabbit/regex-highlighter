@@ -54,21 +54,18 @@ When creating the custom JSON files, make sure that they are in the following fo
 ```
 [
     {
-        "type": class-name1,
+        "type": "class-name",
         "regexes": [
-            regex1,
-            regex2
-        ]
-    },
-    {
-        "type": class-name2,
-        "regexes": [
+            "regexString1",
             {
-                "regexString": regex1,
+                "regexString": "regexString2"
                 "captureGroup": 1
             }
         ],
         "precedence": 1
+    },
+    {
+        ...
     }
 ]
 ```

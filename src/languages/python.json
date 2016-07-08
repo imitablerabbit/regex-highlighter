@@ -21,7 +21,7 @@
         ]
     },
     {
-        "type": "module",
+        "type": "import",
         "regexes": [
             {
                 "regexString": "(?:from)\\s+([\\w\\.]+)",

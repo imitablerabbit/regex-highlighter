@@ -7,7 +7,8 @@
     color: rgb(136, 173, 94);
 }
 
-.regex-highlight.variable {
+.regex-highlight.variable,
+.regex-highlight.import {
     color: rgb(194, 64, 64);
 }
 
@@ -16,7 +17,7 @@
 .regex-highlight.class,
 .regex-highlight.value,
 .regex-highlight.special,
-.regex-highlight.literal-values {
+.regex-highlight.literal-value {
     color: rgb(232, 159, 74);
 }
 

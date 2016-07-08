@@ -28,6 +28,15 @@
         ]
     },
     {
+        "type": "import",
+        "regexes": [
+            {
+                "regexString": "(?:import)\\s+([\\w \\.]+)",
+                "captureGroup": 1
+            }
+        ]
+    },
+    {
         "type": "keyword",
         "regexes": [
             "\\bassert\\b",

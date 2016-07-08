@@ -8,7 +8,7 @@
 }
 
 .regex-highlight.variable,
-.regex-highlight.module {
+.regex-highlight.import {
     color: rgb(194, 64, 64);
 }
 
