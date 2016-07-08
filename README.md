@@ -40,7 +40,7 @@ main = let
 ```
 
 ### Documentation:
-There are a few other public functions which allow for finer control of highlighting text, the documentation for these can be found  [here](http://markhillman.info/projects/regex-highlighter/docs).
+There are a few other public functions which allow for finer control of highlighting text, the documentation for these can be found  [here](https://imitablerabbit.github.io/regex-highlighter/).
 
 ## Screenshots:
 ### Haskell:
@@ -83,7 +83,6 @@ Once minified, add the files to the build folder and the newly updated source fi
 If any new functions have been added or an important change has been made to the structure of the code, please make sure to build the documentation again. This can be done by running JSDoc on the src folder. More specifically run this from a terminal `"node_modules/.bin/jsdoc" --readme DOCS.md src -r -d docs`
 
 ## To Do:
-- Build new json and js
 - Write DOCS.md to fully document this project
 
 ## Change Log:
