@@ -83,9 +83,18 @@ Once minified, add the files to the build folder and the newly updated source fi
 If any new functions have been added or an important change has been made to the structure of the code, please make sure to build the documentation again. This can be done by running JSDoc on the src folder. More specifically run this from a terminal `"node_modules/.bin/jsdoc" --readme DOCS.md src -r -d docs`
 
 ## To Do:
+- Add more tests for each of the different regexes
+    - c++
+    - haskell
+    - java
+    - json
+    - PHP
+    - python
 - Write DOCS.md to fully document this project
 
 ## Change Log:
+- Added better testing
+    - javascript
 - Change the json to use an array instead of keys for order preservation
 - Add name property to type
 - Moved to prototype class structure
