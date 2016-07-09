@@ -1,16 +1,60 @@
 // GENERAL TESTING
-// This will make the AJAX call and make a call to callback. The bundle
-// object is a package of data that will be sent to every callback without losing
-// the meaning of what it contains due to async
-function ajaxGET(url, callback, bundle) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if(xhttp.readyState == 4 && xhttp.status == 200) {
-            callback(xhttp.responseText, bundle);
+/**
+* A class for the Regex Highlighter
+* @author Mark Hillman &lt;mark@markhillman.info&gt;
+* @class
+*
+*   @param {string} [returnClassName] - The class name to add to the span tags
+*       once a pattern has been matched
+*/
+var RegexHighlighter = function(returnClassName) {
+    this.returnClassName = returnClassName;
+    if (typeof this.returnClassName === "undefined")
+        this.returnClassName = "regex-highlight";
+}
+
+/**
+* A function to sort the values of the passed in array, first by their indicies
+* then by their precedence.
+* @author Mark Hillman &lt;mark@markhillman.info&gt;
+*
+*   @param {Match[]} array - Array of regex match objects
+*/
+RegexHighlighter.prototype.sortArrayByObjectsIndex = function(array) {
+    array.sort(function compareObj(a, b) {
+        if (a.index == b.index)
+            return a.precedence - b.precedence;
+        else
+            return a.index - b.index;
+    });
+}
+
+/**
+* Remove duplicate objects from the array using a function passed into this
+* function. The array should contain Regex match objects and the shouldRemove
+* function should work in a similar way to a compare function in most
+* imperative languages. This means that &lt;0 will remove the item on the left,
+* &gt;0 will remove the item on the right. 0 will not remove anything
+* @author Mark Hillman &lt;mark@markhillman.info&gt;
+*
+*   @param {Match[]} array - The array which will have its duplicate items
+*       removed from
+*   @param {function} shouldRemove - A callback function to decide what will be removed
+*/
+RegexHighlighter.prototype.removeDuplicateObjectsFromArray = function(array, shouldRemove) {
+    for (var i = 1; i &lt; array.length; i++) {
+        var side = shouldRemove(array[i-1], array[i]);
+        if (side != 0) {
+            if (side &lt; 0) {
+                array.splice(i-1, 1);
+                i--;
+            }
+            else {
+                array.splice(i, 1);
+                i--;
+            }
         }
     }
-    xhttp.open("GET", url, true);
-    xhttp.send();
 }
 
 function withNumbers99() {
@@ -31,6 +75,7 @@ object.hello;
 h.x;
 h.x
 object.variable = 3;
+object.variable.variable = 3;
 object.factorial(2);
 .variable
 x.1
