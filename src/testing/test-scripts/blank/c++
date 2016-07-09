@@ -1,18 +1,82 @@
 // FUNCTION TESTING
-int factorial(int number) {
-    if (number <= 1)
-	    return 1;
-    return number * factorial(number-1);
+// Code courtesy of http://www.cppsamples.com/patterns/observer.html
+# include &lt;vector&gt;
+# include &lt;functional&gt;
+class observer {
+    public:
+        virtual void notify() = 0;
+};
+
+class observer_concrete : public observer {
+    public:
+        virtual void notify() override
+        { }
+};
+
+class subject {
+    public:
+        void register_observer(observer& o) {
+            observers.push_back(o);
+        }
+        void notify_observers() {
+            for (observer& o : observers) {
+            	o.notify();
+            }
+        }
+    private:
+        std::vector&lt;std::reference_wrapper&lt;observer&gt;&gt; observers;
+};
+
+// NUMBER TESTING
+1
+12
+1.1212
+1.121.12
+.12
+..121
+01.
+
+// VARIABLE TESTING
+object.hello;
+h.x;
+h.x
+object.variable = 3;
+object.variable.variable = 3;
+object.factorial(2);
+.variable
+x.1
+hello.1nf
+
+// FUNCTION TESTING
+this.functionName();
+functionName();
+functionName(args);
+functionName(functionName());
+functionName ();
+functionName
+();
+0functionName()
+
+// KEYWORDS
+alignas, alignof, and, and_eq, asm, atomic_cancel, atomic_commit, atomic_noexcept, auto, bitand, bitor, bool, break, case, catch, char, char16_t, char32_t, class, compl, concept, const, constexpr, const_cast, continue, decltype, default, delete, do, double, dynamic_cast, else, enum, explicit, export, extern, float, for, friend, goto, if, inline, int, import, long, module, mutable, namespace, new, noexcept, not, not_eq, nullptr, operator, or, or_eq, private, protected, public, register, reinterpret_cast, requires, return, short, signed, sizeof, static, static_assert, static_cast, struct, switch, synchronized, template, this, thread_local, throw, try, typedef, typeid, typename, union, unsigned, using, virtual, void, volatile, wchar_t, while, xor, xor_eq
+
+// LITERAL VALUES
+true, false
+
+// CLASS TESTING
+var hello = new Hell();
+var h = Hello();
+var h = Hello;
+Hello();
+Hello;
+class Hello {}
+var Hello = function Hello() {
+    constructor() {
+        console.log("Hello World!");
+    }
 }
 
-//OBJECT TESTING
-hello.property = 3;
-Hello->property = 3;
-Hello->newHello->property = 3;
-Hello.init();
-hello->init();
-
-// COMMENTS AND STRINGS TESTING
+// COMMENTS AND WRAPPINGS TESTING
 "Wrapping"
 /*multi
 line comment correct*/
@@ -20,5 +84,6 @@ line comment correct*/
 line comment with wrapping "hello" correct*/
 "Wrapping with --comment inside"
 "Wrapping which has been\" escaped "
+"Number 1 inside wrapping"
 // comment which "has a wrapping"
 "String1" + "String2"
