@@ -54,7 +54,7 @@
         ]
     },
     {
-        "type": "capital",
+        "type": "class",
         "regexes": [
             "\\b[A-Z]+\\w+"
         ]

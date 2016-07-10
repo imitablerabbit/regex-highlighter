@@ -84,8 +84,6 @@ If any new functions have been added or an important change has been made to the
 
 ## To Do:
 - Add more tests for each of the different regexes
-    - c++
-    - haskell
     - java
     - json
     - PHP
@@ -94,6 +92,8 @@ If any new functions have been added or an important change has been made to the
 
 ## Change Log:
 - Added better testing
+    - c++
+    - haskell
     - javascript
 - Change the json to use an array instead of keys for order preservation
 - Add name property to type

@@ -12,7 +12,7 @@
         "type": "variable",
         "regexes": [
             {
-                "regexString": "\\.([a-zA-Z_][\\w-]+)\\b",
+                "regexString": "\\.([a-zA-Z_][\\w-]*)\\b",
                 "captureGroup": 1
             }
         ]
