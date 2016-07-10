@@ -1,18 +1,82 @@
 <span class="regex-highlight comment">// FUNCTION TESTING</span>
-<span class="regex-highlight keyword">int</span> <span class="regex-highlight function">factorial</span>(<span class="regex-highlight keyword">int</span> number) {
-    <span class="regex-highlight keyword">if</span> (number &lt;= <span class="regex-highlight number">1</span>)
-	    <span class="regex-highlight keyword">return</span> <span class="regex-highlight number">1</span>;
-    <span class="regex-highlight keyword">return</span> number * <span class="regex-highlight function">factorial</span>(number-<span class="regex-highlight number">1</span>);
+<span class="regex-highlight comment">// Code courtesy of http://www.cppsamples.com/patterns/observer.html</span>
+# include <span class="regex-highlight import">&lt;vector&gt;</span>
+# include <span class="regex-highlight import">&lt;functional&gt;</span>
+<span class="regex-highlight keyword">class</span> <span class="regex-highlight class">observer</span> {
+    <span class="regex-highlight keyword">public</span>:
+        <span class="regex-highlight keyword">virtual</span> <span class="regex-highlight keyword">void</span> <span class="regex-highlight function">notify</span>() = <span class="regex-highlight number">0</span>;
+};
+
+<span class="regex-highlight keyword">class</span> <span class="regex-highlight class">observer_concrete</span> : <span class="regex-highlight keyword">public</span> observer {
+    <span class="regex-highlight keyword">public</span>:
+        <span class="regex-highlight keyword">virtual</span> <span class="regex-highlight keyword">void</span> <span class="regex-highlight function">notify</span>() <span class="regex-highlight keyword">override</span>
+        { }
+};
+
+<span class="regex-highlight keyword">class</span> <span class="regex-highlight class">subject</span> {
+    <span class="regex-highlight keyword">public</span>:
+        <span class="regex-highlight keyword">void</span> <span class="regex-highlight function">register_observer</span>(observer&amp; o) {
+            observers.<span class="regex-highlight function">push_back</span>(o);
+        }
+        <span class="regex-highlight keyword">void</span> <span class="regex-highlight function">notify_observers</span>() {
+            <span class="regex-highlight keyword">for</span> (observer&amp; o : observers) {
+            	o.<span class="regex-highlight function">notify</span>();
+            }
+        }
+    <span class="regex-highlight keyword">private</span>:
+        std::vector&lt;std::reference_wrapper&lt;observer&gt;&gt; observers;
+};
+
+<span class="regex-highlight comment">// NUMBER TESTING</span>
+<span class="regex-highlight number">1</span>
+<span class="regex-highlight number">12</span>
+<span class="regex-highlight number">1.1212</span>
+<span class="regex-highlight number">1.121</span><span class="regex-highlight number">.12</span>
+.<span class="regex-highlight number">12</span>
+..<span class="regex-highlight number">121</span>
+<span class="regex-highlight number">01</span>.
+
+<span class="regex-highlight comment">// VARIABLE TESTING</span>
+object.<span class="regex-highlight variable">hello</span>;
+h.<span class="regex-highlight variable">x</span>;
+h.<span class="regex-highlight variable">x</span>
+object.<span class="regex-highlight variable">variable</span> = <span class="regex-highlight number">3</span>;
+object.<span class="regex-highlight variable">variable</span>.<span class="regex-highlight variable">variable</span> = <span class="regex-highlight number">3</span>;
+object.<span class="regex-highlight function">factorial</span>(<span class="regex-highlight number">2</span>);
+.<span class="regex-highlight variable">variable</span>
+x<span class="regex-highlight number">.1</span>
+hello.1nf
+
+<span class="regex-highlight comment">// FUNCTION TESTING</span>
+<span class="regex-highlight keyword">this</span>.<span class="regex-highlight function">functionName</span>();
+<span class="regex-highlight function">functionName</span>();
+<span class="regex-highlight function">functionName</span>(args);
+<span class="regex-highlight function">functionName</span>(<span class="regex-highlight function">functionName</span>());
+<span class="regex-highlight function">functionName</span> ();
+functionName
+();
+0functionName()
+
+<span class="regex-highlight comment">// KEYWORDS</span>
+<span class="regex-highlight keyword">alignas</span>, <span class="regex-highlight keyword">alignof</span>, <span class="regex-highlight keyword">and</span>, <span class="regex-highlight keyword">and_eq</span>, <span class="regex-highlight keyword">asm</span>, <span class="regex-highlight keyword">atomic_cancel</span>, <span class="regex-highlight keyword">atomic_commit</span>, <span class="regex-highlight keyword">atomic_noexcept</span>, <span class="regex-highlight keyword">auto</span>, <span class="regex-highlight keyword">bitand</span>, <span class="regex-highlight keyword">bitor</span>, <span class="regex-highlight keyword">bool</span>, <span class="regex-highlight keyword">break</span>, <span class="regex-highlight keyword">case</span>, <span class="regex-highlight keyword">catch</span>, <span class="regex-highlight keyword">char</span>, <span class="regex-highlight keyword">char16_t</span>, <span class="regex-highlight keyword">char32_t</span>, <span class="regex-highlight keyword">class</span>, <span class="regex-highlight keyword">compl</span>, <span class="regex-highlight keyword">concept</span>, <span class="regex-highlight keyword">const</span>, <span class="regex-highlight keyword">constexpr</span>, <span class="regex-highlight keyword">const_cast</span>, <span class="regex-highlight keyword">continue</span>, <span class="regex-highlight keyword">decltype</span>, <span class="regex-highlight keyword">default</span>, <span class="regex-highlight keyword">delete</span>, <span class="regex-highlight keyword">do</span>, <span class="regex-highlight keyword">double</span>, <span class="regex-highlight keyword">dynamic_cast</span>, <span class="regex-highlight keyword">else</span>, <span class="regex-highlight keyword">enum</span>, <span class="regex-highlight keyword">explicit</span>, <span class="regex-highlight keyword">export</span>, <span class="regex-highlight keyword">extern</span>, <span class="regex-highlight keyword">float</span>, <span class="regex-highlight keyword">for</span>, <span class="regex-highlight keyword">friend</span>, <span class="regex-highlight keyword">goto</span>, <span class="regex-highlight keyword">if</span>, <span class="regex-highlight keyword">inline</span>, <span class="regex-highlight keyword">int</span>, <span class="regex-highlight keyword">import</span>, <span class="regex-highlight keyword">long</span>, <span class="regex-highlight keyword">module</span>, <span class="regex-highlight keyword">mutable</span>, <span class="regex-highlight keyword">namespace</span>, <span class="regex-highlight keyword">new</span>, <span class="regex-highlight keyword">noexcept</span>, <span class="regex-highlight keyword">not</span>, <span class="regex-highlight keyword">not_eq</span>, <span class="regex-highlight keyword">nullptr</span>, <span class="regex-highlight keyword">operator</span>, <span class="regex-highlight keyword">or</span>, <span class="regex-highlight keyword">or_eq</span>, <span class="regex-highlight keyword">private</span>, <span class="regex-highlight keyword">protected</span>, <span class="regex-highlight keyword">public</span>, <span class="regex-highlight keyword">register</span>, <span class="regex-highlight keyword">reinterpret_cast</span>, <span class="regex-highlight keyword">requires</span>, <span class="regex-highlight keyword">return</span>, <span class="regex-highlight keyword">short</span>, <span class="regex-highlight keyword">signed</span>, <span class="regex-highlight keyword">sizeof</span>, <span class="regex-highlight keyword">static</span>, <span class="regex-highlight keyword">static_assert</span>, <span class="regex-highlight keyword">static_cast</span>, <span class="regex-highlight keyword">struct</span>, <span class="regex-highlight keyword">switch</span>, <span class="regex-highlight keyword">synchronized</span>, <span class="regex-highlight keyword">template</span>, <span class="regex-highlight keyword">this</span>, <span class="regex-highlight keyword">thread_local</span>, <span class="regex-highlight keyword">throw</span>, <span class="regex-highlight keyword">try</span>, <span class="regex-highlight keyword">typedef</span>, <span class="regex-highlight keyword">typeid</span>, <span class="regex-highlight keyword">typename</span>, <span class="regex-highlight keyword">union</span>, <span class="regex-highlight keyword">unsigned</span>, <span class="regex-highlight keyword">using</span>, <span class="regex-highlight keyword">virtual</span>, <span class="regex-highlight keyword">void</span>, <span class="regex-highlight keyword">volatile</span>, <span class="regex-highlight keyword">wchar_t</span>, <span class="regex-highlight keyword">while</span>, <span class="regex-highlight keyword">xor</span>, <span class="regex-highlight keyword">xor_eq</span>
+
+<span class="regex-highlight comment">// LITERAL VALUES</span>
+<span class="regex-highlight literal-value">true</span>, <span class="regex-highlight literal-value">false</span>
+
+<span class="regex-highlight comment">// CLASS TESTING</span>
+var hello = <span class="regex-highlight keyword">new</span> <span class="regex-highlight function">Hell</span>();
+var h = <span class="regex-highlight function">Hello</span>();
+var h = Hello;
+<span class="regex-highlight function">Hello</span>();
+Hello;
+<span class="regex-highlight keyword">class</span> <span class="regex-highlight class">Hello</span> {}
+var Hello = function <span class="regex-highlight function">Hello</span>() {
+    <span class="regex-highlight function">constructor</span>() {
+        console.<span class="regex-highlight function">log</span>(<span class="regex-highlight wrapping">"Hello World!"</span>);
+    }
 }
 
-<span class="regex-highlight comment">//OBJECT TESTING</span>
-hello.<span class="regex-highlight variable">property</span> = <span class="regex-highlight number">3</span>;
-Hello-&gt;<span class="regex-highlight variable">property</span> = <span class="regex-highlight number">3</span>;
-Hello-&gt;<span class="regex-highlight variable">newHello</span>-&gt;<span class="regex-highlight variable">property</span> = <span class="regex-highlight number">3</span>;
-Hello.<span class="regex-highlight function">init</span>();
-hello-&gt;<span class="regex-highlight function">init</span>();
-
-<span class="regex-highlight comment">// COMMENTS AND STRINGS TESTING</span>
+<span class="regex-highlight comment">// COMMENTS AND WRAPPINGS TESTING</span>
 <span class="regex-highlight wrapping">"Wrapping"</span>
 <span class="regex-highlight comment">/*multi
 line comment correct*/</span>
@@ -20,5 +84,6 @@ line comment correct*/</span>
 line comment with wrapping "hello" correct*/</span>
 <span class="regex-highlight wrapping">"Wrapping with --comment inside"</span>
 <span class="regex-highlight wrapping">"Wrapping which has been\" escaped "</span>
+<span class="regex-highlight wrapping">"Number 1 inside wrapping"</span>
 <span class="regex-highlight comment">// comment which "has a wrapping"</span>
 <span class="regex-highlight wrapping">"String1"</span> + <span class="regex-highlight wrapping">"String2"</span>

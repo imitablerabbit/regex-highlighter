@@ -1,15 +1,15 @@
-<span class="regex-highlight keyword">import</span> <span class="regex-highlight module">bpy</span>
-<span class="regex-highlight keyword">import</span> <span class="regex-highlight module">bpy.ops</span>
-<span class="regex-highlight keyword">import</span> <span class="regex-highlight module">copy</span>
-<span class="regex-highlight keyword">import</span> <span class="regex-highlight module">mathutils</span>
-<span class="regex-highlight keyword">import</span> <span class="regex-highlight module">bmesh</span>
-<span class="regex-highlight keyword">import</span> <span class="regex-highlight module">bmesh.ops</span>
-<span class="regex-highlight keyword">import</span> <span class="regex-highlight module">os</span>
-<span class="regex-highlight keyword">from</span> <span class="regex-highlight module">time</span> <span class="regex-highlight keyword">import</span> <span class="regex-highlight module">time</span>
-<span class="regex-highlight keyword">from</span> <span class="regex-highlight module">math</span> <span class="regex-highlight keyword">import</span> <span class="regex-highlight module">radians, pi, ceil</span>
-<span class="regex-highlight keyword">from</span> <span class="regex-highlight module">random</span> <span class="regex-highlight keyword">import</span> <span class="regex-highlight module">seed, random, randint, uniform</span>
-<span class="regex-highlight keyword">from</span> <span class="regex-highlight module">mathutils</span> <span class="regex-highlight keyword">import</span> <span class="regex-highlight module">Vector, Quaternion</span>
-<span class="regex-highlight keyword">from</span> <span class="regex-highlight module">bpy.props</span> <span class="regex-highlight keyword">import</span> <span class="regex-highlight module">FloatProperty, BoolProperty, IntProperty, StringProperty</span>
+<span class="regex-highlight keyword">import</span> <span class="regex-highlight import">bpy</span>
+<span class="regex-highlight keyword">import</span> <span class="regex-highlight import">bpy.ops</span>
+<span class="regex-highlight keyword">import</span> <span class="regex-highlight import">copy</span>
+<span class="regex-highlight keyword">import</span> <span class="regex-highlight import">mathutils</span>
+<span class="regex-highlight keyword">import</span> <span class="regex-highlight import">bmesh</span>
+<span class="regex-highlight keyword">import</span> <span class="regex-highlight import">bmesh.ops</span>
+<span class="regex-highlight keyword">import</span> <span class="regex-highlight import">os</span>
+<span class="regex-highlight keyword">from</span> <span class="regex-highlight import">time</span> <span class="regex-highlight keyword">import</span> <span class="regex-highlight import">time</span>
+<span class="regex-highlight keyword">from</span> <span class="regex-highlight import">math</span> <span class="regex-highlight keyword">import</span> <span class="regex-highlight import">radians, pi, ceil</span>
+<span class="regex-highlight keyword">from</span> <span class="regex-highlight import">random</span> <span class="regex-highlight keyword">import</span> <span class="regex-highlight import">seed, random, randint, uniform</span>
+<span class="regex-highlight keyword">from</span> <span class="regex-highlight import">mathutils</span> <span class="regex-highlight keyword">import</span> <span class="regex-highlight import">Vector, Quaternion</span>
+<span class="regex-highlight keyword">from</span> <span class="regex-highlight import">bpy.props</span> <span class="regex-highlight keyword">import</span> <span class="regex-highlight import">FloatProperty, BoolProperty, IntProperty, StringProperty</span>
 
 create_cylinder = bpy.<span class="regex-highlight variable">ops</span>.<span class="regex-highlight variable">mesh</span>.<span class="regex-highlight variable">primitive_cylinder_add</span>
 create_plane = bpy.<span class="regex-highlight variable">ops</span>.<span class="regex-highlight variable">mesh</span>.<span class="regex-highlight variable">primitive_plane_add</span>
@@ -37,7 +37,7 @@ bl_info = {
         <span class="regex-highlight keyword">raise</span> <span class="regex-highlight function">NameError</span>(<span class="regex-highlight wrapping">"No image was found at this location: {}"</span>.<span class="regex-highlight function">format</span>(filepath))
 
 
-<span class="regex-highlight keyword">def</span> <span class="regex-highlight function">find_upper_face</span>(bm, lowest=<span class="regex-highlight literal-values">True</span>):
+<span class="regex-highlight keyword">def</span> <span class="regex-highlight function">find_upper_face</span>(bm, lowest=<span class="regex-highlight literal-value">True</span>):
     <span class="regex-highlight wrapping">""</span><span class="regex-highlight wrapping">"
     This function will return the face which is at the
     lowest location in the mesh by default, otherwise it will
@@ -49,8 +49,8 @@ bl_info = {
 
     :return a BMFace object
     "</span><span class="regex-highlight wrapping">""</span>
-    lowest_face = <span class="regex-highlight literal-values">None</span>
-    lowest_face_location = <span class="regex-highlight literal-values">None</span>
+    lowest_face = <span class="regex-highlight literal-value">None</span>
+    lowest_face_location = <span class="regex-highlight literal-value">None</span>
     <span class="regex-highlight keyword">for</span> face <span class="regex-highlight keyword">in</span> bm.<span class="regex-highlight variable">faces</span>:
         location = face.<span class="regex-highlight function">calc_center_median</span>()
         <span class="regex-highlight keyword">if</span> lowest_face:
