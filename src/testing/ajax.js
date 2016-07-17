@@ -1,17 +1,3 @@
-// This will make the AJAX call and make a call to callback. The bundle
-// object is a package of data that will be sent to every callback without losing
-// the meaning of what it contains due to async
-function ajaxGET(url, callback, bundle) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if(xhttp.readyState == 4 && xhttp.status == 200) {
-            callback(xhttp.responseText, bundle);
-        }
-    }
-    xhttp.open("GET", url, true);
-    xhttp.send();
-}
-
 // This will load the content of any element which has the include attribute
 // that is also linking to a file. The bundle object that is passed to the
 // callback provided just contains the node that the load function is currently
