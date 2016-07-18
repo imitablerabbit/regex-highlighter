@@ -8,8 +8,7 @@
     {
         "type": "class",
         "regexes": [
-            "\\b[A-Z][a-zA-Z0-9_]+(?=\\s{)",
-            "^[A-Z][a-zA-Z0-9_]+"
+            "\\b[A-Z][a-zA-Z0-9_]+"
         ]
     },
     {
