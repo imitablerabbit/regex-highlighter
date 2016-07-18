@@ -89,6 +89,7 @@ If any new functions have been added or an important change has been made to the
     - PHP
     - python
 - Write DOCS.md to fully document this project
+- Write documentation for each of the different languages that are currently supported.
 
 ## Change Log:
 - Added better testing

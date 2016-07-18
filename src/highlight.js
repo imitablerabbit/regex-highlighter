@@ -386,7 +386,7 @@ RegexHighlighter.prototype.assembleNewStringFromMatchArray = function(string, ar
 *       been retrieved.
 *   @param {Object} [bundle] - A bundle object to be passed to the callback
 */
-function ajaxGET(url, callback, bundle) {
+RegexHighlighter.prototype.ajaxGET = function(url, callback, bundle) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if(xhttp.readyState == 4 && xhttp.status == 200) {
