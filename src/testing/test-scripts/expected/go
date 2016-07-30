@@ -1,0 +1,113 @@
+<span class="regex-highlight keyword">package</span> julia
+
+<span class="regex-highlight keyword">import</span> (<span class="regex-highlight import">
+	"fmt"
+	"image"
+	"image/color"
+	"image/png"
+	"math"
+	"math/cmplx"
+	"os"
+	"sync"
+</span>)
+
+<span class="regex-highlight comment">// The function to call on the complex numbers</span>
+<span class="regex-highlight keyword">var</span> fn = DefaultComplexFunction
+<span class="regex-highlight keyword">var</span> cMin = <span class="regex-highlight function">complex</span>(-<span class="regex-highlight number">1</span>, -<span class="regex-highlight number">1</span>)
+<span class="regex-highlight keyword">var</span> cMax = <span class="regex-highlight function">complex</span>(<span class="regex-highlight number">1</span>, <span class="regex-highlight number">1</span>)
+
+<span class="regex-highlight comment">// This struct is for the work that needs to be done as well</span>
+<span class="regex-highlight comment">// as keeping track of the result</span>
+<span class="regex-highlight keyword">type</span> work <span class="regex-highlight keyword">struct</span> {
+	x, y  <span class="regex-highlight keyword">int</span>
+	color <span class="regex-highlight keyword">uint8</span>
+}
+
+<span class="regex-highlight comment">// CreateImage will create a png image with the specified resolution</span>
+<span class="regex-highlight comment">// for a julia function for the function set via JuliaFunction</span>
+<span class="regex-highlight keyword">func</span> <span class="regex-highlight function">CreateImage</span>(filename string, xRes, yRes <span class="regex-highlight keyword">int</span>) {
+	img := image.<span class="regex-highlight function">NewRGBA</span>(image.<span class="regex-highlight function">Rect</span>(<span class="regex-highlight number">0</span>, <span class="regex-highlight number">0</span>, xRes, yRes))
+	workChan := <span class="regex-highlight function">make</span>(<span class="regex-highlight keyword">chan</span> *work, xRes*yRes)
+	results := <span class="regex-highlight function">make</span>(<span class="regex-highlight keyword">chan</span> *work, xRes*yRes)
+	realOffset := math.<span class="regex-highlight function">Abs</span>(<span class="regex-highlight function">real</span>(cMin) - <span class="regex-highlight function">real</span>(cMax))
+	imagOffset := math.<span class="regex-highlight function">Abs</span>(<span class="regex-highlight function">imag</span>(cMin) - <span class="regex-highlight function">imag</span>(cMax))
+
+	<span class="regex-highlight comment">// workers function</span>
+	<span class="regex-highlight keyword">var</span> worker = <span class="regex-highlight keyword">func</span>() {
+		<span class="regex-highlight keyword">for</span> w := <span class="regex-highlight keyword">range</span> workChan {
+			w.<span class="regex-highlight variable">color</span> = <span class="regex-highlight function">calcIter</span>(<span class="regex-highlight function">complex</span>(
+				<span class="regex-highlight function">real</span>(cMin)+(realOffset/<span class="regex-highlight keyword">float64</span>(xRes)*<span class="regex-highlight keyword">float64</span>(w.<span class="regex-highlight variable">x</span>)),
+				<span class="regex-highlight function">imag</span>(cMin)+(imagOffset/<span class="regex-highlight keyword">float64</span>(yRes)*<span class="regex-highlight keyword">float64</span>(w.<span class="regex-highlight variable">y</span>))))
+			results &lt;- w
+		}
+	}
+
+	<span class="regex-highlight comment">// reciever function</span>
+	<span class="regex-highlight keyword">var</span> wg sync.<span class="regex-highlight variable">WaitGroup</span>
+	<span class="regex-highlight keyword">var</span> reciever = <span class="regex-highlight keyword">func</span>() {
+		<span class="regex-highlight keyword">for</span> w := <span class="regex-highlight keyword">range</span> results {
+			img.<span class="regex-highlight function">Set</span>(w.<span class="regex-highlight variable">x</span>, w.<span class="regex-highlight variable">y</span>, color.<span class="regex-highlight variable">RGBA</span>{w.<span class="regex-highlight variable">color</span>, w.<span class="regex-highlight variable">color</span>, w.<span class="regex-highlight variable">color</span>, <span class="regex-highlight number">255</span>})
+			wg.<span class="regex-highlight function">Done</span>()
+		}
+	}
+
+	<span class="regex-highlight comment">// Start the workers and reciever for each cpu core</span>
+	<span class="regex-highlight keyword">go</span> <span class="regex-highlight function">reciever</span>()
+	<span class="regex-highlight keyword">for</span> i := <span class="regex-highlight number">0</span>; i &lt; <span class="regex-highlight number">50</span>; i++ {
+		<span class="regex-highlight keyword">go</span> <span class="regex-highlight function">worker</span>()
+	}
+
+	<span class="regex-highlight comment">// Add the work for the workers</span>
+	wg.<span class="regex-highlight function">Add</span>(xRes * yRes)
+	<span class="regex-highlight keyword">for</span> x := <span class="regex-highlight number">0</span>; x &lt; xRes; x++ {
+		<span class="regex-highlight keyword">for</span> y := <span class="regex-highlight number">0</span>; y &lt; yRes; y++ {
+			workChan &lt;- &amp;work{x, y, <span class="regex-highlight number">0</span>}
+		}
+	}
+	<span class="regex-highlight function">close</span>(workChan)
+	wg.<span class="regex-highlight function">Wait</span>()
+	<span class="regex-highlight function">close</span>(results)
+	<span class="regex-highlight function">writeImage</span>(filename, img)
+}
+
+<span class="regex-highlight comment">// ComplexFunction sets the function that will be used to determine the julia</span>
+<span class="regex-highlight comment">// sets</span>
+<span class="regex-highlight keyword">func</span> <span class="regex-highlight function">ComplexFunction</span>(new <span class="regex-highlight keyword">func</span>(<span class="regex-highlight keyword">complex128</span>, <span class="regex-highlight keyword">complex128</span>) <span class="regex-highlight keyword">complex128</span>) {
+	fn = new
+}
+
+<span class="regex-highlight comment">// ComplexRange sets the range of complex numbers that the image will include</span>
+<span class="regex-highlight keyword">func</span> <span class="regex-highlight function">ComplexRange</span>(complexMin, complexMax <span class="regex-highlight keyword">complex128</span>) {
+	cMin = complexMin
+	cMax = complexMax
+}
+
+<span class="regex-highlight comment">// DefaultComplexFunction is the function that was used for the daily challenge</span>
+<span class="regex-highlight keyword">func</span> <span class="regex-highlight function">DefaultComplexFunction</span>(c, orig <span class="regex-highlight keyword">complex128</span>) <span class="regex-highlight keyword">complex128</span> {
+	c = cmplx.<span class="regex-highlight function">Pow</span>(c, <span class="regex-highlight keyword">complex128</span>(<span class="regex-highlight number">2</span>))
+	c += <span class="regex-highlight function">complex</span>(-<span class="regex-highlight number">0</span>.<span class="regex-highlight number">221</span>, -<span class="regex-highlight number">0</span>.<span class="regex-highlight number">713</span>)
+	<span class="regex-highlight keyword">return</span> c
+}
+
+<span class="regex-highlight comment">// Iteratively determines how many iterations its took to escape</span>
+<span class="regex-highlight keyword">func</span> <span class="regex-highlight function">calcIter</span>(c <span class="regex-highlight keyword">complex128</span>) <span class="regex-highlight keyword">uint8</span> {
+	iter := <span class="regex-highlight number">0</span>
+	orig := c
+	<span class="regex-highlight keyword">for</span> {
+		c = <span class="regex-highlight function">fn</span>(c, orig)
+		iter++
+		<span class="regex-highlight keyword">if</span> cmplx.<span class="regex-highlight function">Abs</span>(c) &gt; <span class="regex-highlight number">2</span> || iter &gt;= <span class="regex-highlight number">255</span> {
+			<span class="regex-highlight keyword">return</span> <span class="regex-highlight keyword">uint8</span>(iter)
+		}
+	}
+}
+
+<span class="regex-highlight comment">// writeImage writes the Image struct to a file using png format</span>
+<span class="regex-highlight keyword">func</span> <span class="regex-highlight function">writeImage</span>(filename string, image *image.<span class="regex-highlight variable">RGBA</span>) {
+	file, err := os.<span class="regex-highlight function">Create</span>(filename)
+	<span class="regex-highlight keyword">if</span> err != <span class="regex-highlight literal-value">nil</span> {
+		fmt.<span class="regex-highlight function">Println</span>(<span class="regex-highlight wrapping">"Whoops"</span>)
+	}
+	png.<span class="regex-highlight function">Encode</span>(file, image)
+	file.<span class="regex-highlight function">Close</span>()
+}

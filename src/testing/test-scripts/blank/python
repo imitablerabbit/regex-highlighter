@@ -18,7 +18,7 @@ scale = bmesh.ops.scale
 bl_info = {
     "name": "Tree Creator",
     "author": "Student 14027009",
-    "version": (1, 0, 0),
+    "version": (1, 0.0, 0.1),
     "location": "View 3D > Object Mode > Tool Shelf",
     "description": "Generate a tree mesh from information supplied in the properties pane",
     "category": "Add Mesh"

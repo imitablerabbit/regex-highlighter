@@ -1,17 +1,17 @@
 [
     {
-        "type": "number",
-        "regexes": [
-            "[0-9]+"
-        ]
-    },
-    {
         "type": "variable",
         "regexes": [
             {
-                "regexString": "\\.(\\w+)\\b",
+                "regexString": "\\.([a-zA-Z_][\\w-]*)\\b",
                 "captureGroup": 1
             }
+        ]
+    },
+    {
+        "type": "number",
+        "regexes": [
+            "[0-9]+"
         ]
     },
     {

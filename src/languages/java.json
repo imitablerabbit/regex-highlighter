@@ -15,7 +15,7 @@
         "type": "variable",
         "regexes": [
             {
-                "regexString": "\\.(\\w+)\\b",
+                "regexString": "\\.([a-zA-Z_][\\w-]*)\\b",
                 "captureGroup": 1
             }
         ]
