@@ -252,6 +252,9 @@ RegexHighlighter.prototype.insertSyntaxHighlighting = function(regexObject, stri
         duplicateFunction = this.defaultDuplicateFunction;
     }
 
+    // Convert <br> to \n
+    string = string.replaceAll("<br>", "\n");
+
     // Finds all of the matches and stores them into an array
     var matchesArray = this.getMatchesArrayFromRegex(regexObject, string);
 
@@ -336,7 +339,7 @@ RegexHighlighter.prototype.loadSyntaxHighlightingByClass = function(className,
             var language = classes[1];
 
             // Load the file from highlight folder and insert async
-            ajaxGET(languagesFolderPath + language + ".json", function (response, passedElement) {
+            this.ajaxGET(languagesFolderPath + language + ".json", function (response, passedElement) {
                 var syntax = JSON.parse(response);
                 var result = this.insertSyntaxHighlighting(syntax, passedElement.innerHTML);
                 if (result) {
@@ -396,3 +399,12 @@ RegexHighlighter.prototype.ajaxGET = function(url, callback, bundle) {
     xhttp.open("GET", url, true);
     xhttp.send();
 }
+
+/**
+* Replaces all the occurences of a search string with the replacement
+* provided
+*/
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
