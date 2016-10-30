@@ -148,7 +148,9 @@
         <!-- This will run as soon as all of the includes are loaded -->
         <script type="text/javascript">
         loadIncludes(function() {
+            console.log("Finished Loading.");
             new RegexHighlighter().loadSyntaxHighlightingByClass("regex-color", "../languages/");
+            console.log("Finished Highlighting.");
         })
         </script>
     </body>
