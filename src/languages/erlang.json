@@ -16,6 +16,7 @@
 		"regexes": [
 			"\\b[a-z][A-Za-z0-9]*\\b"
 		]
+	},
 	{
 		"type": "keyword",
 		"regexes": [
