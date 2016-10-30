@@ -8,9 +8,14 @@
 	{
 		"type": "variable",
 		"regexes": [
-			"\\w[A-Z][A-Za-z0-9_-]*"
+			"\\b[A-Z][A-Za-z0-9_-]*\\b"
 		]
 	},
+	{
+		"type": "function",
+		"regexes": [
+			"\\b[a-z][A-Za-z0-9]*\\b"
+		]
 	{
 		"type": "keyword",
 		"regexes": [

@@ -7,6 +7,7 @@
     color: rgb(136, 173, 94);
 }
 
+.regex-highlight.annotations,
 .regex-highlight.variable,
 .regex-highlight.import {
     color: rgb(194, 64, 64);
