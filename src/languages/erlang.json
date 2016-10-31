@@ -11,10 +11,17 @@
 			"\\b[A-Z][A-Za-z0-9_-]*\\b"
 		]
 	},
+	
 	{
 		"type": "function",
 		"regexes": [
-			"\\b[a-z][A-Za-z0-9]*\\b"
+			"\\b[a-z][A-Za-z0-9_-]*\\b"
+		]
+	},
+	{
+		"type": "annotation",
+		"regexes": [
+			"-[a-z][A-Za-z0-9-_]*\\b"
 		]
 	},
 	{
@@ -47,12 +54,6 @@
 			"\\btry\\b",
 			"\\bwhen\\b",
 			"\\bxor\\b"
-		]
-	},
-	{
-		"type": "annotation",
-		"regexes": [
-			"-[a-z]"
 		]
 	},
 	{

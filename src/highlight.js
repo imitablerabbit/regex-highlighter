@@ -252,8 +252,8 @@ RegexHighlighter.prototype.insertSyntaxHighlighting = function(regexObject, stri
         duplicateFunction = this.defaultDuplicateFunction;
     }
 
-    // Convert <br> to \n
-    string = string.replaceAll("<br>", "\n");
+    // Convert <br> to \n, &lt; to >, and &gt; to >
+    string = string.replaceAll("<br>", "\n").replaceAll("&lt;", "<").replaceAll("&gt;", ">");
 
     // Finds all of the matches and stores them into an array
     var matchesArray = this.getMatchesArrayFromRegex(regexObject, string);
