@@ -1,11 +1,15 @@
 # regex-highlighter
+
 A javascript tool to highlight regex pattern matches in a HTML document and CSS. Whilst this tool is primarily aimed at programming languages syntax highlighting, it can be used with any regular expression. Highlighted matches from a given regex file will be wrapped in a span tag and then given a class which can be used to style that particular match. The are several supported languages which can be used, or you can create custom rules.
 
-## How to Use:
-### Online Converter:
+## How to Use
+
+### Online Converter
+
 If you don't need to dynamically covert text to its highlighted format, you can use the online converter [here](http://markhillman.info/#regex-highlighter) and copy the output into the HTML. Then all that is needed is to either include the CSS file, or to style the span tags yourself. The online converter allows for all currently supported languages, custom JSON files and single regex lines.
 
-### Adding to a website:
+### Adding to a website
+
 Adding the highlighter to a project is very simple! All you have to do is to include the javascript file in your HTML and run a function from the RegexHighlighter object. To see which functions will best suit your use case, check out the documentation [here](https://imitablerabbit.github.io/regex-highlighter/).
 Simply put, you can just follow these few steps:
 - Download the zip file from github, then move the files to relevant folders somewhere on the server (**Note: the script has to run on a server as it uses AJAX**)
@@ -14,7 +18,8 @@ Simply put, you can just follow these few steps:
 - Now you can run regex-highlighter with the `loadSyntaxHighlightingByClass()` function. This function is inside the RegexHighlighter class, so first create an instance then call the function `new RegexHighlighter().loadSyntaxHighlightingByClass()`. The `loadSyntaxHighlightingByClass()` function takes 2 optional parameters in order to determine which parts of the html need to be checked, as well as the folder for where the default language support is. The default options for these are 'regex-color' and './languages/'. This means that only elements which have a class of regex-color will be coloured and only the 'languages/' folder in the same directory as the script will be searched for the regex support. These can be changed by supplying arguments to the function.
 - To tell the regex-highlighter what language it should use, add a class to the same element, which is the language name.
 
-### Example:
+### Example
+
 ```
 <script  type="text/javascript" src="build/highlight.min.js"></script>
 <link rel="stylesheet" href="build/syntax.css" charset="utf-8">
@@ -39,18 +44,36 @@ main = let
 <script type="text/javascript">new RegexHighlighter().loadSyntaxHighlightingByClass("syntax-color");</script>
 ```
 
-### Documentation:
+### Documentation
+
 There are a few other public functions which allow for finer control of highlighting text, the documentation for these can be found  [here](https://imitablerabbit.github.io/regex-highlighter/).
 
-## Screenshots:
-### Haskell:
+## Screenshots
+
+### Haskell
+
 ![Haskell Syntax](screenshots/haskell.PNG)
 
-### Java:
+### Java
+
 ![Java Syntax](screenshots/java.PNG)
 
-## Creating custom JSON files:
+## Currently supported languages
+
+- Java
+- Javascript
+- Go
+- Haskell
+- Erlang
+- C++
+- JSON
+- PHP
+- Python
+
+## Creating custom JSON files
+
 When creating the custom JSON files, make sure that they are in the following formats:
+
 ```
 [
     {
@@ -69,12 +92,15 @@ When creating the custom JSON files, make sure that they are in the following fo
     }
 ]
 ```
+
 Where class-name is class that will attached to the span when the script is run and regex is any regex in a string format. Unfortunately due to JSON not supporting regex notation or raw string, any backslashes in the regex have to be escape e.g \\\\bhello\\\\b.
 
 You can use the testing folder for trying out any new builds and generally editing the source files. This folder also has a way of testing and previewing the regex highlighting that is currently supported, via the [index](src/testing/index.html) webpage.
 
-## Building:
+## Building
+
 If you have made any changes, make sure to minify the javascript and json files using the following links:
+
 - Javascript: http://jscompress.com/
 - JSON: http://www.httputility.net/json-minifier.aspx
 
@@ -82,20 +108,24 @@ Once minified, add the files to the build folder and the newly updated source fi
 
 If any new functions have been added or an important change has been made to the structure of the code, please make sure to build the documentation again. This can be done by running JSDoc on the src folder. More specifically run this from a terminal `"node_modules/.bin/jsdoc" --readme DOCS.md src -r -d docs`
 
-## To Do:
+## To Do
+
+- Add a build script to generate the files in the build directory.
 - Add more tests for each of the different regexes
-    - java
-    - json
-    - PHP
-    - python
+  - java
+  - json
+  - PHP
+  - python
 - Write DOCS.md to fully document this project
 - Write documentation for each of the different languages that are currently supported.
 
 ## Change Log:
+
+- Added a list of languages supported in the readme.
 - Added better testing
-    - c++
-    - haskell
-    - javascript
+  - c++
+  - haskell
+  - javascript
 - Change the json to use an array instead of keys for order preservation
 - Add name property to type
 - Moved to prototype class structure
@@ -113,12 +143,12 @@ If any new functions have been added or an important change has been made to the
 - Fixed the haskell function errors
 - Created a guide on how to add more languages
 - Added Languages:
-    - Python
-    - PHP
-    - basic C++
-    - JSON
-    - Javascript
-    - Java
-    - Haskell
+  - Python
+  - PHP
+  - basic C++
+  - JSON
+  - Javascript
+  - Java
+  - Haskell
 - Added main javascript file
 - Added support for multiple languages
