@@ -60,6 +60,7 @@ There are a few other public functions which allow for finer control of highligh
 
 ## Currently supported languages
 
+- Dockerfile
 - Java
 - Javascript
 - Go
