@@ -1,1 +1,1 @@
-[{"type":"keyword","regexes":["\\bFROM\\b","\\bMAINTAINER\\b","\\bRUN\\b","\\bCMD\\b","\\bADD\\b","\\bENTRYPOINT\\b","\\bENV\\b"]},{"type":"comment","regexes":["#.+"]}]
+[{"type":"keyword","regexes":["\\bFROM\\b","\\bMAINTAINER\\b","\\bRUN\\b","\\bCMD\\b","\\bADD\\b","\\bENTRYPOINT\\b","\\bEXPOSE\\b","\\bENV\\b"]},{"type":"comment","regexes":["#.+"]}]

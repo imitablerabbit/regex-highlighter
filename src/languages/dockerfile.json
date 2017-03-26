@@ -8,6 +8,7 @@
             "\\bCMD\\b",
             "\\bADD\\b",
             "\\bENTRYPOINT\\b",
+            "\\bEXPOSE\\b",
             "\\bENV\\b"
         ]
     },
