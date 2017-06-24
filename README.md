@@ -20,7 +20,7 @@ Simply put, you can just follow these few steps:
 
 ### Example
 
-```
+```html
 <script  type="text/javascript" src="build/highlight.min.js"></script>
 <link rel="stylesheet" href="build/syntax.css" charset="utf-8">
 
@@ -75,14 +75,14 @@ There are a few other public functions which allow for finer control of highligh
 
 When creating the custom JSON files, make sure that they are in the following formats:
 
-```
+```json
 [
     {
         "type": "class-name",
         "regexes": [
             "regexString1",
             {
-                "regexString": "regexString2"
+                "regexString": "regexString2",
                 "captureGroup": 1
             }
         ],
