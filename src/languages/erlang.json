@@ -11,11 +11,20 @@
 			"\\b[A-Z][A-Za-z0-9_-]*\\b"
 		]
 	},
-	
+	{
+		"type": "atom",
+		"regexes": [
+			"\\b[a-z][A-za-z_0-9-]*\\b",
+			"'[A-Za-z0-9_-]*'"
+		]
+	},	
 	{
 		"type": "function",
 		"regexes": [
-			"\\b[a-z][A-Za-z0-9_-]*\\b"
+			{
+				"regexString": "\\b([a-z][A-Za-z0-9_-]*)\\(",
+				"captureGroup": 1
+			}
 		]
 	},
 	{

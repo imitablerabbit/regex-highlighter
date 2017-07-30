@@ -18,6 +18,7 @@
 .regex-highlight.class,
 .regex-highlight.value,
 .regex-highlight.special,
+.regex-highlight.atom,
 .regex-highlight.literal-value {
     color: rgb(232, 159, 74);
 }

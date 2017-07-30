@@ -42,3 +42,10 @@ send_message(Ring, Message, Iter) -&gt;
 		{Pid, Message} -&gt;
 			{Pid, Message}
 	end.
+	
+%% Test keywords
+
+%% test atoms
+atom
+'Alsoatom'
+a_atom
