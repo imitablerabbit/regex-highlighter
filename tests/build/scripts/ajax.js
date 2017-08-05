@@ -18,6 +18,7 @@ function loadIncludes(callback) {
 
         // Make function call with object passed
         ajaxGET(file, function(responseText, bundle) {
+            console.log(responseText)
             bundle.node.innerHTML = responseText;
 
             // Make the callback only on the last node

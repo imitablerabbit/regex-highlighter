@@ -1,0 +1,1 @@
+[{"type":"value","regexes":["[0-9\\.]+"]},{"type":"wrapping","regexes":["\"(\\\\.|[^\"])*\""]},{"type":"key","regexes":["[a-zA-Z0-9\"_-]+?(?=:)"]}]

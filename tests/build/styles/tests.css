@@ -1,0 +1,33 @@
+body {
+    margin: 1%;
+    font-family: sans-serif;
+}
+
+div {
+    font-size: 1rem;
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+pre {
+    white-space: pre;
+    overflow: scroll;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    text-decoration: underline;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+section {
+    font-size: 0;
+    border: thin dashed black;
+    padding: 1% 2%;
+    margin-bottom: 1%;
+}

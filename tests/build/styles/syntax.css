@@ -1,0 +1,30 @@
+.regex-highlight.keyword,
+.regex-highlight.key {
+    color: rgb(158, 102, 201);
+}
+
+.regex-highlight.wrapping {
+    color: rgb(136, 173, 94);
+}
+
+.regex-highlight.variable,
+.regex-highlight.import {
+    color: rgb(194, 64, 64);
+}
+
+.regex-highlight.number,
+.regex-highlight.capital,
+.regex-highlight.class,
+.regex-highlight.value,
+.regex-highlight.special,
+.regex-highlight.literal-value {
+    color: rgb(232, 159, 74);
+}
+
+.regex-highlight.function {
+    color: rgb(22, 135, 162);
+}
+
+.regex-highlight.comment {
+    color: rgb(170, 170, 170);
+}
