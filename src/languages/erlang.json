@@ -8,7 +8,7 @@
 	{
 		"type": "variable",
 		"regexes": [
-			"\\b[A-Z][A-Za-z0-9_-]*\\b"
+			"\\b[_A-Z][A-Za-z0-9_-]*\\b"
 		]
 	},
 	{
