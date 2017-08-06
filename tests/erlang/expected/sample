@@ -1,0 +1,30 @@
+<span class="regex-highlight annotation">-module</span>(<span class="regex-highlight atom">ring</span>).
+<span class="regex-highlight annotation">-export</span>([]).
+
+<span class="regex-highlight annotation">-compile</span>(<span class="regex-highlight atom">export_all</span>).
+
+<span class="regex-highlight function">create_ring</span>(<span class="regex-highlight number">0</span>) -&gt; [];
+<span class="regex-highlight function">create_ring</span>(<span class="regex-highlight variable">N</span>) -&gt;
+	[<span class="regex-highlight function">spawn</span>(<span class="regex-highlight atom">ring</span>, <span class="regex-highlight atom">ring_element</span>, []) | <span class="regex-highlight function">create_ring</span>(<span class="regex-highlight variable">N-1</span>)].
+
+<span class="regex-highlight comment">% ring_element will handle the passing of a message to the</span>
+<span class="regex-highlight comment">% next process in the ring. This happens until the message</span>
+<span class="regex-highlight comment">% reaches the end of the ring.</span>
+<span class="regex-highlight function">ring_element</span>() -&gt;
+	<span class="regex-highlight keyword">receive</span>
+		{<span class="regex-highlight variable">From</span>, {<span class="regex-highlight variable">N</span>, <span class="regex-highlight variable">Ring</span>, <span class="regex-highlight variable">Message</span>, <span class="regex-highlight variable">Iter</span>}} <span class="regex-highlight keyword">when</span> <span class="regex-highlight variable">N</span> =&lt; <span class="regex-highlight function">length</span>(<span class="regex-highlight variable">Ring</span>) -&gt;
+			<span class="regex-highlight variable">Pid</span> = <span class="regex-highlight atom">lists</span>:<span class="regex-highlight function">nth</span>(<span class="regex-highlight variable">N</span>, <span class="regex-highlight variable">Ring</span>),
+			<span class="regex-highlight variable">Pid</span> ! {<span class="regex-highlight variable">From</span>, {<span class="regex-highlight variable">N</span>+<span class="regex-highlight number">1</span>, <span class="regex-highlight variable">Ring</span>, <span class="regex-highlight variable">Message</span>, <span class="regex-highlight variable">Iter</span>}},
+			<span class="regex-highlight function">ring_element</span>();
+		{<span class="regex-highlight variable">From</span>, {<span class="regex-highlight variable">N</span>, <span class="regex-highlight variable">Ring</span>, <span class="regex-highlight variable">Message</span>, <span class="regex-highlight variable">Iter</span>}} <span class="regex-highlight keyword">when</span> <span class="regex-highlight variable">N</span> &gt; <span class="regex-highlight function">length</span>(<span class="regex-highlight variable">Ring</span>) -&gt;
+			<span class="regex-highlight keyword">if</span>
+				<span class="regex-highlight variable">Iter</span> &gt; <span class="regex-highlight number">0</span> -&gt;
+					<span class="regex-highlight variable">Pid</span> = <span class="regex-highlight function">hd</span>(<span class="regex-highlight variable">Ring</span>),
+					<span class="regex-highlight variable">Pid</span> ! {<span class="regex-highlight variable">From</span>, {<span class="regex-highlight number">2</span>, <span class="regex-highlight variable">Ring</span>, <span class="regex-highlight variable">Message</span>, <span class="regex-highlight variable">Iter-1</span>}},
+					<span class="regex-highlight function">ring_element</span>();
+				<span class="regex-highlight variable">Iter</span> =:= <span class="regex-highlight number">0</span> -&gt;
+					<span class="regex-highlight variable">Pid</span> = <span class="regex-highlight atom">lists</span>:<span class="regex-highlight function">nth</span>(<span class="regex-highlight function">length</span>(<span class="regex-highlight variable">Ring</span>), <span class="regex-highlight variable">Ring</span>),
+					<span class="regex-highlight variable">From</span> ! {<span class="regex-highlight variable">Pid</span>, <span class="regex-highlight variable">Message</span>},
+					<span class="regex-highlight function">ring_element</span>()
+			<span class="regex-highlight keyword">end</span>
+	<span class="regex-highlight keyword">end</span>.

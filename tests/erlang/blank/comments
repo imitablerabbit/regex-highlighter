@@ -1,0 +1,4 @@
+% create_ring will return the data structure which is used
+% for all of the ring functions. This is essentially a list of
+% Pid's for processes which have already been spawned and are
+% waiting for a message from the previous process in the ring.

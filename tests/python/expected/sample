@@ -1,0 +1,27 @@
+<span class="regex-highlight comment">// Code courtesy of http://www.cppsamples.com/patterns/observer.html</span>
+# include <span class="regex-highlight import">&lt;vector&gt;</span>
+# include <span class="regex-highlight import">&lt;functional&gt;</span>
+<span class="regex-highlight keyword">class</span> <span class="regex-highlight class">observer</span> {
+    <span class="regex-highlight keyword">public</span>:
+        <span class="regex-highlight keyword">virtual</span> <span class="regex-highlight keyword">void</span> <span class="regex-highlight function">notify</span>() = <span class="regex-highlight number">0</span>;
+};
+
+<span class="regex-highlight keyword">class</span> <span class="regex-highlight class">observer_concrete</span> : <span class="regex-highlight keyword">public</span> observer {
+    <span class="regex-highlight keyword">public</span>:
+        <span class="regex-highlight keyword">virtual</span> <span class="regex-highlight keyword">void</span> <span class="regex-highlight function">notify</span>() <span class="regex-highlight keyword">override</span>
+        { }
+};
+
+<span class="regex-highlight keyword">class</span> <span class="regex-highlight class">subject</span> {
+    <span class="regex-highlight keyword">public</span>:
+        <span class="regex-highlight keyword">void</span> <span class="regex-highlight function">register_observer</span>(observer&amp; o) {
+            observers.<span class="regex-highlight function">push_back</span>(o);
+        }
+        <span class="regex-highlight keyword">void</span> <span class="regex-highlight function">notify_observers</span>() {
+            <span class="regex-highlight keyword">for</span> (observer&amp; o : observers) {
+            	o.<span class="regex-highlight function">notify</span>();
+            }
+        }
+    <span class="regex-highlight keyword">private</span>:
+        std::vector&lt;std::reference_wrapper&lt;observer&gt;&gt; observers;
+};

@@ -1,0 +1,5 @@
+<span class="regex-highlight variable">VariableName</span>
+<span class="regex-highlight variable">Another_Valid_Name</span>
+<span class="regex-highlight number">9</span>Invalid
+<span class="regex-highlight variable">_Valid</span>
+<span class="regex-highlight variable">_</span>

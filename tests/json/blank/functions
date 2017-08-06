@@ -1,0 +1,8 @@
+this.functionName();
+functionName();
+functionName(args);
+functionName(functionName());
+functionName ();
+functionName
+();
+0functionName()

@@ -1,0 +1,6 @@
+send_message(Ring, Message, Iter) -&gt;
+	hd(Ring) ! {self(), {2, Ring, Message, Iter}},
+	receive
+		{Pid, Message} -&gt;
+			{Pid, Message}
+	end.
