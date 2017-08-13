@@ -105,12 +105,13 @@ To build the src files into a build directory and minimised files you can use th
 | Make Command | Description |
 | --- | --- |
 | `make` or `make build` | Build all files into a `build` dir. This directory contains the built js files, css files and minimised JSON files for the currently supported language syntax. |
+| `make docs` | Builds the documentation locally. |
+| `make test` | Builds the src files and copy them into the testing directory. Then the test code can be run on a simple http file server such as an apache server. |
+| `make test-fileserver` | Uses the python http server to help run the tests. Stops the needs of having to setup apache and copy over the files. |
 | `make clean` | Removes the `build` dir. |
 | `make deps-clean` | Removes the `node_modules` folder so that no deps are installed locally. |
 | `make docs-clean` | Removes the docs file produced by JSDoc. |
 | `make clean-all` | Removes everything that has been built. This will give a completely clean directory only containing src files and testing code. |
-| `make test` | Builds the src files and copy them into the testing directory. Then the test code can be run on a simple http file server such as an apache server. |
-| `make test-fileserver` | Uses the python http server to help run the tests. Stops the needs of having to setup apache and copy over the files. |
 
 ## To Do
 
