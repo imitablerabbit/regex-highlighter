@@ -1,27 +1,10 @@
-// Code courtesy of http://www.cppsamples.com/patterns/observer.html
-# include &lt;vector&gt;
-# include &lt;functional&gt;
-class observer {
-    public:
-        virtual void notify() = 0;
-};
+criticalProbability :: (Integral a, Floating b) => a -> a -> b
+criticalProbability d h
+    | h > d     = 1.0 / fromIntegral d * criticalProbability d (h - d)
+    | otherwise = 1.0 - fromIntegral (h - 1) / fromIntegral d
 
-class observer_concrete : public observer {
-    public:
-        virtual void notify() override
-        { }
-};
-
-class subject {
-    public:
-        void register_observer(observer& o) {
-            observers.push_back(o);
-        }
-        void notify_observers() {
-            for (observer& o : observers) {
-            	o.notify();
-            }
-        }
-    private:
-        std::vector&lt;std::reference_wrapper&lt;observer&gt;&gt; observers;
-};
+main = let
+    ds = [4,4,4,4,1,100,8]
+    hs = [1,4,5,6,10,200,20]
+    in sequence . map (putStrLn . printf "%f") $
+        zipWith (\d h -> criticalProbability d h :: Double) ds hs

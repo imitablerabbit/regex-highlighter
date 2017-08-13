@@ -1,9 +1,4 @@
-object.<span class="regex-highlight variable">hello</span>;
-h.<span class="regex-highlight variable">x</span>;
-h.<span class="regex-highlight variable">x</span>
-object.<span class="regex-highlight variable">variable</span> = <span class="regex-highlight number">3</span>;
-object.<span class="regex-highlight variable">variable</span>.<span class="regex-highlight variable">variable</span> = <span class="regex-highlight number">3</span>;
-object.<span class="regex-highlight function">factorial</span>(<span class="regex-highlight number">2</span>);
-.<span class="regex-highlight variable">variable</span>
-x<span class="regex-highlight number">.1</span>
-hello.1nf
+name := <span class="regex-highlight wrapping">"Mark Hillman"</span>;
+err := error.<span class="regex-highlight function">New</span>(<span class="regex-highlight wrapping">"Oops"</span>);
+arr[<span class="regex-highlight number">1</span>] = <span class="regex-highlight number">123</span>;
+data.<span class="regex-highlight variable">Name</span> = <span class="regex-highlight wrapping">"Mark Hillman"</span>

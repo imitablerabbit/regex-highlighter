@@ -1,2 +1,1 @@
-# include <span class="regex-highlight import">&lt;vector&gt;</span>
-# include <span class="regex-highlight import">&lt;functional&gt;</span>
+<span class="regex-highlight keyword">import</span> <span class="regex-highlight class">Text</span>.<span class="regex-highlight class">Printf</span>

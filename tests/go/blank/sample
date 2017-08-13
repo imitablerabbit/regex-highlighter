@@ -1,27 +1,113 @@
-// Code courtesy of http://www.cppsamples.com/patterns/observer.html
-# include &lt;vector&gt;
-# include &lt;functional&gt;
-class observer {
-    public:
-        virtual void notify() = 0;
-};
+package julia
 
-class observer_concrete : public observer {
-    public:
-        virtual void notify() override
-        { }
-};
+import (
+	"fmt"
+	"image"
+	"image/color"
+	"image/png"
+	"math"
+	"math/cmplx"
+	"os"
+	"sync"
+)
 
-class subject {
-    public:
-        void register_observer(observer& o) {
-            observers.push_back(o);
-        }
-        void notify_observers() {
-            for (observer& o : observers) {
-            	o.notify();
-            }
-        }
-    private:
-        std::vector&lt;std::reference_wrapper&lt;observer&gt;&gt; observers;
-};
+// The function to call on the complex numbers
+var fn = DefaultComplexFunction
+var cMin = complex(-1, -1)
+var cMax = complex(1, 1)
+
+// This struct is for the work that needs to be done as well
+// as keeping track of the result
+type work struct {
+	x, y  int
+	color uint8
+}
+
+// CreateImage will create a png image with the specified resolution
+// for a julia function for the function set via JuliaFunction
+func CreateImage(filename string, xRes, yRes int) {
+	img := image.NewRGBA(image.Rect(0, 0, xRes, yRes))
+	workChan := make(chan *work, xRes*yRes)
+	results := make(chan *work, xRes*yRes)
+	realOffset := math.Abs(real(cMin) - real(cMax))
+	imagOffset := math.Abs(imag(cMin) - imag(cMax))
+
+	// workers function
+	var worker = func() {
+		for w := range workChan {
+			w.color = calcIter(complex(
+				real(cMin)+(realOffset/float64(xRes)*float64(w.x)),
+				imag(cMin)+(imagOffset/float64(yRes)*float64(w.y))))
+			results <- w
+		}
+	}
+
+	// reciever function
+	var wg sync.WaitGroup
+	var reciever = func() {
+		for w := range results {
+			img.Set(w.x, w.y, color.RGBA{w.color, w.color, w.color, 255})
+			wg.Done()
+		}
+	}
+
+	// Start the workers and reciever for each cpu core
+	go reciever()
+	for i := 0; i < 50; i++ {
+		go worker()
+	}
+
+	// Add the work for the workers
+	wg.Add(xRes * yRes)
+	for x := 0; x < xRes; x++ {
+		for y := 0; y < yRes; y++ {
+			workChan <- &work{x, y, 0}
+		}
+	}
+	close(workChan)
+	wg.Wait()
+	close(results)
+	writeImage(filename, img)
+}
+
+// ComplexFunction sets the function that will be used to determine the julia
+// sets
+func ComplexFunction(new func(complex128, complex128) complex128) {
+	fn = new
+}
+
+// ComplexRange sets the range of complex numbers that the image will include
+func ComplexRange(complexMin, complexMax complex128) {
+	cMin = complexMin
+	cMax = complexMax
+}
+
+// DefaultComplexFunction is the function that was used for the daily challenge
+func DefaultComplexFunction(c, orig complex128) complex128 {
+	c = cmplx.Pow(c, complex128(2))
+	c += complex(-0.221, -0.713)
+	return c
+}
+
+// Iteratively determines how many iterations its took to escape
+func calcIter(c complex128) uint8 {
+	iter := 0
+	orig := c
+	for {
+		c = fn(c, orig)
+		iter++
+		if cmplx.Abs(c) > 2 || iter >= 255 {
+			return uint8(iter)
+		}
+	}
+}
+
+// writeImage writes the Image struct to a file using png format
+func writeImage(filename string, image *image.RGBA) {
+	file, err := os.Create(filename)
+	if err != nil {
+		fmt.Println("Whoops")
+	}
+	png.Encode(file, image)
+	file.Close()
+}

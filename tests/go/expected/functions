@@ -1,8 +1,15 @@
-<span class="regex-highlight keyword">this</span>.<span class="regex-highlight function">functionName</span>();
-<span class="regex-highlight function">functionName</span>();
-<span class="regex-highlight function">functionName</span>(args);
-<span class="regex-highlight function">functionName</span>(<span class="regex-highlight function">functionName</span>());
-<span class="regex-highlight function">functionName</span> ();
-functionName
-();
-0functionName()
+<span class="regex-highlight keyword">func</span> <span class="regex-highlight function">ExportedFunction</span>() {
+    <span class="regex-highlight keyword">return</span>;
+}
+
+<span class="regex-highlight keyword">func</span> <span class="regex-highlight function">Exported</span>() string {
+    <span class="regex-highlight keyword">return</span> <span class="regex-highlight wrapping">"hello"</span>;
+}
+
+<span class="regex-highlight keyword">func</span> <span class="regex-highlight function">unexported</span>() {
+    <span class="regex-highlight keyword">return</span>;
+}
+
+<span class="regex-highlight keyword">func</span> (s string) <span class="regex-highlight function">StringMethod</span>() {
+    <span class="regex-highlight keyword">return</span> s;
+}

@@ -1,9 +1,4 @@
-object.hello;
-h.x;
-h.x
-object.variable = 3;
-object.variable.variable = 3;
-object.factorial(2);
-.variable
-x.1
-hello.1nf
+name := "Mark Hillman";
+err := error.New("Oops");
+arr[1] = 123;
+data.Name = "Mark Hillman"

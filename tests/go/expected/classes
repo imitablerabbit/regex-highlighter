@@ -1,6 +1,0 @@
-<span class="regex-highlight keyword">class</span> <span class="regex-highlight class">Rectangle</span> {
-    <span class="regex-highlight keyword">int</span> width, height;
-  <span class="regex-highlight keyword">public</span>:
-    <span class="regex-highlight keyword">void</span> <span class="regex-highlight function">set_values</span> (<span class="regex-highlight keyword">int</span>,<span class="regex-highlight keyword">int</span>);
-    <span class="regex-highlight keyword">int</span> <span class="regex-highlight function">area</span>() {<span class="regex-highlight keyword">return</span> width*height;}
-};
