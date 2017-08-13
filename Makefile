@@ -22,9 +22,6 @@ build-dirs:
 deps:
 	npm install --only=production json-minify uglify-js@1 jsdoc
 
-buildtest: build
-	cp -r ./build ./tests/
-
 # ------------------------------------------------------------------
 # Utils
 # ------------------------------------------------------------------
@@ -32,13 +29,19 @@ buildtest: build
 docs: ./src/highlight.js deps
 	./node_modules/.bin/jsdoc --readme DOCS.md src -r -d docs
 
-cleanall: clean distclean docsclean
+test: build
+	cp -r ./build ./tests/
+
+test-fileserver: test
+	python -m SimpleHTTPServer
+
+clean-all: clean deps-clean docs-clean
 
 clean:
 	rm -rf ./build
 
-distclean:
+deps-clean:
 	rm -rf ./node_modules
 
-docsclean:
+docs-clean:
 	rm -rf ./docs
