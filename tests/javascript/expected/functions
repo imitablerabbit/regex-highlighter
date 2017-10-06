@@ -1,8 +1,0 @@
-<span class="regex-highlight keyword">this</span>.<span class="regex-highlight function">functionName</span>();
-<span class="regex-highlight function">functionName</span>();
-<span class="regex-highlight function">functionName</span>(args);
-<span class="regex-highlight function">functionName</span>(<span class="regex-highlight function">functionName</span>());
-<span class="regex-highlight function">functionName</span> ();
-functionName
-();
-0functionName()
