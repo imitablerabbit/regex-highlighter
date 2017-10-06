@@ -1,0 +1,12 @@
+<span class="regex-highlight keyword">import</span> (<span class="regex-highlight import">
+	"fmt"
+	"image"
+	"image/color"
+	imgpng "image/png"
+	"math"
+	"math/cmplx"
+	"os"
+	"sync"
+</span>)
+
+<span class="regex-highlight keyword">import</span> <span class="regex-highlight import">"fmt"</span>

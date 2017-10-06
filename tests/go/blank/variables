@@ -1,0 +1,4 @@
+name := "Mark Hillman";
+err := error.New("Oops");
+arr[1] = 123;
+data.Name = "Mark Hillman"

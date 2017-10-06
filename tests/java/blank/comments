@@ -1,0 +1,9 @@
+"Wrapping"
+/*multi
+line comment correct*/
+/*multi
+line comment with wrapping "hello" correct*/
+"Wrapping with --comment inside"
+"Wrapping which has been\" escaped "
+// comment which "has a wrapping"
+"String1" + "String2"

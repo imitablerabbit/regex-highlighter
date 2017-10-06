@@ -55,8 +55,8 @@ RegexHighlighter.prototype.sortArrayByObjectsIndex = function(array) {
 * Remove duplicate objects from the array using a function passed into this
 * function. The array should contain Regex match objects and the shouldRemove
 * function should work in a similar way to a compare function in most
-* imperative languages. This means that <0 will remove the item on the left,
-* >0 will remove the item on the right. 0 will not remove anything
+* imperative languages. This means that < 0 will remove the item on the left,
+* > 0 will remove the item on the right. 0 will not remove anything
 * @author Mark Hillman <mark@markhillman.info>
 *
 *   @param {Match[]} array - The array which will have its duplicate items
@@ -66,15 +66,12 @@ RegexHighlighter.prototype.sortArrayByObjectsIndex = function(array) {
 RegexHighlighter.prototype.removeDuplicateObjectsFromArray = function(array, shouldRemove) {
     for (var i = 1; i < array.length; i++) {
         var side = shouldRemove(array[i-1], array[i]);
-        if (side != 0) {
-            if (side < 0) {
-                array.splice(i-1, 1);
-                i--;
-            }
-            else {
-                array.splice(i, 1);
-                i--;
-            }
+        if (side < 0) { // left
+            array.splice(i-1, 1);
+            i--;
+        } else if (side > 0) { // right
+            array.splice(i, 1);
+            i--;
         }
     }
 }
@@ -323,8 +320,7 @@ RegexHighlighter.prototype.insertSyntaxHighlightingByClass = function(regexObjec
 *   @param {string} [languagesFolderPath] - This is the path to the languages
 *       folder, so that any languages that can be used, will be found
 */
-RegexHighlighter.prototype.loadSyntaxHighlightingByClass = function(className,
-        languagesFolderPath) {
+RegexHighlighter.prototype.loadSyntaxHighlightingByClass = function(className, languagesFolderPath) {
     if (typeof languagesFolderPath === "undefined")
         languagesFolderPath = "languages/";
     if (typeof className === "undefined")

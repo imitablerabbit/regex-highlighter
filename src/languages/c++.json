@@ -2,10 +2,7 @@
     {
         "type": "number",
         "regexes": [
-            {
-                "regexString": "\\b\\d*\\.?\\d+\\b",
-                "captureGroup": 1
-            }
+            "\\b\\d*\\.?\\d+\\b"
         ]
     },
     {

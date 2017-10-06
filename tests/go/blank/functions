@@ -1,0 +1,15 @@
+func ExportedFunction() {
+    return;
+}
+
+func Exported() string {
+    return "hello";
+}
+
+func unexported() {
+    return;
+}
+
+func (s string) StringMethod() {
+    return s;
+}

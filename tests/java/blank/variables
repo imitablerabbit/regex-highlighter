@@ -1,0 +1,3 @@
+Factorial object = new Factorial();
+object.factorial(2);
+object.variable = 3;

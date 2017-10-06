@@ -1,0 +1,4 @@
+name := <span class="regex-highlight wrapping">"Mark Hillman"</span>;
+err := error.<span class="regex-highlight function">New</span>(<span class="regex-highlight wrapping">"Oops"</span>);
+arr[<span class="regex-highlight number">1</span>] = <span class="regex-highlight number">123</span>;
+data.<span class="regex-highlight variable">Name</span> = <span class="regex-highlight wrapping">"Mark Hillman"</span>

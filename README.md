@@ -100,18 +100,21 @@ You can use the testing folder for trying out any new builds and generally editi
 
 ## Building
 
-If you have made any changes, make sure to minify the javascript and json files using the following links:
+To build the src files into a build directory and minimised files you can use the commands from the following table.
 
-- Javascript: http://jscompress.com/
-- JSON: http://www.httputility.net/json-minifier.aspx
-
-Once minified, add the files to the build folder and the newly updated source files to the src folder. If a new language has been added, please add an example of the language highlighting in the example.
-
-If any new functions have been added or an important change has been made to the structure of the code, please make sure to build the documentation again. This can be done by running JSDoc on the src folder. More specifically run this from a terminal `"node_modules/.bin/jsdoc" --readme DOCS.md src -r -d docs`
+| Make Command | Description |
+| --- | --- |
+| `make` or `make build` | Build all files into a `build` dir. This directory contains the built js files, css files and minimised JSON files for the currently supported language syntax. |
+| `make docs` | Builds the documentation locally. |
+| `make test` | Builds the src files and copy them into the testing directory. Then the test code can be run on a simple http file server such as an apache server. |
+| `make test-fileserver` | Uses the python http server to help run the tests. Stops the needs of having to setup apache and copy over the files. |
+| `make clean` | Removes the `build` dir. |
+| `make deps-clean` | Removes the `node_modules` folder so that no deps are installed locally. |
+| `make docs-clean` | Removes the docs file produced by JSDoc. |
+| `make clean-all` | Removes everything that has been built. This will give a completely clean directory only containing src files and testing code. |
 
 ## To Do
 
-- Add a build script to generate the files in the build directory.
 - Add more tests for each of the different regexes
   - java
   - json
@@ -122,6 +125,7 @@ If any new functions have been added or an important change has been made to the
 
 ## Change Log:
 
+- Add a build script to generate the files in the build directory.
 - Added a list of languages supported in the readme.
 - Added better testing
   - c++

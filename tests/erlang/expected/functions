@@ -1,0 +1,6 @@
+<span class="regex-highlight function">send_message</span>(<span class="regex-highlight variable">Ring</span>, <span class="regex-highlight variable">Message</span>, <span class="regex-highlight variable">Iter</span>) -&gt;
+	<span class="regex-highlight function">hd</span>(<span class="regex-highlight variable">Ring</span>) ! {<span class="regex-highlight function">self</span>(), {<span class="regex-highlight number">2</span>, <span class="regex-highlight variable">Ring</span>, <span class="regex-highlight variable">Message</span>, <span class="regex-highlight variable">Iter</span>}},
+	<span class="regex-highlight keyword">receive</span>
+		{<span class="regex-highlight variable">Pid</span>, <span class="regex-highlight variable">Message</span>} -&gt;
+			{<span class="regex-highlight variable">Pid</span>, <span class="regex-highlight variable">Message</span>}
+	<span class="regex-highlight keyword">end</span>.

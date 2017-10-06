@@ -1,0 +1,27 @@
+// Code courtesy of http://www.cppsamples.com/patterns/observer.html
+# include &lt;vector&gt;
+# include &lt;functional&gt;
+class observer {
+    public:
+        virtual void notify() = 0;
+};
+
+class observer_concrete : public observer {
+    public:
+        virtual void notify() override
+        { }
+};
+
+class subject {
+    public:
+        void register_observer(observer& o) {
+            observers.push_back(o);
+        }
+        void notify_observers() {
+            for (observer& o : observers) {
+            	o.notify();
+            }
+        }
+    private:
+        std::vector&lt;std::reference_wrapper&lt;observer&gt;&gt; observers;
+};
