@@ -1,6 +1,6 @@
 # regex-highlighter
 
-A javascript tool to highlight regex pattern matches in a HTML document via CSS. Whilst this tool is primarily aimed at programming languages syntax highlighting, it can be used with any regular expression. Highlighted matches from a given regex file will be wrapped in a span tag and then given a class which can be used to style that particular match. The are several supported languages which can be used, or you can create custom rules.
+A javascript tool to highlight regex pattern matches in a HTML document via CSS. Whilst this tool is primarily aimed at programming languages syntax highlighting, it can be used with any regular expressions. Highlighted matches from a given regex file will be wrapped in a span tag and then given a class which can be used to style that particular match. The are several supported languages which can be used, or you can create custom rules.
 
 ## How to Use
 
