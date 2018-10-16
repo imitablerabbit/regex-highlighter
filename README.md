@@ -1,22 +1,22 @@
 # regex-highlighter
 
-A javascript tool to highlight regex pattern matches in a HTML document via CSS. Whilst this tool is primarily aimed at programming languages syntax highlighting, it can be used with any regular expressions. Highlighted matches from a given regex file will be wrapped in a span tag and then given a class which can be used to style that particular match. The are several supported languages which can be used, or you can create custom rules.
+A javascript tool to highlight regex pattern matches in a HTML document via CSS. Whilst this tool is primarily aimed at programming languages syntax highlighting, it can be used with any regular expressions. Highlighted matches from a given regex file will be wrapped in a span tag and then given a class which can be used to style that particular match. There are several supported languages which can be used, or you can create your own custom rules.
 
 ## How to Use
 
 ### Online Converter
 
-If you don't need to dynamically covert text to its highlighted format, you can use the online converter [here](http://markhillman.info/#regex-highlighter) and copy the output into the HTML. Then all that is needed is to either include the CSS file, or to style the span tags yourself. The online converter allows for all currently supported languages, custom JSON files and single regex lines.
+If you don't need to dynamically convert text to its highlighted format, you can use the [online converter](http://markhillman.info/#regex-highlighter) and copy the output into the HTML file. Then all that is needed is to either include the CSS file, or to style the span tags yourself. The online converter allows for all currently supported languages, custom JSON files and single regex lines.
 
 ### Adding to a website
 
-Adding the highlighter to a project is very simple! All you have to do is to include the javascript file in your HTML and run a function from the RegexHighlighter object. To see which functions will best suit your use case, check out the documentation [here](https://imitablerabbit.github.io/regex-highlighter/).
+Adding the highlighter to a project is very simple! All you have to do is to include the javascript file inside your HTML and run a function from the RegexHighlighter object. To see which functions will best suit your use case, check out the [documentation](https://imitablerabbit.github.io/regex-highlighter/).
 Simply put, you can just follow these few steps:
 - Download the zip file from github, then move the files to relevant folders somewhere on the server (**Note: the script has to run on a server as it uses AJAX**)
-- Add the highlight.min.js script to the html file that you want it to run on using `<script  type="text/javascript" src="scripts/highlight.min.js"></script>`.
+- Add the highlight.min.js script to the html file that you want it to run on using `<script type="text/javascript" src="scripts/highlight.min.js"></script>`.
 - Add the syntax.css stylesheet to highlight the matched text using `<link rel="stylesheet" href="styles/syntax.css">`
-- Now you can run regex-highlighter with the `loadSyntaxHighlightingByClass()` function. This function is inside the RegexHighlighter class, so first create an instance then call the function `new RegexHighlighter().loadSyntaxHighlightingByClass()`. The `loadSyntaxHighlightingByClass()` function takes 2 optional parameters in order to determine which parts of the html need to be checked, as well as the folder for where the default language support is. The default options for these are 'regex-color' and './languages/'. This means that only elements which have a class of regex-color will be coloured and only the 'languages/' folder in the same directory as the script will be searched for the regex support. These can be changed by supplying arguments to the function.
-- To tell the regex-highlighter what language it should use, add a class to the same element, which is the language name.
+- Now you can run regex-highlighter with the `loadSyntaxHighlightingByClass()` function. This function is inside the RegexHighlighter class, so first create an instance then call the function, e.g. `new RegexHighlighter().loadSyntaxHighlightingByClass()`. The `loadSyntaxHighlightingByClass()` function takes 2 optional parameters in order to determine which elements should have syntax highlighting added, as well as the folder for where the default language support is. The default options for these are `regex-color` and `./languages/`. This means that only elements which have a class of `regex-color` will be coloured and only the `languages/` folder in the same directory as the script will be searched for the regex support. These can be changed by supplying arguments to the function.
+- To tell the regex-highlighter what language it should use, add a class to the same element. The class name should be the same as the language specification file used to define the regex rules.
 
 ### Example
 
@@ -140,9 +140,9 @@ To build the src files into a build directory and minimised files you can use th
 - Added more robust commenting to the javascript file (came with JSDoc)
 - Added some more error checking to the javascript file, mostly for optional arguments
 - Added in depth documentation to this project, using JSDoc
-- Added a way to add options to the regexes, for example to set the precedent. This was I can get regex matches with the same precedent, so the longer of the 2 matches will be chosen.
+- Added a way to add options to the regexes, for example to set the precedent. This was so I can get regex matches with the same precedent, so the longer of the 2 matches will be chosen.
 - Updated the duplicate removal for new precedent matching.
-- Added a more complex regex dulpication detection system
+- Added a more complex regex duplication detection system
 - Fixed java character matching
 - Changed to last group pattern matching
 - Fixed the haskell function errors
